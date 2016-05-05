@@ -1,5 +1,18 @@
-<ion-view title="Recommend" >
+<ion-view title="Recommend"  ng-controller="RecommendCtrl">
   <ion-content class="padding has-tabs-top">
-    Recommend
+
+    <ion-list>
+      <ion-item ng-repeat="video in videos"
+                class="item-thumbnail-left">
+
+        <img ng-src="{{video.videoPic}}">
+        <h2>{{video.videoName}}</h2>
+        <p>{{video.ownerId}}</p>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll ng-if="loadMore"
+                            on-infinite="onLoadMore()"
+                            distance="2%">
+    </ion-infinite-scroll>
   </ion-content>
 </ion-view>

@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -22,7 +22,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider,$httpProvider) {
     $ionicConfigProvider.platform.ios.tabs.style('standard');
     $ionicConfigProvider.platform.ios.tabs.position('bottom');
     $ionicConfigProvider.platform.android.tabs.style('standard');
@@ -36,15 +36,56 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
     $ionicConfigProvider.platform.ios.views.transition('ios');
     $ionicConfigProvider.platform.android.views.transition('android');
+    $ionicConfigProvider.scrolling.jsScrolling(true);
+// Use x-www-form-urlencoded Content-Type
+    $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 
+    /**
+     * The workhorse; converts an object to x-www-form-urlencoded serialization.
+     * @param {Object} obj
+     * @return {String}
+     */
+    var param = function(obj) {
+      var query = '', name, value, fullSubName, subName, subValue, innerObj, i;
 
-  $stateProvider
+      for(name in obj) {
+        value = obj[name];
 
+        if(value instanceof Array) {
+          for(i=0; i<value.length; ++i) {
+            subValue = value[i];
+            fullSubName = name + '[' + i + ']';
+            innerObj = {};
+            innerObj[fullSubName] = subValue;
+            query += param(innerObj) + '&';
+          }
+        }
+        else if(value instanceof Object) {
+          for(subName in value) {
+            subValue = value[subName];
+            fullSubName = name + '[' + subName + ']';
+            innerObj = {};
+            innerObj[fullSubName] = subValue;
+            query += param(innerObj) + '&';
+          }
+        }
+        else if(value !== undefined && value !== null)
+          query += encodeURIComponent(name) + '=' + encodeURIComponent(value) + '&';
+      }
+
+      return query.length ? query.substr(0, query.length - 1) : query;
+    };
+
+    // Override $http service's default transformRequest
+    $httpProvider.defaults.transformRequest = [function(data) {
+      return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
+    }];
+    $stateProvider
     .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
+    controller: 'MenuCtrl'
   })
   .state('app.main', {
       url: '/main',
@@ -74,7 +115,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: "/recommend",
       views: {
         'home-sub': {
-          templateUrl: "templates/recommend.html"
+          templateUrl: "templates/recommend.html",
+          controller:"RecommendCtrl"
         }
       }
     })
