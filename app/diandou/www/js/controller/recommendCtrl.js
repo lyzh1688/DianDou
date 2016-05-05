@@ -32,8 +32,6 @@ angular.module('diandou.controllers')
               $scope.loadMore = false;
           })
       $scope.PageIndex++;
-
-      $scope.$broadcast('scroll.infiniteScrollComplete');
     };
 
     $scope.$on("$destroy", function () {
