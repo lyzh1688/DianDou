@@ -2,12 +2,14 @@
   <ion-content class="padding has-tabs-top">
 
     <ion-list>
-      <ion-item ng-repeat="video in videos"
+      <ion-item ng-repeat="videoItem in videos"
                 class="item-thumbnail-left">
 
-        <img ng-src="{{video.videoPic}}">
-        <h2>{{video.videoName}}</h2>
-        <p>{{video.ownerId}}</p>
+        <img ng-src="{{videoItem.video.videoPic}}">
+        <h2>{{videoItem.video.videoName}}</h2>
+        <p>作者:{{videoItem.video.ownerName}}</p>
+        <p>{{videoItem.video.status}}</p>
+        <p>{{videoItem.videoTag|joinTagFilter}}</p>
       </ion-item>
     </ion-list>
     <ion-infinite-scroll ng-if="loadMore"

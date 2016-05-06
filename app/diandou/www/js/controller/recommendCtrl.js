@@ -24,6 +24,7 @@ angular.module('diandou.controllers')
             if(!result ||  result.length == 0 || result.length < $scope.PageSize){
                 $scope.loadMore = false;
             }
+
             $scope.videos = $scope.videos.concat(result);
             $scope.$broadcast('scroll.infiniteScrollComplete');
           },

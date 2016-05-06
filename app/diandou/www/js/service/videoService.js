@@ -1,12 +1,13 @@
 /**
  * Created by 胡志洁 on 2016/5/5.
  */
-angular.module('diandou.services',[])
-  .factory('VideoService',['$http','$q',function($http,$q){
+angular.module('diandou.services')
+  .factory('VideoService',['$http','$q','UrlServer',function($http,$q,UrlServer){
     return {
       getVideoList: function(params){
         var defered = $q.defer();
-        $http.post('http://localhost:8080/diandou/video/getVideoList',params)
+        var serverUrl = UrlServer.getServer();
+        $http.post( serverUrl + '/video/getVideoList',params)
           .success(function(data,status,headers,config){
             defered.resolve(data);
           })

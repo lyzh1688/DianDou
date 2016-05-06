@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services'])
+angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services','diandou.filter'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -81,12 +81,22 @@ angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services'])
       return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
     }];
     $stateProvider
+
     .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
     controller: 'MenuCtrl'
   })
+  .state('app.login', {
+        url: '/login',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/login.html',
+            controller:"loginCtrl"
+          }
+        }
+      })
   .state('app.main', {
       url: '/main',
       views: {
@@ -158,5 +168,5 @@ angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services'])
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/main');
+  $urlRouterProvider.otherwise('/app/login');
 });
