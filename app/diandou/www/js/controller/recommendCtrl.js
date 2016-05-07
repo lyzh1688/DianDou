@@ -15,9 +15,9 @@ angular.module('diandou.controllers')
     //滚动条响应事件
     $scope.onLoadMore = function(){
 
-      var timer = null;
+      //var timer = null;
 
-      var params = {ownerId:'1',pageIdx:$scope.PageIndex,pageSize:$scope.PageSize}
+      var params = {tagId:'A1',pageIdx:$scope.PageIndex,pageSize:$scope.PageSize}
 
       VideoService.getVideoList(params)
         .then(function(result){
@@ -29,7 +29,7 @@ angular.module('diandou.controllers')
             $scope.$broadcast('scroll.infiniteScrollComplete');
           },
           function(){
-              $timeout.cancel(timer);
+              //$timeout.cancel(timer);
               $scope.loadMore = false;
           })
       $scope.PageIndex++;
@@ -37,7 +37,7 @@ angular.module('diandou.controllers')
 
     $scope.$on("$destroy", function () {
       //clearTimeout(timer.$$timeoutId);
-      $timeout.cancel(timer);
+      //$timeout.cancel(timer);
       //清除配置,不然scroll会重复请求
     });
   }])

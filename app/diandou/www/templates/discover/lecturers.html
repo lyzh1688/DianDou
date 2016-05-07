@@ -1,0 +1,39 @@
+<ion-view title="" ng-controller="LecturersCtrl">
+  <ion-content class="padding has-tabs-top ">
+
+    <ion-list class="content">
+      <ion-item ng-repeat="userItem in users">
+        <div class="row item">
+          <div class="col col-20" >
+            <div class="row">
+              <div class="item-avatar">
+                <img ng-src="{{userItem.user.headPortrait}}">
+              </div>
+              <div class="col">
+                <h2>{{userItem.user.userName}}</h2>
+                <button class="button button-small button-royal">关注</button>
+
+              </div>
+            </div>
+
+            <p>作者简介:{{userItem.user.brief}}</p>
+            <p>粉丝：{{userItem.friendCount}}</p>
+          </div>
+          <div class="col col-80">
+            <h2>{{userItem.latestVideo.video.videoName}}</h2>
+            <div>
+              <img ng-src="{{userItem.latestVideo.video.videoPic}}">
+            </div>
+            <p>{{userItem.latestVideo.video.videoTag|joinTagFilter}}</p>
+            <p>{{userItem.latestVideo.video.status}}</p>
+          </div>
+        </div>
+
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll ng-if="loadMore"
+                         on-infinite="onLoadMore()"
+                         distance="2%">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

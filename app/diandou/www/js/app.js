@@ -81,30 +81,30 @@ angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services','di
       return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
     }];
     $stateProvider
-
-    .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'MenuCtrl'
-  })
-  .state('app.login', {
-        url: '/login',
+     .state('login', {
+          url: '/login',
+          templateUrl: 'templates/user/login.html',
+          controller:"loginCtrl"
+     })
+     .state('register', {
+        url: '/register',
+        templateUrl: 'templates/user/register.html',
+        //controller:"registerCtrl"
+      })
+     .state('app', {
+        url: '/app',
+        abstract: true,
+        templateUrl: 'templates/menu.html',
+        controller: 'MenuCtrl'
+      })
+    .state('app.main', {
+        url: '/main',
         views: {
           'menuContent': {
-            templateUrl: 'templates/login.html',
-            controller:"loginCtrl"
+            templateUrl: 'templates/main.html'
           }
         }
       })
-  .state('app.main', {
-      url: '/main',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/main.html'
-        }
-      }
-    })
     .state('app.main.home', {
       url: "/home",
       views: {
@@ -138,26 +138,15 @@ angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services','di
         }
       }
     })
-    .state('app.main.discover.star', {
-      url: "/star",
-      views: {
-        'discover-sub': {
-          templateUrl: "templates/star.html"
-        }
-      }
-    })
     .state('app.main.discover.lecturers', {
-      url: "/lecturers",
+      url: "/lecturers/:roleId",
       views: {
         'discover-sub': {
-          templateUrl: "templates/lecturers.html"
+          templateUrl: "templates/discover/lecturers.html",
+          controller:"LecturersCtrl"
         }
       }
     })
-
-
-
-
   .state('app.single', {
     url: '/playlists/:playlistId',
     views: {
@@ -168,5 +157,5 @@ angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services','di
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/login');
+  $urlRouterProvider.otherwise('/login');
 });

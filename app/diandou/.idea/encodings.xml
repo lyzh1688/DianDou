@@ -2,16 +2,19 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/www/js/app.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/js/controller/lecturersCtrl.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/js/controller/loginCtrl.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/www/js/controllers.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/js/filter/filter.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/js/service/service.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/js/service/userService.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/discover.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/templates/discover/lecturers.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/templates/discover/star.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/home.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/interest.html" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/www/templates/lecturers.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/recommend.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/search.html" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/www/templates/star.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/templates/user/login.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/templates/user/register.html" charset="UTF-8" />
   </component>
 </project>
