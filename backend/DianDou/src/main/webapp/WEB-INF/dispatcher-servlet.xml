@@ -93,6 +93,14 @@
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSource" />
     </bean>
+
+    <mvc:interceptors>
+        <!-- 国际化操作拦截器 如果采用基于（请求/Session/Cookie）则必需配置 -->
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+        <!-- 如果不定义 mvc:mapping path 将拦截所有的URL请求 -->
+        <bean class="com.diandou.web.intercepter.AuthInterceptor"></bean>
+    </mvc:interceptors>
+
     <!-- database config begin -->
     <!--
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
@@ -123,6 +131,9 @@
 
     <context:component-scan base-package="com.diandou.video.dao.impl" />
     <context:component-scan base-package="com.diandou.video.service.impl" />
+
     <context:component-scan base-package="com.diandou.user.dao.impl" />
     <context:component-scan base-package="com.diandou.user.service.impl" />
+
+    <context:component-scan base-package="com.diandou.authority.service.impl" />
 </beans>

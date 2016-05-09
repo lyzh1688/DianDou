@@ -1,5 +1,6 @@
 package com.diandou.web.controller;
 
+import com.diandou.annotation.Authority;
 import com.diandou.common.option.FilterOption;
 import com.diandou.video.entity.Video;
 import com.diandou.video.service.IVideoService;
@@ -24,6 +25,7 @@ public class VideoController {
     @Autowired
     private IVideoService videoService;
 
+    @Authority
     @RequestMapping(value = "/getVideoList",produces = "application/json;charset=UTF-8")
     @ResponseBody
     public String getVideoList(HttpServletRequest request){

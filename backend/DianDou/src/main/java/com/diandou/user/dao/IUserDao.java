@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface IUserDao {
     public List<User> getUserListByRole(String pageIdx,String pageSize,String roleId);
+    public String userLogin(String mobile);
 }

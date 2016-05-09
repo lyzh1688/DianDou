@@ -39,7 +39,7 @@ angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services','di
     $ionicConfigProvider.scrolling.jsScrolling(true);
 // Use x-www-form-urlencoded Content-Type
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-
+    $httpProvider.interceptors.push('AuthInjector');
     /**
      * The workhorse; converts an object to x-www-form-urlencoded serialization.
      * @param {Object} obj
@@ -84,12 +84,12 @@ angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services','di
      .state('login', {
           url: '/login',
           templateUrl: 'templates/user/login.html',
-          controller:"loginCtrl"
+          controller:"LoginCtrl"
      })
      .state('register', {
         url: '/register',
         templateUrl: 'templates/user/register.html',
-        //controller:"registerCtrl"
+        //controller:"RegisterCtrl"
       })
      .state('app', {
         url: '/app',

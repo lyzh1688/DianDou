@@ -19,6 +19,20 @@ angular.module('diandou.services')
           })
 
         return defered.promise;
+      },
+
+      login: function (params) {
+        var defered = $q.defer();
+        var serverUrl = UrlServer.getServer();
+        $http.post( serverUrl + '/authority/loginAuthority',params)
+          .success(function(data,status,headers,config){
+            defered.resolve(data);
+          })
+          .error(function(data,status,headers,config){
+            defered.reject(data);
+          })
+
+        return defered.promise;
       }
     }
   }])

@@ -17,6 +17,8 @@ import java.util.List;
 @Repository("UserDao")
 public class UserDao implements IUserDao {
 
+    private final static String loginFailed = "LOGIN_FAILED";
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -39,5 +41,25 @@ public class UserDao implements IUserDao {
         userList = jdbcTemplate.query(sql,new Object[]{roleId} , new UserMapper());
 
         return userList;
+    }
+
+    @Override
+    public String userLogin(String mobile) {
+
+        int cnt = this.jdbcTemplate.queryForObject("select count(1) from dat_user_info where mobile = ?",new Object[] {mobile}, Integer.class);
+
+        if(cnt > 0){
+
+            String userId = this.jdbcTemplate.queryForObject("select user_id from dat_user_info where mobile = ?",new Object[] {mobile}, String.class);
+
+            return userId;
+        }
+        else{
+
+            return UserDao.loginFailed;
+        }
+
+
+
     }
 }
