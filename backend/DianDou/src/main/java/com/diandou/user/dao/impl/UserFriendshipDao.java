@@ -1,10 +1,13 @@
 package com.diandou.user.dao.impl;
 
 import com.diandou.common.option.InOption;
+import com.diandou.common.option.PagenationOption;
 import com.diandou.enumerable.FollowActionEnum;
 import com.diandou.user.dao.IUserFriendshipDao;
 import com.diandou.user.entity.FriendCount;
+import com.diandou.user.entity.User;
 import com.diandou.user.mapper.FriendCountMapper;
+import com.diandou.user.mapper.UserMapper;
 import com.diandou.video.mapper.VideoTagMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -125,6 +128,27 @@ public class UserFriendshipDao implements IUserFriendshipDao {
         }
 
         return affectedRows == 0;
+    }
+
+    @Override
+    public List<User> getFriendsByUserId(String pageIdx, String pageSize,String userId) {
+
+        List<User> friendList = null;
+
+        String sql = " select i.user_id,i.user_name,i.brief,i.head_portrait,i.mobile,i.sex from " +
+                " dat_user_info i," +
+                " (select t1.user2_id as user_id " +
+                " from dat_user_friendship t1 where t1.agree_flag1 = 1 and t1.user1_id = ? " +
+                " union all " +
+                " select t2.user1_id as user_id " +
+                " from dat_user_friendship t2 where t2.agree_flag2 = 1 and t2.user2_id = ?) t " +
+                " where i.user_id = t.user_id " +
+                new PagenationOption(pageSize,pageIdx).genOptionCode();
+        ;
+
+        friendList = this.jdbcTemplate.query(sql,new Object[]{userId,userId},new UserMapper());
+
+        return friendList;
     }
 
 }

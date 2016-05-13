@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<ion-view title="" ng-controller="FriendsCtrl">
+  <ion-content class="padding has-tabs-top ">
 
-</body>
-</html>
+    <div class="list" ng-repeat="friend in friends">
+
+      <a  class="item item-avatar" href="#">
+        <img ng-src="{{friend.headPortrait}}">
+        <h2>{{friend.userName}}</h2>
+        <p>{{friend.brief}}.</p>
+      </a>
+
+    </div>
+
+    <ion-infinite-scroll ng-if="loadMore"
+                         on-infinite="onLoadMore()"
+                         distance="2%">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

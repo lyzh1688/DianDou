@@ -62,6 +62,20 @@ angular.module('diandou.services')
           })
 
         return defered.promise;
+      },
+
+      getFriendsByUserId: function(params){
+        var defered = $q.defer();
+        var serverUrl = REMOTE_SERVER.remoteDiandouSrv;
+        $http.post( serverUrl + '/friendship/getFriendsByUserId',params)
+          .success(function(data,status,headers,config){
+            defered.resolve(data);
+          })
+          .error(function(data,status,headers,config){
+            defered.reject(data);
+          })
+
+        return defered.promise;
       }
     }
   }])

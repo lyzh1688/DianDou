@@ -5,6 +5,7 @@ import com.diandou.common.util.StringUtil;
 import com.diandou.enumerable.FollowActionEnum;
 import com.diandou.user.service.IUserFriendshipService;
 import com.diandou.user.service.IUserService;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ public class FriendShipController {
     @Autowired
     private IUserFriendshipService userFriendshipService;
 
+    @Authority
     @RequestMapping(value = "/follow",produces = "application/json;charset=UTF-8")
     @ResponseBody
     public boolean follow(HttpServletRequest request){
@@ -43,4 +45,13 @@ public class FriendShipController {
 
     }
 
+    @Authority
+    @RequestMapping(value = "/getFriendsByUserId",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public String getFriendsByUserId(HttpServletRequest request){
+        String selfId = request.getParameter("selfId");
+        String pageIdx = request.getParameter("pageIdx");
+        String pageSize = request.getParameter("pageSize");
+        return new Gson().toJson(this.userFriendshipService.getFriendsByUserId(pageIdx,pageSize,selfId));
+    }
 }

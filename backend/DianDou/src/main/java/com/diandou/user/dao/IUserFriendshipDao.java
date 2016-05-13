@@ -2,6 +2,7 @@ package com.diandou.user.dao;
 
 import com.diandou.enumerable.FollowActionEnum;
 import com.diandou.user.entity.FriendCount;
+import com.diandou.user.entity.User;
 
 import java.util.List;
 
@@ -18,4 +19,5 @@ public interface IUserFriendshipDao {
 
     public boolean follow(String selfId,String targeId,FollowActionEnum followAction);
 
+    public List<User> getFriendsByUserId(String pageIdx, String pageSize,String userId);
 }

@@ -3,6 +3,7 @@ package com.diandou.user.service.impl;
 import com.diandou.enumerable.FollowActionEnum;
 import com.diandou.user.dao.IUserFriendshipDao;
 import com.diandou.user.entity.FriendCount;
+import com.diandou.user.entity.User;
 import com.diandou.user.service.IUserFriendshipService;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,9 @@ public class UserFriendshipService implements IUserFriendshipService{
         return this.userFriendshipDao.follow(selfId,targeId, followAction);
     }
 
-
+    @Override
+    public List<User> getFriendsByUserId(String pageIdx, String pageSize,String userId) {
+        return this.userFriendshipDao.getFriendsByUserId(pageIdx,pageSize,userId);
+    }
 
 }

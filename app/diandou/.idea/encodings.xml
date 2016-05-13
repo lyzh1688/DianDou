@@ -4,6 +4,7 @@
     <file url="file://$PROJECT_DIR$/www/js/app.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/js/constant.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/js/controller/controllers.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/js/controller/friendsCtrl.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/js/controller/lecturersCtrl.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/js/controller/loginCtrl.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/js/controller/registerCtrl.js" charset="UTF-8" />
