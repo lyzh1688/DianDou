@@ -1,12 +1,20 @@
 <ion-view view-title="点豆">
   <ion-tabs class="tabs-icon-top tabs-positive">
 
-    <ion-tab title="首页" icon="ion-home" ui-sref="app.main.home">
-      <ion-nav-view name="home-tab"></ion-nav-view>
+    <ion-tab title="频道" icon="ion-home" ui-sref="app.main.videotag">
+      <ion-nav-view name="videotag-tab"></ion-nav-view>
     </ion-tab>
 
-    <ion-tab title="发现" icon="ion-information-circled" ui-sref="app.main.discover">
-      <ion-nav-view name="discover-tab"></ion-nav-view>
+    <ion-tab title="讲师" icon="ion-information-circled" href="#/app/main/lecturer/1">
+      <ion-nav-view name="lecturer-tab"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="关注" icon="ion-information-circled" ui-sref="app.main.follow">
+      <ion-nav-view name="follow-tab"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="活动" icon="ion-information-circled" ui-sref="app.main.activity">
+      <ion-nav-view name="activity-tab"></ion-nav-view>
     </ion-tab>
 
   </ion-tabs>

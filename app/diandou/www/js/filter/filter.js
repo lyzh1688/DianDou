@@ -19,3 +19,17 @@ angular.module('diandou.filter',[])
           return joinTagName(tagList);
       }
   })
+
+.filter('followFilter',function(){
+
+    return function (isFollow){
+      var bIsFollow = typeof isFollow == "String" ? eval(isFollow):isFollow;
+      if(bIsFollow == false ){
+        return "关注";
+        }
+        else{
+        return "取消"
+      }
+    }
+
+  })

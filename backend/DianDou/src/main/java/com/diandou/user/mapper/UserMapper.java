@@ -23,6 +23,7 @@ public class UserMapper implements RowMapper<User> {
                 .brief(rs.getString("brief"))
                 .headPortrait(rs.getString("head_portrait"))
                 .mobile(rs.getString("mobile"))
+                .sex(rs.getString("sex"))
                 .build();
 
         return obj;

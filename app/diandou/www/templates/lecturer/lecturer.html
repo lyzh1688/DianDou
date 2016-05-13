@@ -1,0 +1,59 @@
+<ion-view title="" ng-controller="LecturersCtrl">
+  <ion-content class="padding has-tabs-top ">
+
+    <div class="list" ng-repeat="userItem in lecturers">
+      <div class="item">
+        <a  class="item item-avatar" href="#/app/main/lecturervideo/byOwner/{{userItem.user.userId}}">
+          <img ng-src="{{userItem.user.headPortrait}}">
+          <h2>{{userItem.user.userName}}</h2>
+          <p>{{userItem.user.brief}}.</p>
+        </a>
+        <div class="item item-button-right">
+          <button class="button button-positive" ng-click="onFollow($index)">{{userItem.isFollowed|followFilter}}</button>
+          <p>粉丝：{{userItem.friendCount}}</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!--
+   <ion-list class="content">
+     <ion-item ng-repeat="userItem in lecturers">
+
+       <div class="item">
+
+         <div class="row">
+           <div class="col col-20">
+             <div class="item-avatar">
+               <img ng-src="{{userItem.user.headPortrait}}">
+             </div>
+             <h2>{{userItem.user.userName}}</h2>
+           </div>
+           <div class="col">
+             <button class="button button-small button-royal">关注</button>
+             <p>粉丝：{{userItem.friendCount}}</p>
+           </div>
+         </div>
+
+
+       </div>
+
+         <div class="col col-80">
+           <a class="item item-thumbnail-left" href="#">
+             <img ng-src="{{userItem.latestVideo.video.videoPic}}">
+             <h2>{{userItem.latestVideo.video.videoName}}</h2>
+             <p>{{userItem.latestVideo.video.videoTag|joinTagFilter}}</p>
+             <p>{{userItem.latestVideo.video.status}}</p>
+           </a>
+       </div>
+
+     </ion-item>
+   </ion-list>
+
+   -->
+    <ion-infinite-scroll ng-if="loadMore"
+                         on-infinite="onLoadMore()"
+                         distance="2%">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

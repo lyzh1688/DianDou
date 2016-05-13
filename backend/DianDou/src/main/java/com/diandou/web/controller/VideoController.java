@@ -2,8 +2,12 @@ package com.diandou.web.controller;
 
 import com.diandou.annotation.Authority;
 import com.diandou.common.option.FilterOption;
+import com.diandou.common.util.StringUtil;
+import com.diandou.video.entity.TagInfo;
 import com.diandou.video.entity.Video;
+import com.diandou.video.service.ITagService;
 import com.diandou.video.service.IVideoService;
+import com.diandou.video.service.impl.TagService;
 import com.diandou.video.service.impl.VideoService;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +28,25 @@ public class VideoController {
 
     @Autowired
     private IVideoService videoService;
+
+    @Autowired
+    private ITagService tagService;
+
+    @RequestMapping(value = "/getTagList",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public String getTagList(HttpServletRequest request){
+
+        List<TagInfo> tagInfoList = null;
+        String tagType = request.getParameter("tagType");
+        if(StringUtil.isNullOrEmpty(tagType)){
+            tagInfoList = this.tagService.getTagListByType();
+        }
+        else{
+            tagInfoList = this.tagService.getTagListByType(tagType);
+        }
+
+        return new Gson().toJson(tagInfoList);
+    }
 
     @Authority
     @RequestMapping(value = "/getVideoList",produces = "application/json;charset=UTF-8")

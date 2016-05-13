@@ -6,6 +6,7 @@ angular.module('diandou.services')
   .factory('AuthService',[function(){
 
     var LOCAL_TOKEN_KEY = 'DIANDOU_TOKEN';
+    var USER_ID = "USER_ID"
     var noNeedAuthorityList = ['login','regisiter'];
     var isAuthenticated = false;
     var authToken;
@@ -24,6 +25,13 @@ angular.module('diandou.services')
         storeUserCredentials: function(token) {
             window.localStorage.setItem(LOCAL_TOKEN_KEY, token);
             //useCredentials(token);
+        },
+        setUserId: function(userId){
+          window.localStorage.setItem(USER_ID, userId);
+
+        },
+        getUserId: function(){
+            return window.localStorage.getItem(USER_ID);
         },
         useCredentials: function(token) {
             isAuthenticated = true;

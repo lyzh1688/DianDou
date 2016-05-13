@@ -15,11 +15,19 @@ public class UserModel {
 
     private final VideoModel latestVideo;
 
+    private final boolean isFollowed;
+
     public UserModel(Builder builder) {
 
         this.user = builder.user;
         this.friendCount = builder.friendCount;
         this.latestVideo = builder.latestVideo;
+        this.isFollowed = builder.isFollowed;
+    }
+
+
+    public boolean isFollowed() {
+        return isFollowed;
     }
 
     public User getUser() {
@@ -42,8 +50,15 @@ public class UserModel {
 
         private VideoModel latestVideo;
 
+        private boolean isFollowed;
+
         public Builder user(User user){
             this.user = user;
+            return this;
+        }
+
+        public Builder isFollowed(boolean isFollowed){
+            this.isFollowed = isFollowed;
             return this;
         }
 

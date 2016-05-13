@@ -1,5 +1,6 @@
 package com.diandou.user.service.impl;
 
+import com.diandou.enumerable.FollowActionEnum;
 import com.diandou.user.dao.IUserFriendshipDao;
 import com.diandou.user.entity.FriendCount;
 import com.diandou.user.service.IUserFriendshipService;
@@ -21,6 +22,11 @@ public class UserFriendshipService implements IUserFriendshipService{
     private IUserFriendshipDao userFriendshipDao;
 
     @Override
+    public List<String> getFriendIdList(String userId) {
+        return this.userFriendshipDao.getFriendIdList(userId);
+    }
+
+    @Override
     public int getFriendCount(String userId) {
         return this.userFriendshipDao.getFriendCount(userId);
     }
@@ -38,6 +44,12 @@ public class UserFriendshipService implements IUserFriendshipService{
 
         return userFriendCountMap;
     }
+
+    @Override
+    public boolean follow(String selfId, String targeId,FollowActionEnum followAction) {
+        return this.userFriendshipDao.follow(selfId,targeId, followAction);
+    }
+
 
 
 }

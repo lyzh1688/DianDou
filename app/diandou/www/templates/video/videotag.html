@@ -1,0 +1,14 @@
+<ion-view view-title="点豆" ng-controller="TagCtrl" ng-init="onInit()">
+  <ion-content class="" >
+
+
+    <ion-list>
+      <a class="item item-thumbnail-left" href="#/app/main/video/byTag/{{tag.tagId}}"  ng-repeat="tag in tags" >
+        <img ng-src="{{tag.imageSrc}}">
+        <h2>{{tag.tagName}}</h2>
+      </a>
+    </ion-list>
+
+  </ion-content>
+
+</ion-view>

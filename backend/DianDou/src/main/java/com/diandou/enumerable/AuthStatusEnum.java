@@ -5,17 +5,11 @@ package com.diandou.enumerable;
  */
 public enum AuthStatusEnum {
 
-    pass("PASS"),
-    fail("FAIL"),
-    logout("LOGOUT");
+    login_pass,
+    login_fail,
+    logout,
+    reg_failed_mobile_exists,
+    reg_failed_username_exists,
+    reg_success;
 
-    private String status;
-
-    private AuthStatusEnum(String status){
-        this.status = status;
-    }
-
-    public String getStatus(){
-        return this.status;
-    }
 }

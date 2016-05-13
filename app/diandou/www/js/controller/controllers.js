@@ -41,7 +41,7 @@ angular.module('diandou.controllers', [])
     }, 1000);
   };
 
-    $ionicModal.fromTemplateUrl('templates/setting.html', {
+    $ionicModal.fromTemplateUrl('templates/user/setting.html', {
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function(modal) {

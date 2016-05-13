@@ -1,0 +1,20 @@
+<ion-view title="Videos"  ng-controller="VideoCtrl">
+  <ion-content class="padding has-tabs-top">
+
+    <ion-list>
+      <ion-item ng-repeat="videoItem in videos"
+                class="item-thumbnail-left">
+
+        <img ng-src="{{videoItem.video.videoPic}}">
+        <h2>{{videoItem.video.videoName}}</h2>
+        <p>作者:{{videoItem.video.ownerName}}</p>
+        <p>{{videoItem.video.status}}</p>
+        <p>{{videoItem.videoTag|joinTagFilter}}</p>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll ng-if="loadMore"
+                         on-infinite="onLoadMore()"
+                         distance="2%">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

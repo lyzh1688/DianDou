@@ -1,9 +1,32 @@
-<ion-view>
+<ion-view ng-controller="RegisterCtrl">
   <ion-header-bar>
-    <h1 class="title">Register</h1>
+    <h1 class="title">新用户注册</h1>
     <div class="buttons">
+      <a  class="button button-clear" href="#/login">取消</a>
     </div>
   </ion-header-bar>
+  <ion-content>
+    <form ng-submit="doRegister()">
+      <div class="list">
 
+        <label class="item item-input">
+          <input type="text" placeholder="请输入您的手机号" ng-model="registerData.mobile">
+        </label>
+        <div class="item  item-input item-button-right">
+            <input type="text" placeholder="请输入短信验证码" ng-model="registerData.message">
+            <ion-button class="button button-small button-positive">获取短信验证码</ion-button>
+        </div>
+        <label class="item item-input">
+          <input type="password" placeholder="请输入密码"  ng-model="registerData.password">
+        </label>
+        <label class="item item-input">
+          <input type="password" placeholder="请再次输入密码"  ng-model="registerData.repassword">
+        </label>
+
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">注册</button>
+        </label>
+      </div>
+    </form>
   </ion-content>
 </ion-view>

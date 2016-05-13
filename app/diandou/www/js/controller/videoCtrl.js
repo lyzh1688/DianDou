@@ -1,5 +1,5 @@
 angular.module('diandou.controllers')
-  .controller('RecommendCtrl', ['$scope','$timeout','VideoService',function($scope,$timeout,VideoService) {
+  .controller('VideoCtrl', ['$scope','$stateParams','$timeout','VideoService',function($scope,$stateParams,$timeout,VideoService) {
     /*
      var newVideos = [{video_pic:'http://localhost:8080/diandou/image/5.jpg',owner_id:'555555',video_name:'test5'},
      {video_pic:'http://localhost:8080/diandou/image/6.jpg',owner_id:'666666',video_name:'test6'},
@@ -16,8 +16,16 @@ angular.module('diandou.controllers')
     $scope.onLoadMore = function(){
 
       //var timer = null;
+      var paramType = $stateParams.paramType;
+      var paramVal = $stateParams.paramVal;
 
-      var params = {tagId:'A1',pageIdx:$scope.PageIndex,pageSize:$scope.PageSize}
+      var params = {};
+      if(paramType == 'byTag'){
+        params = {tagId:paramVal,pageIdx:$scope.PageIndex,pageSize:$scope.PageSize}
+      }
+      if(paramType == 'byOwner'){
+        params = {ownerId:paramVal,pageIdx:$scope.PageIndex,pageSize:$scope.PageSize}
+      }
 
       VideoService.getVideoList(params)
         .then(function(result){

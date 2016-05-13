@@ -89,7 +89,7 @@ angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services','di
      .state('register', {
         url: '/register',
         templateUrl: 'templates/user/register.html',
-        //controller:"RegisterCtrl"
+        controller:"RegisterCtrl"
       })
      .state('app', {
         url: '/app',
@@ -105,14 +105,69 @@ angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services','di
           }
         }
       })
-    .state('app.main.home', {
-      url: "/home",
+    .state('app.main.videotag', {
+      url: "/videotag",
       views: {
-        'home-tab': {
-          templateUrl: "templates/home.html"
+        'videotag-tab': {
+          templateUrl: "templates/video/videotag.html",
+          controller:"TagCtrl"
         }
       }
     })
+    .state('app.main.video', {
+        url: "/video/:paramType/:paramVal",
+        views: {
+          'videotag-tab': {
+            templateUrl: "templates/video/videos.html",
+            controller:"VideoCtrl"
+          }
+        }
+      })
+    .state('app.main.lecturer', {
+        url: "/lecturer/:roleId",
+        views: {
+          'lecturer-tab': {
+            templateUrl: "templates/lecturer/lecturer.html",
+            controller:"LecturersCtrl"
+
+          }
+        }
+      })
+      .state('app.main.lecturervideo', {
+        url: "/lecturervideo/:paramType/:paramVal",
+        views: {
+          'lecturer-tab': {
+            templateUrl: "templates/video/videos.html",
+            controller:"VideoCtrl"
+
+          }
+        }
+      })
+
+      .state('app.main.follow', {
+        url: "/follow",
+        views: {
+          'follow-tab': {
+            templateUrl: "templates/follow/follow.html"
+          }
+        }
+      })
+      .state('app.main.activity', {
+        url: "/activity",
+        views: {
+          'activity-tab': {
+            templateUrl: "templates/activity/activity.html"
+          }
+        }
+      })
+
+
+
+
+
+
+
+
     .state('app.main.home.interest', {
       url: "/interest",
       views: {
@@ -126,7 +181,7 @@ angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services','di
       views: {
         'home-sub': {
           templateUrl: "templates/recommend.html",
-          controller:"RecommendCtrl"
+          controller:"VideoCtrl"
         }
       }
     })
@@ -135,15 +190,6 @@ angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services','di
       views: {
         'discover-tab': {
           templateUrl: "templates/discover.html"
-        }
-      }
-    })
-    .state('app.main.discover.lecturers', {
-      url: "/lecturers/:roleId",
-      views: {
-        'discover-sub': {
-          templateUrl: "templates/discover/lecturers.html",
-          controller:"LecturersCtrl"
         }
       }
     })

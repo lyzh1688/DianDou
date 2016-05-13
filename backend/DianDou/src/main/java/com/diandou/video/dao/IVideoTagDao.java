@@ -11,4 +11,5 @@ public interface IVideoTagDao {
     public List<VideoTag> getVideoTags(String videoId);
 
     public List<VideoTag> getVideosTags(List<String> videoIds);
+
 }

@@ -1,6 +1,7 @@
 package com.diandou.user.dao.impl;
 
 import com.diandou.common.option.InOption;
+import com.diandou.enumerable.FollowActionEnum;
 import com.diandou.user.dao.IUserFriendshipDao;
 import com.diandou.user.entity.FriendCount;
 import com.diandou.user.mapper.FriendCountMapper;
@@ -20,6 +21,24 @@ public class UserFriendshipDao implements IUserFriendshipDao {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+
+    @Override
+    public List<String> getFriendIdList(String userId) {
+
+        List<String> friendIdList = null;
+
+        String sql = " select t.user_id from " +
+                " (select t1.user2_id as user_id " +
+                " from dat_user_friendship t1 where t1.agree_flag1 = 1 and t1.user1_id = ? " +
+                " union all " +
+                " select t2.user1_id as user_id " +
+                " from dat_user_friendship t2 where t2.agree_flag2 = 1 and t2.user2_id = ?) t  ";
+
+        friendIdList = this.jdbcTemplate.queryForList(sql,new Object[]{userId,userId}, String.class);
+
+        return friendIdList;
+    }
 
     @Override
     public int getFriendCount(String userId) {
@@ -57,8 +76,55 @@ public class UserFriendshipDao implements IUserFriendshipDao {
     }
 
     @Override
-    public boolean follow(String selfId, String targeId) {
-        return false;
+    public boolean follow(String selfId, String targeId,FollowActionEnum followAction) {
+
+        int count = 0;
+        String uid = "";
+        int affectedRows = 0;
+        if(selfId.compareTo(targeId) > 0){
+            uid = targeId + "_" + selfId;
+        }
+        else
+        {
+            uid = selfId + "_" + targeId;
+        }
+
+        String sql = "select count(1) from dat_user_friendship t where t.uid = ? ";
+
+        count = this.jdbcTemplate.queryForObject(sql ,new Object[] { uid }, Integer.class );
+
+        if(count == 1){
+            if(selfId.compareTo(targeId) > 0){
+                //uid = targeId + "_" + selfId;
+                sql = "update dat_user_friendship t set t.agree_flag2 = ?  where t.uid = ? ";
+            }
+            else
+            {
+                //uid = selfId + "_" + targeId;
+                sql = "update dat_user_friendship t set t.agree_flag1 = ?  where t.uid = ? ";
+            }
+
+            affectedRows = this.jdbcTemplate.update(sql,followAction.getAction(),uid);
+
+            return affectedRows == 0;
+        }
+        else if (count == 0){
+
+            sql = "insert into dat_user_friendship(uid,user1_id,user2_id,agree_flag1,agree_flag2) " +
+                    " values(?,?,?,?,?) ";
+
+            if(selfId.compareTo(targeId) > 0){
+                //uid = targeId + "_" + selfId;
+                affectedRows = this.jdbcTemplate.update(sql,uid,targeId,selfId,0,followAction.getAction());
+            }
+            else
+            {
+                //uid = selfId + "_" + targeId;
+                affectedRows = this.jdbcTemplate.update(sql,uid,selfId,targeId,selfId,followAction.getAction(),0);
+            }
+        }
+
+        return affectedRows == 0;
     }
 
 }

@@ -9,7 +9,7 @@ import java.util.Map;
  */
 public interface IAuthorityService {
 
-    public AuthModel loginAuthority(String mobile);
+    public AuthModel loginAuthority(String mobile,String password);
 
     public AuthModel loginAuthorityFailed();
 }

@@ -13,8 +13,18 @@ public class User {
     private final String brief;
 
     private final String mobile;
+
+    private final String password;
+
+    private final String sex;
+
+
     public String getUserId() {
         return userId;
+    }
+
+    public String getSex() {
+        return sex;
     }
 
     public String getUserName() {
@@ -33,12 +43,18 @@ public class User {
         return mobile;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     private User(Builder builder){
         this.userId = builder.userId;
         this.userName = builder.userName;
         this.headPortrait = builder.headPortrait;
         this.brief = builder.brief;
         this.mobile = builder.mobile;
+        this.password = builder.password;
+        this.sex = builder.sex;
     }
 
     public static class Builder{
@@ -52,6 +68,10 @@ public class User {
         private String brief;
 
         private String mobile;
+
+        private String password;
+
+        private String sex;
 
         public Builder userId(String userId){
             this.userId = userId;
@@ -75,6 +95,16 @@ public class User {
 
         public Builder mobile(String mobile){
             this.mobile = mobile;
+            return this;
+        }
+
+        public Builder password(String password){
+            this.password = password;
+            return this;
+        }
+
+        public Builder sex(String sex){
+            this.sex = sex;
             return this;
         }
 
