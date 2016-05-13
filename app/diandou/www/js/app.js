@@ -160,48 +160,7 @@ angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services','di
           }
         }
       })
-
-
-
-
-
-
-
-
-    .state('app.main.home.interest', {
-      url: "/interest",
-      views: {
-        'home-sub': {
-          templateUrl: "templates/interest.html"
-        }
-      }
-    })
-    .state('app.main.home.recommend', {
-      url: "/recommend",
-      views: {
-        'home-sub': {
-          templateUrl: "templates/recommend.html",
-          controller:"VideoCtrl"
-        }
-      }
-    })
-    .state('app.main.discover', {
-      url: "/discover",
-      views: {
-        'discover-tab': {
-          templateUrl: "templates/discover.html"
-        }
-      }
-    })
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
-      }
-    }
-  });
+    ;
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 });

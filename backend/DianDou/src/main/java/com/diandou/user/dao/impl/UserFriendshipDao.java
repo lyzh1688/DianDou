@@ -81,7 +81,7 @@ public class UserFriendshipDao implements IUserFriendshipDao {
         int count = 0;
         String uid = "";
         int affectedRows = 0;
-        if(selfId.compareTo(targeId) > 0){
+        if(Integer.parseInt(selfId) > Integer.parseInt(targeId)){
             uid = targeId + "_" + selfId;
         }
         else
@@ -94,7 +94,7 @@ public class UserFriendshipDao implements IUserFriendshipDao {
         count = this.jdbcTemplate.queryForObject(sql ,new Object[] { uid }, Integer.class );
 
         if(count == 1){
-            if(selfId.compareTo(targeId) > 0){
+            if(Integer.parseInt(selfId) > Integer.parseInt(targeId)){
                 //uid = targeId + "_" + selfId;
                 sql = "update dat_user_friendship t set t.agree_flag2 = ?  where t.uid = ? ";
             }
@@ -113,14 +113,14 @@ public class UserFriendshipDao implements IUserFriendshipDao {
             sql = "insert into dat_user_friendship(uid,user1_id,user2_id,agree_flag1,agree_flag2) " +
                     " values(?,?,?,?,?) ";
 
-            if(selfId.compareTo(targeId) > 0){
+            if(Integer.parseInt(selfId) > Integer.parseInt(targeId)){
                 //uid = targeId + "_" + selfId;
                 affectedRows = this.jdbcTemplate.update(sql,uid,targeId,selfId,0,followAction.getAction());
             }
             else
             {
                 //uid = selfId + "_" + targeId;
-                affectedRows = this.jdbcTemplate.update(sql,uid,selfId,targeId,selfId,followAction.getAction(),0);
+                affectedRows = this.jdbcTemplate.update(sql,uid,selfId,targeId,followAction.getAction(),0);
             }
         }
 
