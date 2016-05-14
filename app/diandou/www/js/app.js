@@ -143,12 +143,21 @@ angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services','di
           }
         }
       })
-
       .state('app.main.follow', {
         url: "/follow",
         views: {
           'follow-tab': {
-            templateUrl: "templates/follow/follow.html"
+            templateUrl: "templates/follow/follow.html",
+            controller:"FriendsCtrl"
+          }
+        }
+      })
+      .state('app.main.videocollection', {
+        url: "/videocollection/:ownerId",
+        views: {
+          'follow-tab': {
+            templateUrl: "templates/follow/videoCollection.html",
+            controller:"VideoCollectionCtrl"
           }
         }
       })

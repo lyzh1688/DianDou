@@ -1,0 +1,31 @@
+<ion-view title="Videos"  ng-controller="VideoCollectionCtrl">
+  <ion-content class="padding has-tabs-top">
+
+    <ion-list>
+      <div ng-repeat="videoItem in videos" ng-if="($index%2)==0">
+        <div class="row" >
+          <div class="item item-thumbnail-left col">
+            <h2>{{videos[$index].video.videoName}}</h2>
+            <img ng-src="{{videos[$index].video.videoPic}}">
+            <p>作者:{{videos[$index].video.ownerName}}</p>
+            <p>{{videos[$index].video.status}}</p>
+          </div>
+
+          <div class="item item-thumbnail-left col" >
+            <h2>{{videos[$index + 1].video.videoName}}</h2>
+            <img ng-src="{{videos[$index + 1].video.videoPic}}">
+            <p>作者:{{videos[$index + 1].video.ownerName}}</p>
+            <p>{{videos[$index + 1].video.status}}</p>
+          </div>
+
+        </div>
+
+
+      </div>
+    </ion-list>
+    <ion-infinite-scroll ng-if="loadMore"
+                         on-infinite="onLoadMore()"
+                         distance="2%">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

@@ -3,7 +3,7 @@
 
     <div class="list" ng-repeat="friend in friends">
 
-      <a  class="item item-avatar" href="#">
+      <a  class="item item-avatar" href="#/app/main/videocollection/{{friend.userId}}">
         <img ng-src="{{friend.headPortrait}}">
         <h2>{{friend.userName}}</h2>
         <p>{{friend.brief}}.</p>
