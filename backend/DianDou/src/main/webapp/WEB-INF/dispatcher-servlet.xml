@@ -136,4 +136,7 @@
     <context:component-scan base-package="com.diandou.user.service.impl" />
 
     <context:component-scan base-package="com.diandou.authority.service.impl" />
+
+    <context:component-scan base-package="com.diandou.comment.dao.impl" />
+    <context:component-scan base-package="com.diandou.comment.service.impl" />
 </beans>

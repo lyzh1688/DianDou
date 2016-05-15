@@ -65,7 +65,7 @@ public class UserDao implements IUserDao {
 
         int affectedRows = this.jdbcTemplate.update(sql,user.getUserName(),user.getBrief(),user.getSex(),user.getMobile());
 
-        return affectedRows == 0;
+        return affectedRows != 0;
     }
 
     @Override
@@ -127,6 +127,13 @@ public class UserDao implements IUserDao {
 
 		int affectedRows = this.jdbcTemplate.update(sql,user.getMobile(),user.getPassword());
 
-		return AuthStatusEnum.reg_success;
+        if(affectedRows != 0){
+            return AuthStatusEnum.reg_success;
+
+        }
+        else
+        {
+            return AuthStatusEnum.reg_success.reg_failed_mobile_exists;
+        }
     }
 }

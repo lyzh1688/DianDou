@@ -20,4 +20,5 @@ public interface IUserFriendshipDao {
     public boolean follow(String selfId,String targeId,FollowActionEnum followAction);
 
     public List<User> getFriendsByUserId(String pageIdx, String pageSize,String userId);
+
 }
