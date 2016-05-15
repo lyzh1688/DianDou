@@ -1,0 +1,54 @@
+
+.card ,.my-card-style{
+	margin-top:50px;
+}
+
+.col-link{
+	margin-left:50px;
+	text-decoration:none;
+	color:black!important;
+}
+.my-row{
+  margin-top: 20px;!important;
+}
+.col-link:hover{
+	text-decoration:none;
+	color:blue!important;
+}
+
+.my-background{
+	background-repeat:no-repeat !important;
+	background-size:100% 100%   !important;
+}
+
+.my-background1{
+	background: none !important;
+}
+
+.my-button-bar{
+	margin-right:50px !important;
+	opacity:0.99!important;
+}
+
+.my-select{
+	opacity:0.4!important;
+	color:black !important;
+	text-shadow: 1px 1px 0 #000,-1px -1px 0 #000;
+}
+
+.my-label{
+color:black;
+ }
+
+.my-option{
+	width:auto !important;
+}
+
+
+.my-input{
+	color:black !important;
+}
+
+.my-item-input{
+	margin:10px;
+}

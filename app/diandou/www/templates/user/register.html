@@ -1,3 +1,4 @@
+<!--
 <ion-view ng-controller="RegisterCtrl">
   <ion-header-bar>
     <h1 class="title">新用户注册</h1>
@@ -29,4 +30,49 @@
       </div>
     </form>
   </ion-content>
+</ion-view>
+
+
+-->
+<ion-view ng-controller="RegisterCtrl">
+  <div class="bar bar-header my-register-background1">
+    <a class="button icon-left ion-chevron-left button-clear" href="#/login"></a>
+    <h1 class="title">新用户注册</h1>
+    <button class="button button-clear button-small button-dark">帮助</button>
+  </div>
+  <div class="content my-register-background1">
+    <div class="list card my-register-background1">
+      <div class="item item-text-wrap my-register-background1">
+        <form class="list">
+          <div class="bar bar-header item-input-inset my-item-input">
+            <span class="input-label">手机号:</span>
+            <label class="item-input-wrapper">
+              <input type="text">
+            </label>
+          </div>
+          <div class="bar bar-header item-input-inset my-item-input">
+            <span class="input-label">密码:</span>
+            <label class="item-input-wrapper">
+              <input type="password">
+            </label>
+          </div>
+          <div class="bar bar-header item-input-inset my-item-input">
+            <span class="input-label">密码再次:</span>
+            <label class="item-input-wrapper">
+              <input type="password">
+            </label>
+          </div>
+          <div class="bar bar-header item-input-inset my-item-input">
+            <label class="item-input-wrapper register-label">
+              <input type="text">
+            </label>
+            <button type="button" class="btn btn-success">获取验证码</button>
+          </div>
+        </form>
+        <div class="button-bar my-button-bar">
+          <button type="button" class="btn btn-block btn-lg btn-success btn-icon">注册 <i class="fa fa-check-square-o"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-view>

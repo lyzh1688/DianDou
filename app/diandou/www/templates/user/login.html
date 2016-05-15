@@ -1,3 +1,4 @@
+<!--
 <ion-view ng-controller="LoginCtrl">
   <ion-header-bar>
     <h1 class="title">登陆</h1>
@@ -23,3 +24,46 @@
     </form>
   </ion-content>
 </ion-view>
+-->
+<ion-view  ng-controller="LoginCtrl">
+  <div class="bar bar-header loginHeader">
+    <a class="button icon-left ion-chevron-left button-clear"></a>
+    <h1 class="title">帐户登录</h1>
+  </div>
+  <ion-content>
+      <div class="content my-background1">
+        <div class="list card my-background1" >
+          <div class="item item-text-wrap my-background1">
+            <div class="list">
+              <div class="bar bar-header item-input-inset my-item-input">
+                <span class="input-label">用户名:</span>
+                <label class="item-input-wrapper">
+                  <input type="text"  placeholder="请输入手机号" ng-model="loginData.mobile">
+                </label>
+              </div>
+              <div class="bar bar-header item-input-inset my-item-input">
+                <span class="input-label">密码:</span>
+                <label class="item-input-wrapper">
+                  <input type="password" placeholder="请输入密码" ng-model="loginData.password">
+                </label>
+              </div>
+            </div>
+            <div class="button-bar my-button-bar">
+              <button type="button" ng-click="doLogin()" class="btn btn-block btn-lg btn-warning btn-icon">登录 <i class="fa fa-paper-plane"></i></button>
+            </div>
+            <div class="row my-row">
+              <div class="col">
+                <a class="col-link" href="">忘记密码</a>
+              </div>
+              <div class="col">
+                <a class="col-link" href="#/register">马上注册</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+  </ion-content>
+</ion-view>
+

@@ -4,19 +4,19 @@
     <ion-list>
       <div ng-repeat="videoItem in videos" ng-if="($index%2)==0">
         <div class="row" >
-          <div class="item item-thumbnail-left col">
+          <a class="item item-thumbnail-left col" href="#/play">
             <h2>{{videos[$index].video.videoName}}</h2>
             <img ng-src="{{videos[$index].video.videoPic}}">
             <p>作者:{{videos[$index].video.ownerName}}</p>
             <p>{{videos[$index].video.status}}</p>
-          </div>
+          </a>
 
-          <div class="item item-thumbnail-left col" >
+          <a class="item item-thumbnail-left col" href="#/play">
             <h2>{{videos[$index + 1].video.videoName}}</h2>
             <img ng-src="{{videos[$index + 1].video.videoPic}}">
             <p>作者:{{videos[$index + 1].video.ownerName}}</p>
             <p>{{videos[$index + 1].video.status}}</p>
-          </div>
+          </a>
 
         </div>
 

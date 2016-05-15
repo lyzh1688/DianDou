@@ -91,6 +91,11 @@ angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services','di
         templateUrl: 'templates/user/register.html',
         controller:"RegisterCtrl"
       })
+     .state('play', {
+        url: '/play',
+        templateUrl: 'templates/common/videoplay.html'
+        //controller:"RegisterCtrl"
+      })
      .state('app', {
         url: '/app',
         abstract: true,

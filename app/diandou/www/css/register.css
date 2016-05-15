@@ -1,0 +1,28 @@
+.my-register-background{
+	background-repeat:no-repeat !important;
+	background-size:100% 100%   !important;
+}
+
+.my-register-background1{
+	background: none !important;
+}
+
+.register-item-input{
+	margin:10px;
+	opacity:0.4 !important;
+}
+
+ .register-item-input2{
+	margin:10px;
+}
+
+.register-cancel{
+	color:white !important;
+	text-shadow: 1px 1px 0 #000,-1px -1px 0 #000;
+}
+
+.register-label{
+	margin-right:10px;
+}
+
+
