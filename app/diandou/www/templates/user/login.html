@@ -31,7 +31,9 @@
     <h1 class="title">帐户登录</h1>
   </div>
   <ion-content>
-      <div class="content my-background1">
+    <form ng-submit="doLogin()">
+
+    <div class="content my-background1">
         <div class="list card my-background1" >
           <div class="item item-text-wrap my-background1">
             <div class="list">
@@ -49,7 +51,7 @@
               </div>
             </div>
             <div class="button-bar my-button-bar">
-              <button type="button" ng-click="doLogin()" class="btn btn-block btn-lg btn-warning btn-icon">登录 <i class="fa fa-paper-plane"></i></button>
+              <button type="submit" class="btn btn-block btn-lg btn-warning btn-icon">登录 <i class="fa fa-paper-plane"></i></button>
             </div>
             <div class="row my-row">
               <div class="col">
@@ -63,6 +65,7 @@
         </div>
       </div>
       </div>
+    </form>
 
   </ion-content>
 </ion-view>
