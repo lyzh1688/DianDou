@@ -1,14 +1,40 @@
 <ion-view view-title="点豆" ng-controller="TagCtrl" ng-init="onInit()">
   <ion-content class="" >
+    <div class="bar bar-header item-input-inset">
+      <label class="item-input-wrapper">
+        <input type="text">
+      </label>
+      <a href="#"><img src="../../images/quicksearchbox.png"/></a>
+    </div>
+    <div ng-repeat="tag in tags" ng-if="($index%3)==0">
+      <div class="row">
+        <div class="col my-col">
+          <a class="item myitem" href="#/app/main/video/byTag/{{tags[$index].tagId}}" style="position:relative;">
+            <div class="my-image-show">
+              <img ng-src="{{tags[$index].imageSrc}}">
+            </div>
+            <div class="my-image-pos">{{tags[$index].tagName}}</div>
+          </a>
+        </div>
+        <div class="col my-col">
+          <a class="item myitem" href="#/app/main/video/byTag/{{tags[$index + 1].tagId}}" style="position:relative;">
+            <div class="my-image-show">
+              <img ng-src="{{tags[$index + 1].imageSrc}}">
+            </div>
+            <div class="my-image-pos">{{tags[$index + 1].tagName}}</div>
+          </a>
+        </div>
+        <div class="col my-col">
+          <a class="item myitem" href="#/app/main/video/byTag/{{tags[$index + 2].tagId}}" style="position:relative;">
+            <div class="my-image-show">
+              <img ng-src="{{tags[$index + 2].imageSrc}}">
+            </div>
+            <div class="my-image-pos">{{tags[$index + 2].tagName}}</div>
+          </a>
+        </div>
+      </div>
 
-
-    <ion-list>
-      <a class="item item-thumbnail-left" href="#/app/main/video/byTag/{{tag.tagId}}"  ng-repeat="tag in tags" >
-        <img ng-src="{{tag.imageSrc}}">
-        <h2>{{tag.tagName}}</h2>
-      </a>
-    </ion-list>
-
+    </div>
   </ion-content>
 
 </ion-view>

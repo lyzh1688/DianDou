@@ -1,0 +1,92 @@
+.teacher-icon{
+    background-image: url('../images/teacher.ico') !important;
+    background-repeat:no-repeat !important;
+    background-position: center !important;
+}
+
+.my-menu-tab{
+    background-color:white !important;
+    background-image:none !important;
+}
+
+.friends-icon
+{
+    background-image: url('../images/friends.ico') !important;
+    background-repeat:no-repeat !important;
+    background-position: center !important;
+}
+
+.camera-icon
+{
+    background-image: url('../images/camera.ico') !important;
+    background-repeat:no-repeat !important;
+    background-position: center !important;
+}
+
+.my-image-pos{
+  bottom:5px;
+  font-size: x-small;
+  margin:10px;
+}
+
+.my-image-show img
+{
+   height:90px !important;
+   width:69px !important;
+   text-align: center !important;
+}
+
+.myitem{
+   width:auto !important;
+   heigth:auto !important;
+   text-align: center !important;
+   border-color:white !important;
+   border-width:none !important;
+}
+
+.my-picture{
+  width:50px !important;
+  height:50px !important;
+}
+
+.my-col
+{
+
+  padding:none!important;
+}
+
+
+.my-gender-icon img{
+	width:20px;
+	height:20px;
+}
+
+.my-teacher-movie img{
+	width:150px;
+	height:100px;
+}
+.my-form-font{
+	font-size:xx-small;
+}
+
+.answer-col
+{
+	color:blue;
+}
+
+.my-button-pos{
+	margin-top:20px;
+	font-size:x-small;
+}
+
+.my-button-font{
+	font-size:x-small;
+}
+
+.my-col-margin{
+	margin-left:20px;
+}
+
+.my-lecturer-item{
+	margin:5px;
+}
