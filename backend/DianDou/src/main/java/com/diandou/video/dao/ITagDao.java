@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface ITagDao {
     List<TagInfo> getTagListByType(String tagType);
+
+    List<TagInfo> getTagListByName(String tagName);
 }

@@ -2,9 +2,9 @@
   <ion-content class="" >
     <div class="bar bar-header item-input-inset">
       <label class="item-input-wrapper">
-        <input type="text">
+        <input type="text" ng-model="searchVal.tagName">
       </label>
-      <a href="#"><img src="../../images/quicksearchbox.png"/></a>
+      <button ng-click="onSearch()" class="button button-icon icon ion-search"></button>
     </div>
     <div ng-repeat="tag in tags" ng-if="($index%3)==0">
       <div class="row">

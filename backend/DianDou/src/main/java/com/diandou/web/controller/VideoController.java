@@ -29,25 +29,6 @@ public class VideoController {
     @Autowired
     private IVideoService videoService;
 
-    @Autowired
-    private ITagService tagService;
-
-    @RequestMapping(value = "/getTagList",produces = "application/json;charset=UTF-8")
-    @ResponseBody
-    public String getTagList(HttpServletRequest request){
-
-        List<TagInfo> tagInfoList = null;
-        String tagType = request.getParameter("tagType");
-        if(StringUtil.isNullOrEmpty(tagType)){
-            tagInfoList = this.tagService.getTagListByType();
-        }
-        else{
-            tagInfoList = this.tagService.getTagListByType(tagType);
-        }
-
-        return new Gson().toJson(tagInfoList);
-    }
-
     @Authority
     @RequestMapping(value = "/getVideoList",produces = "application/json;charset=UTF-8")
     @ResponseBody

@@ -11,5 +11,5 @@ public interface ITagService {
 
     public List<TagInfo> getTagListByType(String tagType);
     public List<TagInfo> getTagListByType();
-
+    public List<TagInfo> getTagListByName(String tagName);
 }

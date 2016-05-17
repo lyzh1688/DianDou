@@ -17,9 +17,9 @@ public class LikeOption extends Option {
     public String genOptionCode() {
         if(StringUtil.isNullOrEmpty(likeVal))
         {
-            return "%%";
+            return "'%%'";
         }
 
-        return Option.like + this.likeVal + Option.like;
+        return "'" + Option.like + this.likeVal + Option.like + "'";
     }
 }

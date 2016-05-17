@@ -27,6 +27,11 @@ public class TagService implements ITagService {
     }
 
     @Override
+    public List<TagInfo> getTagListByName(String tagName) {
+        return this.tagDao.getTagListByName(tagName);
+    }
+
+    @Override
     public List<TagInfo> getTagListByType(String tagType) {
         return this.tagDao.getTagListByType(tagType);
     }

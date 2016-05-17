@@ -1,5 +1,6 @@
 package com.diandou.video.dao.impl;
 
+import com.diandou.common.option.LikeOption;
 import com.diandou.video.dao.ITagDao;
 import com.diandou.video.entity.TagInfo;
 import com.diandou.video.mapper.TagInfoMapper;
@@ -26,6 +27,19 @@ public class TagDao implements ITagDao{
         String sql = "select tag_id,tag_name,tag_type,image from prm_video_tag where tag_type = ?";
 
         tagList = jdbcTemplate.query(sql,new Object[]{tagType} , new TagInfoMapper() );
+
+        return tagList;
+    }
+
+    @Override
+    public List<TagInfo> getTagListByName(String tagName) {
+
+        List<TagInfo> tagList = null;
+
+        String sql = "select tag_id,tag_name,tag_type,image from prm_video_tag where tag_name like " +
+                    new LikeOption(tagName).genOptionCode();
+
+        tagList = jdbcTemplate.query(sql, new TagInfoMapper() );
 
         return tagList;
     }
