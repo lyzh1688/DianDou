@@ -1,6 +1,7 @@
 package com.diandou.web.controller;
 
 import com.diandou.annotation.Authority;
+import com.diandou.annotation.SystemControllerLog;
 import com.diandou.authority.service.IAuthorityService;
 import com.diandou.authority.vmodel.AuthModel;
 import com.diandou.common.Authority.TokenContainer;
@@ -23,6 +24,7 @@ public class AuthorityController {
     @Autowired
     private IAuthorityService authorityService;
 
+    @SystemControllerLog(description = "用户登出")
     @Authority
     @RequestMapping(value = "/logout",produces = "application/json;charset=UTF-8")
     @ResponseBody
@@ -31,6 +33,7 @@ public class AuthorityController {
         return  new Gson().toJson(new AuthModel.Builder().authStatus(AuthStatusEnum.logout).build());
     }
 
+    @SystemControllerLog(description = "用户登录")
     @RequestMapping(value = "/loginAuthority",produces = "application/json;charset=UTF-8")
     @ResponseBody
     public String loginAuthority(HttpServletRequest request){
