@@ -9,6 +9,7 @@ import com.diandou.video.service.ITagService;
 import com.diandou.video.service.IVideoService;
 import com.diandou.video.service.impl.TagService;
 import com.diandou.video.service.impl.VideoService;
+import com.diandou.video.vmodel.VideoModel;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,7 +34,7 @@ public class VideoController {
     @Authority
     @RequestMapping(value = "/getVideoList",produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String getVideoList(HttpServletRequest request){
+    public List<VideoModel> getVideoList(HttpServletRequest request){
 
         String tagId = request.getParameter("tagId");
         String ownerId = request.getParameter("ownerId");
@@ -40,12 +42,12 @@ public class VideoController {
         String pageSize = request.getParameter("pageSize");
 
         if(tagId != null) {
-            return new Gson().toJson(this.videoService.getVideoListByTag(pageIdx,pageSize,tagId));
+            return this.videoService.getVideoListByTag(pageIdx,pageSize,tagId);
         }
         if(ownerId != null) {
-            return new Gson().toJson(this.videoService.getVideoListByOwner(pageIdx,pageSize,ownerId));
+            return this.videoService.getVideoListByOwner(pageIdx,pageSize,ownerId);
         }
 
-        return "";
+        return new ArrayList<VideoModel>();
     }
 }

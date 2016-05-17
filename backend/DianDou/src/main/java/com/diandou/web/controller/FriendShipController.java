@@ -3,6 +3,7 @@ package com.diandou.web.controller;
 import com.diandou.annotation.Authority;
 import com.diandou.common.util.StringUtil;
 import com.diandou.enumerable.FollowActionEnum;
+import com.diandou.user.entity.User;
 import com.diandou.user.service.IUserFriendshipService;
 import com.diandou.user.service.IUserService;
 import com.google.gson.Gson;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by 胡志洁 on 2016/5/13.
@@ -48,10 +50,10 @@ public class FriendShipController {
     @Authority
     @RequestMapping(value = "/getFriendsByUserId",produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String getFriendsByUserId(HttpServletRequest request){
+    public List<User> getFriendsByUserId(HttpServletRequest request){
         String selfId = request.getParameter("selfId");
         String pageIdx = request.getParameter("pageIdx");
         String pageSize = request.getParameter("pageSize");
-        return new Gson().toJson(this.userFriendshipService.getFriendsByUserId(pageIdx,pageSize,selfId));
+        return this.userFriendshipService.getFriendsByUserId(pageIdx,pageSize,selfId);
     }
 }

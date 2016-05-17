@@ -1,7 +1,9 @@
 package com.diandou.web.controller;
 
 import com.diandou.annotation.Authority;
+import com.diandou.authority.vmodel.AuthModel;
 import com.diandou.user.service.IUserService;
+import com.diandou.user.vmodel.UserModel;
 import com.diandou.video.service.IVideoService;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 胡志洁 on 2016/5/6.
@@ -22,19 +26,19 @@ public class UserController {
 
     @RequestMapping(value = "/userRegister",produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String userRegister(HttpServletRequest request){
+    public AuthModel userRegister(HttpServletRequest request){
         //String userName = request.getParameter("userName");
         String mobile = request.getParameter("mobile");
         String pswd = request.getParameter("password");
 
-        return new Gson().toJson(this.userService.userRegister(mobile,pswd));
+        return this.userService.userRegister(mobile,pswd);
 
     }
 
     @Authority
     @RequestMapping(value = "/getUserList",produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String getUserList(HttpServletRequest request){
+    public List<UserModel> getUserList(HttpServletRequest request){
 
         String roleId = request.getParameter("roleId");
         String followerId = request.getParameter("followerId");
@@ -42,9 +46,9 @@ public class UserController {
         String pageSize = request.getParameter("pageSize");
 
         if(roleId != null) {
-            return new Gson().toJson(this.userService.getUserListByRole(pageIdx,pageSize,roleId,followerId));
+            return this.userService.getUserListByRole(pageIdx,pageSize,roleId,followerId);
         }
 
-        return "";
+        return new ArrayList<UserModel>();
     }
 }

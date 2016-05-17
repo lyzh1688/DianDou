@@ -27,20 +27,20 @@ public class TagController {
     @Authority
     @RequestMapping(value = "/searchTagList",produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String searchTagList(HttpServletRequest request){
+    public List<TagInfo> searchTagList(HttpServletRequest request){
 
         List<TagInfo> tagInfoList = null;
         String tagName = request.getParameter("tagName");
 
         tagInfoList = this.tagService.getTagListByName(tagName);
 
-        return new Gson().toJson(tagInfoList);
+        return tagInfoList;
     }
 
     @Authority
     @RequestMapping(value = "/getTagList",produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String getTagList(HttpServletRequest request){
+    public List<TagInfo> getTagList(HttpServletRequest request){
 
         List<TagInfo> tagInfoList = null;
         String tagType = request.getParameter("tagType");
@@ -51,6 +51,6 @@ public class TagController {
             tagInfoList = this.tagService.getTagListByType(tagType);
         }
 
-        return new Gson().toJson(tagInfoList);
+        return tagInfoList;
     }
 }

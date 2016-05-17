@@ -28,26 +28,26 @@ public class CommentController {
 
     @RequestMapping(value = "/makeComment",produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String makeComment(HttpServletRequest request){
+    public Comment makeComment(HttpServletRequest request){
 
         String videoId = request.getParameter("videoId");
         String userId = request.getParameter("userId");
         String commentStr = request.getParameter("comment");
         Comment comment = new Comment.Builder().userId(userId).videoId(videoId).comment(commentStr).build();
         if( this.commentService.makeComment(comment)){
-            return new Gson().toJson(comment);
+            return comment;
         }
         else{
-            return "";
+            return null;
         }
     }
 
 
     @RequestMapping(value = "/getCommentsByVideo",produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String getCommentsByVideo(HttpServletRequest request){
+    public List<Comment> getCommentsByVideo(HttpServletRequest request){
         String videoId = request.getParameter("videoId");
-        return new Gson().toJson(this.commentService.getCommentsByVideo(videoId));
+        return this.commentService.getCommentsByVideo(videoId);
 
     }
 }

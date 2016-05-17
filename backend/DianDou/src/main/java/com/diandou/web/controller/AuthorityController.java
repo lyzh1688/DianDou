@@ -28,15 +28,15 @@ public class AuthorityController {
     @Authority
     @RequestMapping(value = "/logout",produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String logout(String token){
+    public AuthModel logout(String token){
         TokenContainer.GetInstance().getTokenUserCache().remove(token);
-        return  new Gson().toJson(new AuthModel.Builder().authStatus(AuthStatusEnum.logout).build());
+        return  new AuthModel.Builder().authStatus(AuthStatusEnum.logout).build();
     }
 
     @SystemControllerLog(description = "用户登录")
     @RequestMapping(value = "/loginAuthority",produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String loginAuthority(HttpServletRequest request){
+    public AuthModel loginAuthority(HttpServletRequest request){
 
         String mobile = request.getParameter("mobile");
         String password = request.getParameter("password");
@@ -46,13 +46,13 @@ public class AuthorityController {
         if(!TokenContainer.GetInstance().getTokenUserCache().containsKey(authModel.getSessionToken())) {
             TokenContainer.GetInstance().getTokenUserCache().put(authModel.getSessionToken(), authModel.getUserId());
         }
-        return  new Gson().toJson(authModel);
+        return  authModel;
     }
 
     @RequestMapping(value = "/loginAuthorityFailed",produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String loginAuthorityFailed(){
-        return  new Gson().toJson(this.authorityService.loginAuthorityFailed());
+    public AuthModel loginAuthorityFailed(){
+        return  this.authorityService.loginAuthorityFailed();
     }
 
 }
