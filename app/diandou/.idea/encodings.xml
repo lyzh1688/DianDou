@@ -19,13 +19,13 @@
     <file url="file://$PROJECT_DIR$/www/js/service/tagService.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/js/service/userService.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/lib/ionic/js/angular/angular-animate.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/www/templates/activity/activity.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/common/videoplay.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/discover.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/follow/follow.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/follow/videoCollection.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/interest.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/lecturer/lecturer.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/templates/myself/myself.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/user/login.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/user/register.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/video/videos.html" charset="UTF-8" />

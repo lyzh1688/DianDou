@@ -1,0 +1,23 @@
+.videotag-icon-font{
+  font-size:x-small;
+  margin-right:0px;
+  float:right;
+}
+
+.videotag-item-font
+{
+  font-size:small;
+}
+
+.videotag-image-show img
+{
+  width:120px;
+  height:80px;
+}
+
+.videotag-item
+{
+  border-color:white !important;
+  border-width: none !important;
+  flex:auto;
+}

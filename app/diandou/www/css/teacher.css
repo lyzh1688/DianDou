@@ -1,5 +1,5 @@
 .teacher-icon{
-    background-image: url('../images/teacher.ico') !important;
+    background-image: url('/images/teacher.ico') !important;
     background-repeat:no-repeat !important;
     background-position: center !important;
 }
@@ -11,14 +11,14 @@
 
 .friends-icon
 {
-    background-image: url('../images/friends.ico') !important;
+    background-image: url('/images/friends.ico') !important;
     background-repeat:no-repeat !important;
     background-position: center !important;
 }
 
 .camera-icon
 {
-    background-image: url('../images/camera.ico') !important;
+    background-image: url('/images/camera.ico') !important;
     background-repeat:no-repeat !important;
     background-position: center !important;
 }
@@ -71,16 +71,21 @@
 
 .answer-col
 {
-	color:blue;
+	text-decoration: underline;
+  font-weight:700;
 }
 
 .my-button-pos{
 	margin-top:20px;
+  margin-left:5px;
 	font-size:x-small;
+  width:100px;
 }
 
 .my-button-font{
 	font-size:x-small;
+  margin-left:5px;
+  margin-top:5px;
 }
 
 .my-col-margin{
@@ -89,4 +94,45 @@
 
 .my-lecturer-item{
 	margin:5px;
+}
+
+
+.slider-slide {
+ color: #000;
+ background-color: #fff;
+ text-align: center;
+
+ font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+ font-weight: 300;
+}
+
+
+.my-follow-image img
+{
+  width:333px;
+	height:190px;
+}
+
+.my-follow-font{
+  margin:10px;
+  font-weight: 600;
+  font-size:xx-small;
+}
+
+.my-follow-margin
+{
+   margin-left:5px;
+}
+
+.teacher-type-font{
+  margin-top:3px;
+  text-decoration: underline;
+  margin-bottom: 3px;
+}
+
+.history-icon
+{
+    background-image: url('/images/log.jpg') !important;
+    background-repeat:no-repeat !important;
+    background-position: center !important;
 }

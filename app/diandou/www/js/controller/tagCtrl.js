@@ -10,9 +10,9 @@ angular.module('diandou.controllers')
     var lastSearchTagName = null;
 
     $scope.onInit = function(){
-      var params = {tagType:'0'}
+      var params = {tagId:'1',count:'4'}
 
-      TagService.getTagList(params)
+      TagService.getTagModelListByType(params)
         .then(function(result){
           $scope.tags = result;
         },

@@ -166,11 +166,11 @@ angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services','di
           }
         }
       })
-      .state('app.main.activity', {
-        url: "/activity",
+      .state('app.main.myself', {
+        url: "/myself",
         views: {
           'activity-tab': {
-            templateUrl: "templates/activity/activity.html"
+            templateUrl: "templates/myself/myself.html"
           }
         }
       })
