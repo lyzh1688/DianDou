@@ -11,6 +11,8 @@ public interface IVideoDao {
 
     public List<Video> getLatestVideoListByOwnerList(List<String> ownerList);
 
+    public List<Video> getVideoListByTags(List<String> tags,int count);
+
     public List<Video> getVideoListByTag(String pageIdx,String pageSize,String tagId);
 
     public List<Video> getVideoListByOwner(String pageIdx,String pageSize,String ownerId);

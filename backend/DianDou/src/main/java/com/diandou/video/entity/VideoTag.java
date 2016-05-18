@@ -26,6 +26,7 @@ public class VideoTag {
     public String getTagName(){
         return this.tagName;
     }
+
     private VideoTag(Builder builder) {
         this.videoId = builder.videoId;
         this.tagId = builder.tagId;

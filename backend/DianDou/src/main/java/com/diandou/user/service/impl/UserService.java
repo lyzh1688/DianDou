@@ -6,8 +6,10 @@ import com.diandou.common.Authority.EncodePassword;
 import com.diandou.enumerable.AuthStatusEnum;
 import com.diandou.user.dao.IUserDao;
 import com.diandou.user.entity.User;
+import com.diandou.user.entity.UserTag;
 import com.diandou.user.service.IUserFriendshipService;
 import com.diandou.user.service.IUserService;
+import com.diandou.user.service.IUserTagService;
 import com.diandou.user.vmodel.UserModel;
 import com.diandou.video.service.IVideoService;
 import com.diandou.video.vmodel.VideoModel;
@@ -36,6 +38,9 @@ public class UserService implements IUserService {
     @Autowired
     private IAuthorityService authorityService;
 
+    @Autowired
+    private IUserTagService userTagService;
+
     @Override
     public User getUserInfoByMobile(String mobile) {
         return this.userDao.getUserInfoByMobile(mobile);
@@ -56,7 +61,6 @@ public class UserService implements IUserService {
 
         List<String> userIdList = new ArrayList<String>();
 
-
         for (User user: userList) {
             userIdList.add(user.getUserId());
         }
@@ -70,13 +74,16 @@ public class UserService implements IUserService {
         //get the all the user which the login user followed
         List<String> friendIdList = this.userFriendshipService.getFriendIdList(followerId);
 
+        //get all the tags of the user
+        Map<String,List<UserTag>> userTagMap = this.userTagService.getUserTagsByUsers(userIdList);
+
         //merge all parts of the user info
         for (User user:userList){
 
             Integer friendCnt = 0;
             VideoModel latestUploadedVideo = null;
             boolean isFollowed = false;
-
+            List<UserTag> userTags = null;
             if(friendCntMap.containsKey(user.getUserId())){
                 friendCnt = friendCntMap.get(user.getUserId());
             }
@@ -89,11 +96,19 @@ public class UserService implements IUserService {
                 isFollowed = true;
             }
 
+            if(userTagMap.containsKey(user.getUserId())){
+                userTags = userTagMap.get(user.getUserId());
+            }
+            else{
+                userTags = new ArrayList<UserTag>();
+            }
+
             userModelList.add(new UserModel.Builder()
                     .user(user)
                     .friendCount(friendCnt)
                     .latestVideo(latestUploadedVideo)
                     .isFollowed(isFollowed)
+                    .tagList(userTags)
                     .build());
         }
 

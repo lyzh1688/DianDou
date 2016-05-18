@@ -13,5 +13,6 @@ public interface IVideoService {
 
     public Map<String,VideoModel> getLatestVideoListByOwnerList(List<String> ownerList);
     public List<VideoModel> getVideoListByTag(String pageIdx, String pageSize, String tagId);
+    public List<Video> getVideoListByTags(List<String> tags, int count);
     public List<VideoModel> getVideoListByOwner(String pageIdx, String pageSize, String ownerId);
 }

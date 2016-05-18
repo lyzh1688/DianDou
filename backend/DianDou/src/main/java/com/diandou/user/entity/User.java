@@ -1,5 +1,7 @@
 package com.diandou.user.entity;
 
+import java.sql.Timestamp;
+
 /**
  * Created by 胡志洁 on 2016/5/6.
  */
@@ -18,6 +20,7 @@ public class User {
 
     private final String sex;
 
+    private final Timestamp regisiterDate;
 
     public String getUserId() {
         return userId;
@@ -47,6 +50,10 @@ public class User {
         return password;
     }
 
+    public Timestamp getRegisiterDate() {
+        return regisiterDate;
+    }
+
     private User(Builder builder){
         this.userId = builder.userId;
         this.userName = builder.userName;
@@ -55,6 +62,7 @@ public class User {
         this.mobile = builder.mobile;
         this.password = builder.password;
         this.sex = builder.sex;
+        this.regisiterDate = builder.regisiterDate;
     }
 
     public static class Builder{
@@ -72,6 +80,8 @@ public class User {
         private String password;
 
         private String sex;
+
+        private Timestamp regisiterDate;
 
         public Builder userId(String userId){
             this.userId = userId;
@@ -105,6 +115,11 @@ public class User {
 
         public Builder sex(String sex){
             this.sex = sex;
+            return this;
+        }
+
+        public Builder regisiterDate(Timestamp regisiterDate){
+            this.regisiterDate = regisiterDate;
             return this;
         }
 

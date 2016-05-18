@@ -30,8 +30,9 @@ public class UserDao implements IUserDao {
                 " i.user_name," +
                 " i.head_portrait," +
                 " i.brief," +
-                " i.mobile " +
-                " i.sex " +
+                " i.mobile, " +
+                " i.sex, " +
+                " i.regisiter_date " +
                 " from dat_user_info i " +
                 " where i.user_id = ? ";
 
@@ -47,8 +48,9 @@ public class UserDao implements IUserDao {
                 " i.user_name," +
                 " i.head_portrait," +
                 " i.brief," +
-                " i.mobile " +
-                " i.sex " +
+                " i.mobile, " +
+                " i.sex, " +
+                " i.regisiter_date " +
                 " from dat_user_info i " +
                 " where i.mobile = ? ";
 
@@ -78,7 +80,8 @@ public class UserDao implements IUserDao {
                 " i.head_portrait," +
                 " i.brief," +
                 " i.mobile, " +
-                " i.sex " +
+                " i.sex, " +
+                " i.regisiter_date " +
                 " FROM dat_user_info i,dat_user_role r " +
                 " where r.role_id = ? " +
                 " and i.user_id = r.user_id " +

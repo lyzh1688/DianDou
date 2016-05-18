@@ -53,6 +53,44 @@ public class VideoDao implements IVideoDao {
         return videoList;
     }
 
+    /*
+    * YUEZHI LIU
+    * 2016.05.17
+    * 根据视频的多个标签获取定量的视频列表
+    * */
+    @Override
+    public List<Video> getVideoListByTags(List<String> tags, int count) {
+
+        List<Video> videoList = null;
+        StringBuffer strBuf = new StringBuffer();
+        for (String tag:tags) {
+            String exists = " and exists(select 1 from dat_video_tag t where t.video_id = i.video_id" +
+                    " and t.tag_id = " + tag + " )";
+            strBuf.append(exists);
+        }
+
+        String sql = "select i.video_id," +
+                " i.video_name," +
+                " i.video_link," +
+                " i.owner_id," +
+                " i.total_time," +
+                " i.brief," +
+                " s.status_name as status," +
+                " i.video_pic," +
+                " i.upload_date," +
+                " u.user_name as ownerName" +
+                " from dat_video_info i, prm_video_status s ,dat_user_info u " +
+                " where i.status = s.status_id " +
+                " and i.owner_id = u.user_id" +
+                strBuf.toString() +
+                " order by i.upload_date,i.video_id desc " +
+                new PagenationOption(String.valueOf(count),"0").genOptionCode();
+
+        videoList = jdbcTemplate.query(sql,new VideoMapper() );
+
+        return videoList;
+    }
+
     public List<Video> getVideoListByTag(String pageIdx,String pageSize,String tagId) {
 
         List<Video> videoList = null;

@@ -24,6 +24,7 @@ public class UserMapper implements RowMapper<User> {
                 .headPortrait(rs.getString("head_portrait"))
                 .mobile(rs.getString("mobile"))
                 .sex(rs.getString("sex"))
+                .regisiterDate(rs.getTimestamp("regisiter_date"))
                 .build();
 
         return obj;
