@@ -1,3 +1,64 @@
+<ion-view title="" ng-controller="FriendsCtrl" ng-init="onInit()">
+  <ion-content>
+    <div class="bar bar-header item-input-inset">
+      <label class="item-input-wrapper">
+        <input type="text">
+      </label>
+      <a href="#"><img src="../../images/quicksearchbox.png"/></a>
+    </div>
+    <div>
+      <span class = 'my-follow-font'>每周上新</span>
+    </div>
+    <div>
+      <ion-slide-box ng-if="isShowFlag" auto-play="true" does-continue="true" slide-interval="2000">
+
+        <ion-slide ng-repeat="adVideo in AdvertVideos">
+          <div class="box my-follow-image"><img src="{{adVideo.videoPic}}"></div>
+        </ion-slide>
+      </ion-slide-box>
+      <div ng-repeat="friend in friends">
+        <a class="item my-lecturer-item" href="#" >
+          <div class = "row my-form-font">
+            <div class = "col my-col-margin">
+              <div class="item-avatar" style="position:relative;">
+                <img ng-src="{{friend.user.headPortrait}}">
+              </div>
+              <span class="my-name-pos">{{friend.user.userName}}</span>
+              <span class="my-gender-icon">
+                <div ng-switch="friend.user.sex">
+                  <img ng-switch-when="0" src='../../images/female.ico'/>
+                  <img ng-switch-when="1" src='../../images/male.ico'/>
+                </div>
+              </span>
+            </div>
+            <div class = "col">
+              <span class='my-follow-margin'>豆龄：</span>
+              <span class="answer-col">5</span>
+              <span class='my-follow-margin'>粉丝：</span>
+              <span class="answer-col">{{friend.user.friendCount}}</span>
+              <div>
+                <span class='my-follow-margin'>相关视频：</span>
+                <span class="answer-col">{{friend.user.videoCount}}</span>
+              </div>
+              <div class="my-name-pos my-follow-margin teacher-type-font">{{friend.tagList|joinTagFilter}}</div>
+              <button class="btn btn-warning btn-icon my-button-font" ng-click="onFollow($index)">{{userItem.isFollowed|followFilter}}
+                <i class="fa fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+        <ion-infinite-scroll ng-if="loadMore"
+                             on-infinite="onLoadMore()"
+                             distance="2%">
+        </ion-infinite-scroll>
+  </ion-content>
+</ion-view>
+
+
+
+<!--
 <ion-view title="" ng-controller="FriendsCtrl">
   <ion-content class="padding has-tabs-top ">
 
@@ -17,3 +78,4 @@
     </ion-infinite-scroll>
   </ion-content>
 </ion-view>
+-->

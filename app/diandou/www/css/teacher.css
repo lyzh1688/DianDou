@@ -1,5 +1,5 @@
 .teacher-icon{
-    background-image: url('/images/teacher.ico') !important;
+    background-image: url('../images/teacher.ico') !important;
     background-repeat:no-repeat !important;
     background-position: center !important;
 }
@@ -11,22 +11,20 @@
 
 .friends-icon
 {
-    background-image: url('/images/friends.ico') !important;
+    background-image: url('../images/friends.ico') !important;
     background-repeat:no-repeat !important;
     background-position: center !important;
 }
 
 .camera-icon
 {
-    background-image: url('/images/camera.ico') !important;
+    background-image: url('../images/camera.ico') !important;
     background-repeat:no-repeat !important;
     background-position: center !important;
 }
 
 .my-image-pos{
-  bottom:5px;
-  font-size: x-small;
-  margin:10px;
+  font-size:x-small;
 }
 
 .my-image-show img
@@ -132,7 +130,7 @@
 
 .history-icon
 {
-    background-image: url('/images/log.jpg') !important;
+    background-image: url('../images/log.jpg') !important;
     background-repeat:no-repeat !important;
     background-position: center !important;
 }

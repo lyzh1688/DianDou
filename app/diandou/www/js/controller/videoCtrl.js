@@ -12,6 +12,8 @@ angular.module('diandou.controllers')
     $scope.PageIndex = 0;
     $scope.PageSize = 6;
 
+
+
     //滚动条响应事件
     $scope.onLoadMore = function(){
 
@@ -21,10 +23,10 @@ angular.module('diandou.controllers')
 
       var params = {};
       if(paramType == 'byTag'){
-        params = {tagId:paramVal,pageIdx:$scope.PageIndex,pageSize:$scope.PageSize}
+        params = {tagId:paramVal,pageIdx:$scope.PageIndex,pageSize:$scope.PageSize};
       }
       if(paramType == 'byOwner'){
-        params = {ownerId:paramVal,pageIdx:$scope.PageIndex,pageSize:$scope.PageSize}
+        params = {ownerId:paramVal,pageIdx:$scope.PageIndex,pageSize:$scope.PageSize};
       }
 
       VideoService.getVideoList(params)

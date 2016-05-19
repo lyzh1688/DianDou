@@ -1,15 +1,19 @@
-.videotag-icon-font{
+.item-icon-right{
   font-size:x-small;
-  margin-right:0px;
-  float:right;
 }
 
-.videotag-item-font
+.videotag-icon-font
 {
-  font-size:small;
+  font-size:xx-small;
 }
 
-.videotag-image-show img
+.videotag-icon img
+{
+  width:10px;
+  height:10px;
+}
+
+.videotag-item img
 {
   width:120px;
   height:80px;
@@ -17,7 +21,22 @@
 
 .videotag-item
 {
-  border-color:white !important;
-  border-width: none !important;
-  flex:auto;
+  border-color:white;
+  border-width: none!important;
+}
+
+.videotag-col{
+  width:0px;
+  height:147px;
+}
+
+.videotag-label-background
+{
+  background-color:#fffbf0;
+}
+
+.videotag-sub-label
+{
+  font-size:xx-small !important;
+  color:grey!important;
 }

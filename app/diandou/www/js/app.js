@@ -149,7 +149,7 @@ angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services','di
         }
       })
       .state('app.main.follow', {
-        url: "/follow",
+        url: "/follow/:adType",
         views: {
           'follow-tab': {
             templateUrl: "templates/follow/follow.html",

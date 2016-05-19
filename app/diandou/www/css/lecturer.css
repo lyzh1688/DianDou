@@ -1,0 +1,30 @@
+.lecturer-label
+{
+  margin-top:10px;
+  margin-left:10px;
+  font-size:x-small;
+}
+
+.lecturer-button-pos
+{
+  font-size:xx-small;
+  width:80px;
+}
+
+.lecturer-col-margin
+{
+  margin-left:5px;
+}
+
+.lecturer-col
+{
+  margin-top:10px;
+}
+
+.button-color1{
+  color:#ff7500 !important;
+}
+
+.button-color1:hover{
+  color:#ffb61e !important;
+}
