@@ -6,6 +6,7 @@ import com.diandou.enumerable.FollowActionEnum;
 import com.diandou.user.entity.User;
 import com.diandou.user.service.IUserFriendshipService;
 import com.diandou.user.service.IUserService;
+import com.diandou.user.vmodel.UserModel;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,7 +51,7 @@ public class FriendShipController {
     @Authority
     @RequestMapping(value = "/getFriendsByUserId",produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<User> getFriendsByUserId(HttpServletRequest request){
+    public List<UserModel> getFriendsByUserId(HttpServletRequest request){
         String selfId = request.getParameter("selfId");
         String pageIdx = request.getParameter("pageIdx");
         String pageSize = request.getParameter("pageSize");

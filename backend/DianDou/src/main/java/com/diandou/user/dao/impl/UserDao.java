@@ -1,15 +1,19 @@
 package com.diandou.user.dao.impl;
 
 import com.diandou.common.Authority.EncodePassword;
+import com.diandou.common.option.InOption;
 import com.diandou.common.option.PagenationOption;
 import com.diandou.enumerable.AuthStatusEnum;
 import com.diandou.user.dao.IUserDao;
 import com.diandou.user.entity.User;
+import com.diandou.user.entity.VideoCount;
 import com.diandou.user.mapper.UserMapper;
+import com.diandou.user.mapper.VideoCountMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,7 +26,21 @@ public class UserDao implements IUserDao {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    
+
+    @Override
+    public List<VideoCount> getVideoCounts(List<String> userIds) {
+
+        List<VideoCount> videoCounts = null;
+
+        String sql = "select i.owner_id ,count(1) as count from " +
+                    "dat_video_info i where i.owner_id in " +
+                    new InOption(userIds).genOptionCode() +
+                    " group by i.owner_id";
+        videoCounts = jdbcTemplate.query(sql,new VideoCountMapper() );
+
+        return videoCounts;
+    }
+
     @Override
     public User getUserInfoById(String userId) {
 

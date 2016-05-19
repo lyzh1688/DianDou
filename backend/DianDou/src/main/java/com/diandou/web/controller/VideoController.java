@@ -32,6 +32,20 @@ public class VideoController {
     private IVideoService videoService;
 
     @Authority
+    @RequestMapping(value = "/getAdvertVideoList",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public List<Video> getAdvertVideoList(HttpServletRequest request){
+
+        String tagId = request.getParameter("tagId");
+
+        if(tagId != null) {
+            return this.videoService.getVideoListByTag(tagId);
+        }
+
+        return new ArrayList<Video>();
+    }
+
+    @Authority
     @RequestMapping(value = "/getVideoList",produces = "application/json;charset=UTF-8")
     @ResponseBody
     public List<VideoModel> getVideoList(HttpServletRequest request){

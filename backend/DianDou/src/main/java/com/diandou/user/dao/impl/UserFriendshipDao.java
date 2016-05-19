@@ -135,7 +135,7 @@ public class UserFriendshipDao implements IUserFriendshipDao {
 
         List<User> friendList = null;
 
-        String sql = " select i.user_id,i.user_name,i.brief,i.head_portrait,i.mobile,i.sex from " +
+        String sql = " select i.user_id,i.user_name,i.brief,i.head_portrait,i.mobile,i.sex,i.regisiter_date from " +
                 " dat_user_info i," +
                 " (select t1.user2_id as user_id " +
                 " from dat_user_friendship t1 where t1.agree_flag1 = 1 and t1.user1_id = ? " +

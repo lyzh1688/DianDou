@@ -66,6 +66,11 @@ public class VideoService implements IVideoService {
     }
 
     @Override
+    public List<Video> getVideoListByTag(String tagId) {
+        return this.videoDao.getVideoListByTag("0","-1",tagId);
+    }
+
+    @Override
     public Map<String,VideoModel> getLatestVideoListByOwnerList(List<String> ownerList) {
 
         List<Video> videos = this.videoDao.getLatestVideoListByOwnerList(ownerList);

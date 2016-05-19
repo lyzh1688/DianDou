@@ -2,6 +2,7 @@ package com.diandou.user.dao;
 
 import com.diandou.enumerable.AuthStatusEnum;
 import com.diandou.user.entity.User;
+import com.diandou.user.entity.VideoCount;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  */
 public interface IUserDao {
 
+    public List<VideoCount> getVideoCounts(List<String> userIds);
     public User getUserInfoById(String userId);
     public User getUserInfoByMobile(String mobile);
     public boolean updateUserInfo(User user);

@@ -95,6 +95,11 @@ public class VideoDao implements IVideoDao {
 
         List<Video> videoList = null;
 
+        String pagenationSql = "";
+        if(Integer.parseInt(pageSize) > 0 && Integer.parseInt(pageIdx) >= 0){
+            pagenationSql = new PagenationOption(pageSize,pageIdx).genOptionCode();
+        }
+
         String sql = "select i.video_id," +
                 " i.video_name," +
                 " i.video_link," +
@@ -111,7 +116,8 @@ public class VideoDao implements IVideoDao {
                 " and exists(select 1 from dat_video_tag t where t.video_id = i.video_id" +
                 " and t.tag_id = ? )" +
                 " order by i.upload_date,i.video_id desc " +
-                new PagenationOption(pageSize,pageIdx).genOptionCode();
+                pagenationSql;
+                //new PagenationOption(pageSize,pageIdx).genOptionCode();
 
         videoList = jdbcTemplate.query(sql,new Object[]{tagId} , new VideoMapper() );
 

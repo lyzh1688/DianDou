@@ -7,6 +7,7 @@ import com.diandou.enumerable.AuthStatusEnum;
 import com.diandou.user.dao.IUserDao;
 import com.diandou.user.entity.User;
 import com.diandou.user.entity.UserTag;
+import com.diandou.user.entity.VideoCount;
 import com.diandou.user.service.IUserFriendshipService;
 import com.diandou.user.service.IUserService;
 import com.diandou.user.service.IUserTagService;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Created by 胡志洁 on 2016/5/6.
@@ -40,6 +42,14 @@ public class UserService implements IUserService {
 
     @Autowired
     private IUserTagService userTagService;
+
+    @Override
+    public Map<String,Integer> getVideoCounts(List<String> userIds) {
+
+        List<VideoCount> videoCounts = this.userDao.getVideoCounts(userIds);
+
+        return  videoCounts.stream().collect(Collectors.toMap(VideoCount::getUserId,VideoCount::getVideoCount));
+    }
 
     @Override
     public User getUserInfoByMobile(String mobile) {

@@ -3,6 +3,7 @@ package com.diandou.user.service;
 import com.diandou.enumerable.FollowActionEnum;
 import com.diandou.user.entity.FriendCount;
 import com.diandou.user.entity.User;
+import com.diandou.user.vmodel.UserModel;
 
 import java.util.List;
 import java.util.Map;
@@ -20,5 +21,5 @@ public interface IUserFriendshipService {
 
     public boolean follow(String selfId, String targeId, FollowActionEnum followAction);
 
-    public List<User> getFriendsByUserId(String pageIdx, String pageSize,String userId);
+    public List<UserModel> getFriendsByUserId(String pageIdx, String pageSize, String userId);
 }

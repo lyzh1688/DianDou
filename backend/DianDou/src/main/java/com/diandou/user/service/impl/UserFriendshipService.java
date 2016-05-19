@@ -4,7 +4,11 @@ import com.diandou.enumerable.FollowActionEnum;
 import com.diandou.user.dao.IUserFriendshipDao;
 import com.diandou.user.entity.FriendCount;
 import com.diandou.user.entity.User;
+import com.diandou.user.entity.UserTag;
 import com.diandou.user.service.IUserFriendshipService;
+import com.diandou.user.service.IUserService;
+import com.diandou.user.service.IUserTagService;
+import com.diandou.user.vmodel.UserModel;
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +16,8 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * Created by 胡志洁 on 2016/5/6.
@@ -21,6 +27,12 @@ public class UserFriendshipService implements IUserFriendshipService{
 
     @Autowired
     private IUserFriendshipDao userFriendshipDao;
+
+    @Autowired
+    private IUserService userService;
+
+    @Autowired
+    private IUserTagService userTagService;
 
     @Override
     public List<String> getFriendIdList(String userId) {
@@ -37,13 +49,16 @@ public class UserFriendshipService implements IUserFriendshipService{
 
         List<FriendCount> friendCountList =  this.userFriendshipDao.getFriendCounts(userIds);
 
-        Map<String,Integer> userFriendCountMap = new HashMap<String, Integer>();
+        return friendCountList.stream().collect(Collectors.toMap(FriendCount::getUserId,FriendCount::getFriendCount));
 
-        for (FriendCount friendCount: friendCountList) {
-            userFriendCountMap.put(friendCount.getUserId(),friendCount.getFriendCount());
-        }
+//        Map<String,Integer> userFriendCountMap = new HashMap<String, Integer>();
+//
+//        for (FriendCount friendCount: friendCountList) {
+//            userFriendCountMap.put(friendCount.getUserId(),friendCount.getFriendCount());
+//        }
+//
+//        return userFriendCountMap;
 
-        return userFriendCountMap;
     }
 
     @Override
@@ -52,8 +67,21 @@ public class UserFriendshipService implements IUserFriendshipService{
     }
 
     @Override
-    public List<User> getFriendsByUserId(String pageIdx, String pageSize,String userId) {
-        return this.userFriendshipDao.getFriendsByUserId(pageIdx,pageSize,userId);
+    public List<UserModel> getFriendsByUserId(String pageIdx, String pageSize, String userId) {
+
+        List<User> userList = this.userFriendshipDao.getFriendsByUserId(pageIdx,pageSize,userId);
+
+        List<String> userIds = userList.stream().map(user->user.getUserId()).collect(Collectors.toList());
+
+        Map<String,Integer> userVideoMap = this.userService.getVideoCounts(userIds);
+
+        Map<String,List<UserTag>> usersTags = userTagService.getUserTagsByUsers(userIds);
+
+        return userList.stream().map(user->new UserModel.Builder()
+                                                .user(user)
+                                                .tagList(usersTags.get(user.getUserId()))
+                                                .videoCount(userVideoMap.get(user.getUserId()))
+                                                .build()).collect(Collectors.toList());
     }
 
 }

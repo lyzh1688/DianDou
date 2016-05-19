@@ -11,6 +11,7 @@ import java.util.Map;
  */
 public interface IVideoService {
 
+    public List<Video> getVideoListByTag(String tagId);
     public Map<String,VideoModel> getLatestVideoListByOwnerList(List<String> ownerList);
     public List<VideoModel> getVideoListByTag(String pageIdx, String pageSize, String tagId);
     public List<Video> getVideoListByTags(List<String> tags, int count);

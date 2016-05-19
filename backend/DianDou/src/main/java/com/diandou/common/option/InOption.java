@@ -37,6 +37,6 @@ public class InOption extends Option{
 
         returnStr = sb.substring(0, sb.length() - 1);
 
-        return "(" + returnStr + ")";
+        return " (" + returnStr + ") ";
     }
 }

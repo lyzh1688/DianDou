@@ -21,6 +21,8 @@ public class UserModel {
 
     private final List<UserTag> tagList;
 
+    private final int videoCount;
+
     public UserModel(Builder builder) {
 
         this.user = builder.user;
@@ -28,6 +30,7 @@ public class UserModel {
         this.latestVideo = builder.latestVideo;
         this.isFollowed = builder.isFollowed;
         this.tagList = builder.tagList;
+        this.videoCount = builder.videoCount;
     }
 
     public List<UserTag> getTagList() {
@@ -61,6 +64,13 @@ public class UserModel {
         private boolean isFollowed;
 
         private List<UserTag> tagList;
+
+        private int videoCount;
+
+        public Builder videoCount(int videoCount){
+            this.videoCount = videoCount;
+            return this;
+        }
 
         public Builder user(User user){
             this.user = user;
