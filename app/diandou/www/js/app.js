@@ -119,12 +119,13 @@ angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services','di
         }
       }
     })
-    .state('app.main.video', {
-        url: "/video/:paramType/:paramVal",
+
+    .state('app.main.tagvideolist', {
+        url: "/tagvideolist/:tagId/:tagName",
         views: {
           'videotag-tab': {
-            templateUrl: "templates/video/videos.html",
-            controller:"VideoCtrl"
+            templateUrl: "templates/video/tagvideolist.html",
+            controller:"TagVideoListCtrl"
           }
         }
       })
@@ -138,13 +139,12 @@ angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services','di
           }
         }
       })
-      .state('app.main.lecturervideo', {
-        url: "/lecturervideo/:paramType/:paramVal",
+      .state('app.main.ownervideolist', {
+        url: "/ownervideolist/:ownerId/:ownerName",
         views: {
           'lecturer-tab': {
-            templateUrl: "templates/video/videos.html",
-            controller:"VideoCtrl"
-
+            templateUrl: "templates/video/ownervideolist.html",
+            controller:"OwnerVideoListCtrl"
           }
         }
       })
@@ -154,15 +154,6 @@ angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services','di
           'follow-tab': {
             templateUrl: "templates/follow/follow.html",
             controller:"FriendsCtrl"
-          }
-        }
-      })
-      .state('app.main.videocollection', {
-        url: "/videocollection/:ownerId",
-        views: {
-          'follow-tab': {
-            templateUrl: "templates/follow/videoCollection.html",
-            controller:"VideoCollectionCtrl"
           }
         }
       })

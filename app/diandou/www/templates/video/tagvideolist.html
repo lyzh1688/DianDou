@@ -1,12 +1,11 @@
-<ion-view title="Videos"  ng-controller="VideoCtrl">
+<ion-view title="Videos"  ng-controller="TagVideoListCtrl">
   <ion-content>
-    <div class="bar bar-header item-input-inset">
+    <ion-header-bar  class="item-input-inset">
       <div class="button icon-left ion-chevron-left button-clear" ng-click="onHistoryGoBack()"></div>
-      <label class="item-input-wrapper">
-        <input type="text">
-      </label>
-      <a href="#"><img src="../../images/quicksearchbox.png"/></a>
-    </div>
+      <form id="search-type">
+        <input type="search" placeholder="Search">
+      </form>
+    </ion-header-bar>
     <ion-list>
       <ion-item ng-repeat="videoItem in videos" ng-if="$index % 2 == 0">
         <div class="row">

@@ -1,6 +1,6 @@
 angular.module('diandou.controllers')
-  .controller('VideoCtrl', ['$scope','$stateParams','$timeout','$ionicHistory','VideoService',
-                                function($scope,$stateParams,$timeout,$ionicHistory,VideoService) {
+  .controller('OwnerVideoListCtrl', ['$scope','$state','$stateParams','$timeout','$ionicHistory','VideoService',
+                                function($scope,$state,$stateParams,$timeout,$ionicHistory,VideoService) {
     /*
      var newVideos = [{video_pic:'http://localhost:8080/diandou/image/5.jpg',owner_id:'555555',video_name:'test5'},
      {video_pic:'http://localhost:8080/diandou/image/6.jpg',owner_id:'666666',video_name:'test6'},
@@ -13,25 +13,34 @@ angular.module('diandou.controllers')
     $scope.PageIndex = 0;
     $scope.PageSize = 18;
 
+    var ownerId = $stateParams.ownerId;
+    var ownerName = $stateParams.ownerName;
+
 
     $scope.onHistoryGoBack = function(){
-      $ionicHistory.goBack();
+      var backView = $ionicHistory.backView()
+      if(backView){
+        $ionicHistory.goBack();
+      }
+      else{
+        //because of the ownervideolist is belong to lectrure tab,
+        //so ionicHistory has no history when jump to ownervideolist from follow page
+        //which makes we have to use this way to go back to last page
+        $ionicHistory.clearHistory();
+        $state.go('app.main.follow',{adType:5});
+      }
+
     }
 
     //滚动条响应事件
     $scope.onLoadMore = function(){
 
       //var timer = null;
-      var paramType = $stateParams.paramType;
-      var paramVal = $stateParams.paramVal;
+
 
       var params = {};
-      if(paramType == 'byTag'){
-        params = {tagId:paramVal,pageIdx:$scope.PageIndex,pageSize:$scope.PageSize};
-      }
-      if(paramType == 'byOwner'){
-        params = {ownerId:paramVal,pageIdx:$scope.PageIndex,pageSize:$scope.PageSize};
-      }
+      params = {ownerId:ownerId,pageIdx:$scope.PageIndex,pageSize:$scope.PageSize};
+
 
       VideoService.getVideoList(params)
         .then(function(result){

@@ -1,11 +1,10 @@
 <ion-view title="" ng-controller="FriendsCtrl" ng-init="onInit()">
   <ion-content>
-    <div class="bar bar-header item-input-inset">
-      <label class="item-input-wrapper">
-        <input type="text">
-      </label>
-      <a href="#"><img src="../../images/quicksearchbox.png"/></a>
-    </div>
+    <ion-header-bar  class="item-input-inset">
+      <form id="search-type">
+        <input type="search" placeholder="Search">
+      </form>
+    </ion-header-bar>
     <div>
       <span class = 'my-follow-font'>每周上新</span>
     </div>
@@ -17,18 +16,16 @@
         </ion-slide>
       </ion-slide-box>
       <div ng-repeat="friend in friends">
-        <a class="item my-lecturer-item" href="#/app/main/lecturervideo/byOwner/{{friend.user.userId}}" >
+        <a class="item my-lecturer-item" href="#/app/main/ownervideolist/{{friend.user.userId}}/{{friend.user.userName}}" >
           <div class = "row my-form-font">
             <div class = "col my-col-margin">
               <div class="item-avatar" style="position:relative;">
                 <img ng-src="{{friend.user.headPortrait}}">
               </div>
               <span class="my-name-pos">{{friend.user.userName}}</span>
-              <span class="my-gender-icon">
-                <div ng-switch="friend.user.sex">
+              <span class="my-gender-icon"  ng-switch="friend.user.sex">
                   <img ng-switch-when="0" src='../../images/female.ico'/>
                   <img ng-switch-when="1" src='../../images/male.ico'/>
-                </div>
               </span>
             </div>
             <div class = "col">

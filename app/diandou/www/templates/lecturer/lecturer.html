@@ -1,25 +1,22 @@
 <ion-view title="" ng-controller="LecturersCtrl">
   <ion-content >
-    <div class="bar bar-header item-input-inset">
-      <label class="item-input-wrapper">
-        <input type="text">
-      </label>
-      <a href="#"><img src="../../images/quicksearchbox.png"/></a>
-    </div>
+    <ion-header-bar  class="item-input-inset">
+      <form id="search-type">
+        <input type="search" placeholder="Search">
+      </form>
+    </ion-header-bar>
     <div class="list" ng-repeat="userItem in lecturers">
       <div class="item my-lecturer-item" >
         <div class = "row my-form-font">
           <div class = "col my-col-margin">
-            <a  href="#/app/main/lecturervideo/byOwner/{{userItem.user.userId}}">
+            <a  href="#/app/main/ownervideolist/{{userItem.user.userId}}/{{userItem.user.userName}}">
               <div class="item-avatar" style="position:relative;">
                 <img ng-src="{{userItem.user.headPortrait}}">
               </div>
               <span class="my-name-pos">{{userItem.user.userName}}</span>
-            <span class="my-gender-icon">
-              <div ng-switch="userItem.user.sex">
+            <span class="my-gender-icon" ng-switch="userItem.user.sex">
                 <img ng-switch-when="0" src='../../images/female.ico'/>
                 <img ng-switch-when="1" src='../../images/male.ico'/>
-              </div>
             </span>
               <div class="my-name-pos">{{userItem.tagList|joinTagFilter}}</div>
             </a>

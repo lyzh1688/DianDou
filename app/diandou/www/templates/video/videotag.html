@@ -1,16 +1,20 @@
 <ion-view view-title="点豆" ng-controller="TagCtrl" ng-init="onInit()">
   <ion-content class="" >
-    <div class="bar bar-header item-input-inset">
-      <label class="item-input-wrapper">
-        <input type="text">
-      </label>
-      <a href="#"><img src="../../images/quicksearchbox.png"/></a>
-    </div>
+    <ion-header-bar  class="item-input-inset">
+      <form id="search-type">
+        <input type="search" placeholder="Search">
+      </form>
+    </ion-header-bar>
     <div ng-repeat="tag in tags">
-      <a class="item item-icon-right videotag-item-font" href="#/app/main/video/byTag/{{tag.tagInfo.tagId}}">
-        {{tag.tagInfo.tagName}}
-        <span class="videotag-icon-font">更多</span><i class="icon ion-ios-arrow-forward"></i>
+
+      <a class="item  item-input-inset item-icon-right videotag-label-background"  href="#/app/main/tagvideolist/{{tag.tagInfo.tagId}}/{{tag.tagInfo.tagName}}">
+        <span>{{tag.tagInfo.tagName}}</span>
+        <div class='icon videotag-icon'>
+          <span class="videotag-icon-font">更多</span>
+          <img src="../images/right.jpg"/>
+        </div>
       </a>
+
       <div ng-repeat="video in tag.videoList" ng-if="$index%2 == 0">
         <div class="row">
           <div class="col videotag-col">
