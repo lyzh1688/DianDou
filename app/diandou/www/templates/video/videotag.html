@@ -19,14 +19,16 @@
                 <img src={{tag.videoList[$index].videoPic}}>
               </div>
               <div class="my-image-pos">{{tag.videoList[$index].videoName}}</div>
+              <div class="videotag-sub-label">{{tag.videoList[$index].brief}}</div>
             </a>
           </div>
-          <div class="col videotag-col">
+          <div class="col videotag-col" ng-if="tag.videoList[$index+1]">
             <a class="item videotag-item" href="#" style="position:relative;">
               <div class="videotag-image-show">
                 <img src={{tag.videoList[$index+1].videoPic}}>
               </div>
               <div class="my-image-pos">{{tag.videoList[$index + 1].videoName}}</div>
+              <div class="videotag-sub-label">{{tag.videoList[$index].brief}}</div>
             </a>
           </div>
         </div>

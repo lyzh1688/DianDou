@@ -1,5 +1,6 @@
 angular.module('diandou.controllers')
-  .controller('VideoCtrl', ['$scope','$stateParams','$timeout','VideoService',function($scope,$stateParams,$timeout,VideoService) {
+  .controller('VideoCtrl', ['$scope','$stateParams','$timeout','$ionicHistory','VideoService',
+                                function($scope,$stateParams,$timeout,$ionicHistory,VideoService) {
     /*
      var newVideos = [{video_pic:'http://localhost:8080/diandou/image/5.jpg',owner_id:'555555',video_name:'test5'},
      {video_pic:'http://localhost:8080/diandou/image/6.jpg',owner_id:'666666',video_name:'test6'},
@@ -10,9 +11,12 @@ angular.module('diandou.controllers')
     $scope.videos = [];
     $scope.loadMore = true;
     $scope.PageIndex = 0;
-    $scope.PageSize = 6;
+    $scope.PageSize = 18;
 
 
+    $scope.onHistoryGoBack = function(){
+      $ionicHistory.goBack();
+    }
 
     //滚动条响应事件
     $scope.onLoadMore = function(){
