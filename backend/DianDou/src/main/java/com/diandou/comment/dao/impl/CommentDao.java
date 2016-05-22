@@ -3,6 +3,7 @@ package com.diandou.comment.dao.impl;
 import com.diandou.comment.dao.ICommentDao;
 import com.diandou.comment.entity.Comment;
 import com.diandou.comment.mapper.CommentMapper;
+import com.diandou.common.option.PagenationOption;
 import com.diandou.user.entity.User;
 import com.diandou.user.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +22,13 @@ public class CommentDao implements ICommentDao {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public List<Comment> getCommentsByVideo(String videoId) {
-        String sql = "select t.video_id,t.user_id,u.user_name,t.comments,t.time " +
+    public List<Comment> getCommentsByVideo(String pageIdx, String pageSize,String videoId) {
+        String sql = "select t.video_id,t.user_id,u.user_name,t.comments,t.time,u.head_portrait " +
                 " from dat_video_comments t,dat_user_info u " +
                 " where t.user_id = u.user_id " +
                 " and t.video_id = ? " +
-                " order by t.time desc ";
+                " order by t.time desc " +
+                new PagenationOption(pageSize,pageIdx).genOptionCode();
 
         List<Comment> comments = this.jdbcTemplate.query(sql ,new Object[] { videoId }, new CommentMapper() );
 

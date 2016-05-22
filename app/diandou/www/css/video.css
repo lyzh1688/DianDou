@@ -1,0 +1,66 @@
+.video-margin
+{
+
+}
+
+.video-remark-label
+{
+  font-size:xx-small;
+  flex:auto;
+  height:27px;
+}
+
+.video-remark-label2
+{
+  font-size:xx-small;
+  height:40px;
+}
+
+.placeholder-font
+{
+  font-size:xx-small;
+}
+
+.video-remark-label-text
+{
+  margin-left:2px;
+}
+.video-remark-margin
+{
+  margin-left:3px;
+}
+
+.video-remark-icon img
+{
+  width:21px;
+  height:21px;
+  margin-right:4px;
+}
+
+.video-remark-icon
+{
+  margin-right:6px;
+}
+
+.video-remark-user-image img
+{
+  width:20px;
+  height:20px;
+  margin-right:5px;
+}
+
+.video-remark-margin
+{
+  margin-bottom:10px;
+}
+
+.video-remark-name-color
+{
+  color:grey !important;
+}
+
+.video-remark-font-color
+{
+  font-weight: 600 !important;
+  color:#725e82 !important;
+}

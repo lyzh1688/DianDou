@@ -64,4 +64,12 @@ public class VideoController {
 
         return new ArrayList<VideoModel>();
     }
+
+    @Authority
+    @RequestMapping(value = "/getVideoInfoById",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public Video getVideoInfoById(HttpServletRequest request){
+        String videoId = request.getParameter("videoId");
+        return this.videoService.getVideoById(videoId);
+    }
 }

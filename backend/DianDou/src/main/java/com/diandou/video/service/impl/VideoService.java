@@ -111,5 +111,10 @@ public class VideoService implements IVideoService {
         return videoModelList;
     }
 
+    @Override
+    public Video getVideoById(String videoId) {
+        return this.videoDao.getVideoById(videoId);
+    }
+
 
 }

@@ -47,7 +47,9 @@ public class CommentController {
     @ResponseBody
     public List<Comment> getCommentsByVideo(HttpServletRequest request){
         String videoId = request.getParameter("videoId");
-        return this.commentService.getCommentsByVideo(videoId);
+        String pageIdx = request.getParameter("pageIdx");
+        String pageSize = request.getParameter("pageSize");
+        return this.commentService.getCommentsByVideo(pageIdx,pageSize,videoId);
 
     }
 }

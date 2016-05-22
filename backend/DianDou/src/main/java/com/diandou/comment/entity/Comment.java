@@ -15,6 +15,8 @@ public class Comment {
 
     private final String comment;
 
+    private final String headPortrait;
+
     private final Timestamp time;
 
     public Timestamp getTime() {
@@ -37,6 +39,9 @@ public class Comment {
         return comment;
     }
 
+    public String getHeadPortrait() {
+        return headPortrait;
+    }
 
     private Comment(Builder builder){
         this.videoId = builder.videoId;
@@ -44,6 +49,7 @@ public class Comment {
         this.userName = builder.userName;
         this.comment = builder.comment;
         this.time = builder.time;
+        this.headPortrait = builder.headPortrait;
     }
 
     public static class Builder{
@@ -57,6 +63,13 @@ public class Comment {
         private String comment;
 
         private Timestamp time;
+
+        private String headPortrait;
+
+        public Builder headPortrait(String headPortrait){
+            this.headPortrait = headPortrait;
+            return this;
+        }
 
         public Builder time(Timestamp time){
             this.time = time;

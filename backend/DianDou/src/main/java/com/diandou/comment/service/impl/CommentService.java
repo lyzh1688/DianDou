@@ -18,8 +18,8 @@ public class CommentService implements ICommentService {
     private ICommentDao commentDao;
 
     @Override
-    public List<Comment> getCommentsByVideo(String videoId) {
-        return this.commentDao.getCommentsByVideo(videoId);
+    public List<Comment> getCommentsByVideo(String pageIdx, String pageSize,String videoId) {
+        return this.commentDao.getCommentsByVideo(pageIdx,pageSize,videoId);
     }
 
     @Override

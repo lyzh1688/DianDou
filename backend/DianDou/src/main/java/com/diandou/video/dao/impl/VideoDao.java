@@ -148,4 +148,27 @@ public class VideoDao implements IVideoDao {
         videoList = jdbcTemplate.query(sql,new Object[]{ownerId} , new VideoMapper() );
         return videoList;
     }
+
+    @Override
+    public Video getVideoById(String videoId) {
+
+        String sql = "select i.video_id," +
+                " i.video_name," +
+                " i.video_link," +
+                " i.owner_id," +
+                " i.total_time," +
+                " i.brief," +
+                " s.status_name as status," +
+                " i.video_pic," +
+                " i.upload_date," +
+                " u.user_name as ownerName " +
+                " from dat_video_info i, prm_video_status s  ,dat_user_info u " +
+                " where i.status = s.status_id" +
+                " and i.owner_id = u.user_id " +
+                " and i.video_id = ? ";
+
+        Video video = this.jdbcTemplate.queryForObject(sql ,new Object[] { videoId }, new VideoMapper() );
+
+        return video;
+    }
 }

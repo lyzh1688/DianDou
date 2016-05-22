@@ -8,7 +8,7 @@ import java.util.List;
  * Created by 胡志洁 on 2016/5/14.
  */
 public interface ICommentDao {
-    public List<Comment> getCommentsByVideo(String videoId);
+    public List<Comment> getCommentsByVideo(String pageIdx, String pageSize,String videoId);
 
     public boolean makeComment(Comment comment);
 

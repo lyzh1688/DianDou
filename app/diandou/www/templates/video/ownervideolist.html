@@ -10,7 +10,7 @@
       <ion-item ng-repeat="videoItem in videos" ng-if="$index % 2 == 0">
         <div class="row">
           <div class="col my-col">
-            <a class="item videotag-item" href="{{videos[$index].video.videoLink}}" style="position:relative;">
+            <a class="item videotag-item" href="#/play/{{videos[$index].video.videoId}}" style="position:relative;">
               <div class="my-image-pos">{{videos[$index].video.status}}</div>
 
               <div class="videotag-image-show">
@@ -21,7 +21,7 @@
             </a>
           </div>
           <div class="col my-col" ng-if="videos[$index+1]">
-            <a class="item videotag-item" href="{{videos[$index+1].video.videoLink}}" style="position:relative;">
+            <a class="item videotag-item" href="#/play/{{videos[$index+1].video.videoId}}" style="position:relative;">
               <div class="my-image-pos">{{videos[$index].video.status}}</div>
               <div class="videotag-image-show">
                 <img ng-src="{{videos[$index+1].video.videoPic}}">

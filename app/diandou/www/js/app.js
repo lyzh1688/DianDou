@@ -92,9 +92,9 @@ angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services','di
         controller:"RegisterCtrl"
       })
      .state('play', {
-        url: '/play',
-        templateUrl: 'templates/common/videoplay.html'
-        //controller:"RegisterCtrl"
+        url: '/play/:videoId',
+        templateUrl: 'templates/common/videoplay.html',
+        controller:"VideoPlayCtrl"
       })
      .state('app', {
         url: '/app',

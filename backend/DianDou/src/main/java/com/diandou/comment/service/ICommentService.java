@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface ICommentService {
 
-    public List<Comment> getCommentsByVideo(String videoId);
+    public List<Comment> getCommentsByVideo(String pageIdx, String pageSize,String videoId);
 
     public boolean makeComment(Comment comment);
 }

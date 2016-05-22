@@ -17,8 +17,9 @@ public class CommentMapper implements RowMapper<Comment> {
                 .userId(resultSet.getString("user_id"))
                 .userName(resultSet.getString("user_name"))
                 .videoId(resultSet.getString("video_id"))
-                .comment(resultSet.getString("comment"))
+                .comment(resultSet.getString("comments"))
                 .time(resultSet.getTimestamp("time"))
+                .headPortrait(resultSet.getString("head_portrait"))
                 .build();
 
         return obj;
