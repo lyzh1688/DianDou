@@ -29,7 +29,7 @@ public class Video {
 
     private final String videoPic;
 
-    private final Timestamp uploadDate;
+    private final String uploadDate;
 
     public String getVideoId() {
         return videoId;
@@ -67,7 +67,7 @@ public class Video {
         return videoPic;
     }
 
-    public Timestamp getUploadDate() { return uploadDate;}
+    public String getUploadDate() { return uploadDate;}
     private Video(Builder builder){
         this.videoId = builder.videoId;
         this.videoName = builder.videoName;
@@ -91,7 +91,7 @@ public class Video {
         private String brief;
         private String status;
         private String videoPic;
-        private Timestamp uploadDate;
+        private String uploadDate;
         private String ownerName;
 
         public Builder videoId(String videoId){
@@ -139,7 +139,7 @@ public class Video {
             return this;
         }
 
-        public Builder uploadDate(Timestamp uploadDate){
+        public Builder uploadDate(String uploadDate){
             this.uploadDate = uploadDate;
             return this;
         }

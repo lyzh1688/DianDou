@@ -5,12 +5,14 @@ import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by 胡志洁 on 2016/5/3.
  */
 public class VideoMapper implements RowMapper<Video> {
 
+    private static SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     @Override
     public Video mapRow(ResultSet rs, int rowNum) throws SQLException {
 
@@ -24,7 +26,7 @@ public class VideoMapper implements RowMapper<Video> {
                                         .brief(rs.getString("brief"))
                                         .status(rs.getString("status"))
                                         .videoPic(rs.getString("video_pic"))
-                                        .uploadDate(rs.getTimestamp("upload_date"))
+                                        .uploadDate(VideoMapper.df.format(rs.getTimestamp("upload_date")))
                                         .ownerName(rs.getString("ownerName")).build();
 
         return obj;
