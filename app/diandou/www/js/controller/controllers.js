@@ -10,6 +10,7 @@ angular.module('diandou.controllers', [])
   //});
 
   // Form data for the login modal
+
   $scope.loginData = {};
 
   // Create the login modal that we will use later

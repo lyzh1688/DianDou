@@ -19,6 +19,8 @@ angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services','di
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    ionic.Platform.isFullScreen = true;
   });
 })
 

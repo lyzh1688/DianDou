@@ -1,8 +1,10 @@
 <ion-view ng-controller="VideoPlayCtrl" ng-init="onInit()">
   <ion-content>
-    <div class="bar">
-      <a class="button icon-left ion-chevron-left button-clear" href="#"></a>
-    </div>
+    <ion-header-bar  class="item-input-inset" align-title="center">
+      <div class="button icon-left ion-chevron-left button-clear" ng-click="onHistoryGoBack()"></div>
+      <h1 class="title">{{videoInfo.videoName}}</h1>
+    </ion-header-bar>
+
     <video class="video-margin" src="{{videoLink}}"
            controls="controls" width="100%" videoWidth="100%">
     </video>
@@ -10,18 +12,14 @@
     </div>
     <div class="content">
       <ul class="list">
-        <li class="item item-input-inset video-remark-label">
-          <span class="video-remark-label-text">评论</span>
-          <span class="video-remark-label-text">5</span>
-        </li>
-        <div class="video-remark-margin">
-          <div class="item item-input-inset video-remark-label">
-            <div class="video-remark-icon"><img src="../images/remark.jpg"/></div>
-            <label class="item-input-wrapper placeholder-font">
-              <input type="text" placeholder="我也说句话">
-            </label>
+
+        <li class="item-input-inset video-remark-label  item-icon-right">
+          <span class="videotag-icon-font">{{videoInfo.uploadDate}}</span>
+          <div class='icon' ng-click="onComment">
+            <div class="video-remark-icon"><img ng-src="img/remark.png"/></div>
           </div>
-        </div>
+        </li>
+
         <div ng-repeat="comment in comments">
           <li class="item item-input-inset video-remark-label2">
             <div class="video-remark-user-image "style="position:relative;">

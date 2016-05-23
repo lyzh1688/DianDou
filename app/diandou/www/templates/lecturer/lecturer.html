@@ -15,8 +15,8 @@
               </div>
               <span class="my-name-pos">{{userItem.user.userName}}</span>
             <span class="my-gender-icon" ng-switch="userItem.user.sex">
-                <img ng-switch-when="0" src='../../images/female.ico'/>
-                <img ng-switch-when="1" src='../../images/male.ico'/>
+                <img ng-switch-when="0" ng-src='img/female.ico'/>
+                <img ng-switch-when="1" ng-src='img/male.ico'/>
             </span>
               <div class="my-name-pos">{{userItem.tagList|joinTagFilter}}</div>
             </a>

@@ -2,8 +2,8 @@
  * Created by 胡志洁 on 2016/5/22.
  */
 angular.module('diandou.controllers')
-  .controller('VideoPlayCtrl', ['$scope','$stateParams','$sce','$ionicPopup','CommentService','VideoService',
-                function($scope,$stateParams,$sce,$ionicPopup,CommentService,VideoService) {
+  .controller('VideoPlayCtrl', ['$scope','$window','$stateParams','$sce','$ionicPopup','CommentService','VideoService',
+                function($scope,$window,$stateParams,$sce,$ionicPopup,CommentService,VideoService) {
 
     $scope.comments = [];
     var videoId = $stateParams.videoId;
@@ -11,15 +11,24 @@ angular.module('diandou.controllers')
     $scope.PageIndex = 0;
     $scope.PageSize = 6;
     $scope.videoLink = "";
+    $scope.videoInfo = {};
+    $scope.onHistoryGoBack = function(){
+      $window.history.back();
+    }
 
     $scope.onInit = function(){
       var params = {videoId:videoId};
       VideoService.getVideoInfoById(params)
         .then(function(result){
           if(result){
+            $scope.videoInfo = result;
             $scope.videoLink = $sce.trustAsResourceUrl(result.videoLink);
           }
         })
+    }
+
+    $scope.onComment = function(){
+
     }
     //滚动条响应事件
     $scope.onLoadMore = function(){
