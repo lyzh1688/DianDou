@@ -1,7 +1,9 @@
 <ion-view title="" ng-controller="LecturersCtrl">
   <ion-content >
-    <search-box search-val="searchObj.searchVal" placeholder-val="搜索讲师" on-click-callback="onSearchLecturer()">
-    </search-box>
+    <ion-header-bar  class="item-input-inset item-icon-right">
+      <search-box search-val="searchObj.searchVal" placeholder-val="搜索讲师" on-click-callback="onSearchLecturer()">
+      </search-box>
+    </ion-header-bar>
     <div class="list" ng-repeat="userItem in lecturers">
       <div class="item my-lecturer-item" >
         <div class = "row my-form-font">

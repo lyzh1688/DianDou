@@ -3,6 +3,7 @@ package com.diandou.web.controller;
 import com.diandou.annotation.Authority;
 import com.diandou.common.option.FilterOption;
 import com.diandou.common.util.StringUtil;
+import com.diandou.user.vmodel.UserModel;
 import com.diandou.video.entity.TagInfo;
 import com.diandou.video.entity.Video;
 import com.diandou.video.service.ITagService;
@@ -45,21 +46,24 @@ public class VideoController {
         return new ArrayList<Video>();
     }
 
-    @Authority
     @RequestMapping(value = "/getVideoList",produces = "application/json;charset=UTF-8")
     @ResponseBody
     public List<VideoModel> getVideoList(HttpServletRequest request){
 
         String tagId = request.getParameter("tagId");
         String ownerId = request.getParameter("ownerId");
+        String videoName = request.getParameter("videoName");
         String pageIdx = request.getParameter("pageIdx");
         String pageSize = request.getParameter("pageSize");
 
-        if(tagId != null) {
+        if(!StringUtil.isNullOrEmpty(tagId)) {
             return this.videoService.getVideoListByTag(pageIdx,pageSize,tagId);
         }
-        if(ownerId != null) {
+        if(!StringUtil.isNullOrEmpty(ownerId)) {
             return this.videoService.getVideoListByOwner(pageIdx,pageSize,ownerId);
+        }
+        if(!StringUtil.isNullOrEmpty(videoName)){
+            return this.videoService.getVideoListByName(pageIdx,pageSize,videoName);
         }
 
         return new ArrayList<VideoModel>();
@@ -72,4 +76,6 @@ public class VideoController {
         String videoId = request.getParameter("videoId");
         return this.videoService.getVideoById(videoId);
     }
+
+
 }

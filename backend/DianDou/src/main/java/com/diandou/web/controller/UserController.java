@@ -35,6 +35,7 @@ public class UserController {
 
     }
 
+    @Authority
     @RequestMapping(value = "/searchUserListByName",produces = "application/json;charset=UTF-8")
     @ResponseBody
     public List<UserModel> searchUserListByName(HttpServletRequest request){

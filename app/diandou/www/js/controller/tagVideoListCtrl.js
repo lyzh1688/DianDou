@@ -6,9 +6,23 @@ angular.module('diandou.controllers')
       $scope.loadMore = true;
       $scope.PageIndex = 0;
       $scope.PageSize = 18;
+      $scope.searchObj = {searchVal:''};
       var tagId = $stateParams.tagId;
       var tagName = $stateParams.tagName;
+      var searchTpye = 'Normal';
 
+      $scope.onSearchVideos = function(){
+        $scope.PageIndex = 0;
+        $scope.PageSize = 6;
+        $scope.videos = [];
+        if('' != $scope.searchObj.searchVal){
+          searchTpye = 'Search';
+        }
+        else{
+          searchTpye = 'Normal';
+        }
+        $scope.onLoadMore();
+      }
 
       $scope.onHistoryGoBack = function(){
         $ionicHistory.goBack();
@@ -21,8 +35,12 @@ angular.module('diandou.controllers')
 
         var params = {};
 
-        params = {tagId:tagId,pageIdx:$scope.PageIndex,pageSize:$scope.PageSize};
-
+        if(searchTpye == 'Normal'){
+          params = {tagId:tagId,pageIdx:$scope.PageIndex,pageSize:$scope.PageSize};
+        }
+        else{
+          params = {videoName:$scope.searchObj.searchVal,pageIdx:$scope.PageIndex,pageSize:$scope.PageSize};
+        }
 
         VideoService.getVideoList(params)
           .then(function(result){
