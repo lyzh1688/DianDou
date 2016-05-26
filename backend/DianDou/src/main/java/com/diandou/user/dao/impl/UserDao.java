@@ -2,6 +2,7 @@ package com.diandou.user.dao.impl;
 
 import com.diandou.common.Authority.EncodePassword;
 import com.diandou.common.option.InOption;
+import com.diandou.common.option.LikeOption;
 import com.diandou.common.option.PagenationOption;
 import com.diandou.enumerable.AuthStatusEnum;
 import com.diandou.user.dao.IUserDao;
@@ -26,6 +27,8 @@ public class UserDao implements IUserDao {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+
 
     @Override
     public List<VideoCount> getVideoCounts(List<String> userIds) {
@@ -107,6 +110,28 @@ public class UserDao implements IUserDao {
                 new PagenationOption(pageSize,pageIdx).genOptionCode();
 
         userList = jdbcTemplate.query(sql,new Object[]{roleId} , new UserMapper());
+
+        return userList;
+    }
+
+    @Override
+    public List<User> getUserListByName(String pageIdx, String pageSize, String userName) {
+        List<User> userList = null;
+
+        String sql = "SELECT i.user_id," +
+                " i.user_name," +
+                " i.head_portrait," +
+                " i.brief," +
+                " i.mobile, " +
+                " i.sex, " +
+                " i.regisiter_date " +
+                " FROM dat_user_info i  " +
+                " where  i.user_name like " +
+                new LikeOption(userName).genOptionCode() +
+                " order by i.user_id " +
+                new PagenationOption(pageSize,pageIdx).genOptionCode();
+
+        userList = jdbcTemplate.query(sql, new UserMapper());
 
         return userList;
     }

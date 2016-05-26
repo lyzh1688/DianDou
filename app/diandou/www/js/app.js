@@ -4,7 +4,13 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('diandou', ['ionic', 'diandou.controllers','diandou.services','diandou.filter'])
+angular.module('diandou', ['ionic',
+                              'ngCordova',
+                              'ngCordova.plugins.keyboard',
+                              'diandou.controllers',
+                              'diandou.services',
+                              'diandou.filter',
+                              'diandou.searchBox'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

@@ -21,5 +21,7 @@ public interface IUserService {
 
     public List<UserModel> getUserListByRole(String pageIdx, String pageSize, String roleId,String userId);
 
+    public List<UserModel> getUserListByName(String pageIdx, String pageSize, String userName,String userId);
+
     public AuthModel userRegister( String mobile, String pswd);
 }

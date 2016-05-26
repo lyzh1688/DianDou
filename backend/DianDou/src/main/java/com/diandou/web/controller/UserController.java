@@ -35,6 +35,22 @@ public class UserController {
 
     }
 
+    @RequestMapping(value = "/searchUserListByName",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public List<UserModel> searchUserListByName(HttpServletRequest request){
+
+        String userName = request.getParameter("userName");
+        String followerId = request.getParameter("followerId");
+        String pageIdx = request.getParameter("pageIdx");
+        String pageSize = request.getParameter("pageSize");
+
+        if(userName != null) {
+            return this.userService.getUserListByName(pageIdx,pageSize,userName,followerId);
+        }
+
+        return new ArrayList<UserModel>();
+    }
+
     @Authority
     @RequestMapping(value = "/getUserList",produces = "application/json;charset=UTF-8")
     @ResponseBody

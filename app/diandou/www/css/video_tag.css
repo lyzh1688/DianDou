@@ -43,7 +43,7 @@
 
 #search-type input[type=search] {
   margin-left:20px;
-  background: #ededed url(../images/search-icon.png) no-repeat 9px center;
+  background: #ededed url(../img/search-icon.png) no-repeat 150px center;
   border: solid 1px #ccc;
   padding: 9px 10px 9px 32px;
   width:100%;
@@ -62,7 +62,7 @@
   padding-left: 32px;
   color: transparent;
   cursor: pointer;
-  background-color: #fff;
+background-color: #fff;
 }
 #search-type input[type=search]:hover {
   background-color: #fff;

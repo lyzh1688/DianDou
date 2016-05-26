@@ -7,6 +7,21 @@
 angular.module('diandou.services')
   .factory('UserService',['$http','$q','REMOTE_SERVER',function($http,$q,REMOTE_SERVER){
     return {
+
+      searchUserListByName :function(params){
+        var defered = $q.defer();
+        var serverUrl = REMOTE_SERVER.remoteDiandouSrv;
+        $http.post( serverUrl + '/user/searchUserListByName',params)
+          .success(function(data,status,headers,config){
+            defered.resolve(data);
+          })
+          .error(function(data,status,headers,config){
+            defered.reject(data);
+          })
+
+        return defered.promise;
+      },
+
       getUserList: function(params){
         var defered = $q.defer();
         var serverUrl = REMOTE_SERVER.remoteDiandouSrv;

@@ -8,32 +8,63 @@ angular.module('diandou.controllers')
     $scope.loadMore = true;
     $scope.PageIndex = 0;
     $scope.PageSize = 6;
+    $scope.searchObj = {searchVal:''};
+    var searchTpye = 'Normal';
 
-
+    $scope.onSearchLecturer = function(){
+      $scope.PageIndex = 0;
+      $scope.PageSize = 6;
+      $scope.lecturers = [];
+      if('' != $scope.searchObj.searchVal){
+        searchTpye = 'Search';
+      }
+      else{
+        searchTpye = 'Normal';
+      }
+      $scope.onLoadMore();
+    }
 
     //滚动条响应事件
     $scope.onLoadMore = function(){
 
+      if( 'Normal' == searchTpye){
+        var roleId = $stateParams.roleId;
+        var followerId =  AuthService.getUserId();
+        var params = {roleId:roleId ,followerId:followerId,pageIdx:$scope.PageIndex,pageSize:$scope.PageSize}
+        UserService.getUserList(params)
+          .then(function(result){
+            if(!result ||  result.length == 0 || result.length < $scope.PageSize){
+              $scope.loadMore = false;
+            }
 
-      var roleId = $stateParams.roleId;
-      var followerId =  AuthService.getUserId();
-
-
-      var params = {roleId:roleId ,followerId:followerId,pageIdx:$scope.PageIndex,pageSize:$scope.PageSize}
-
-      UserService.getUserList(params)
-        .then(function(result){
-          if(!result ||  result.length == 0 || result.length < $scope.PageSize){
+            $scope.lecturers = $scope.lecturers.concat(result);
+            $scope.$broadcast('scroll.infiniteScrollComplete');
+          },
+          function(){
+            //$timeout.cancel(timer);
             $scope.loadMore = false;
-          }
+          })
+      }
 
-          $scope.lecturers = $scope.lecturers.concat(result);
-          $scope.$broadcast('scroll.infiniteScrollComplete');
-        },
-        function(){
-          //$timeout.cancel(timer);
-          $scope.loadMore = false;
-        })
+      if('Search' == searchTpye){
+        var userName = $scope.searchObj.searchVal;
+        var followerId =  AuthService.getUserId();
+        var params = {userName:userName ,followerId:followerId,pageIdx:$scope.PageIndex,pageSize:$scope.PageSize}
+        UserService.searchUserListByName(params)
+          .then(function(result){
+            if(!result ||  result.length == 0 || result.length < $scope.PageSize){
+              $scope.loadMore = false;
+            }
+
+            $scope.lecturers = $scope.lecturers.concat(result);
+            $scope.$broadcast('scroll.infiniteScrollComplete');
+          },
+          function(){
+            //$timeout.cancel(timer);
+            $scope.loadMore = false;
+          })
+      }
+
       $scope.PageIndex++;
     };
 

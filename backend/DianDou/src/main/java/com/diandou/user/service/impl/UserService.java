@@ -64,10 +64,39 @@ public class UserService implements IUserService {
     @Override
     public List<UserModel> getUserListByRole(String pageIdx, String pageSize, String roleId,String followerId) {
 
+        //get the user by role
+        List<User> userList = this.userDao.getUserListByRole(pageIdx,pageSize,roleId);
+
+        return this.getUserModelList(userList,followerId);
+    }
+
+    @Override
+    public List<UserModel> getUserListByName(String pageIdx, String pageSize, String userName,String followerId) {
+        //get the user by role
+        List<User> userList = this.userDao.getUserListByName(pageIdx,pageSize,userName);
+
+        return this.getUserModelList(userList,followerId);
+    }
+
+    @Override
+    public AuthModel userRegister(String mobile, String pswd) {
+
+        String password = EncodePassword.encodePassword(pswd);
+        User newUser = new User.Builder().mobile(mobile).password(password).build();
+        if (this.userDao.userRegister(newUser) == AuthStatusEnum.reg_success){
+            return this.authorityService.loginAuthority(mobile,pswd);
+        }
+        else{
+            return new AuthModel.Builder().authStatus(AuthStatusEnum.login_fail).build();
+        }
+    }
+
+    private List<UserModel> getUserModelList(List<User> userList,String followerId){
+
         List<UserModel> userModelList = new ArrayList<UserModel>();
 
         //get the user by role
-        List<User> userList = this.userDao.getUserListByRole(pageIdx,pageSize,roleId);
+        //List<User> userList = this.userDao.getUserListByRole(pageIdx,pageSize,roleId);
 
         List<String> userIdList = new ArrayList<String>();
 
@@ -123,18 +152,5 @@ public class UserService implements IUserService {
         }
 
         return userModelList;
-    }
-
-    @Override
-    public AuthModel userRegister(String mobile, String pswd) {
-
-        String password = EncodePassword.encodePassword(pswd);
-        User newUser = new User.Builder().mobile(mobile).password(password).build();
-        if (this.userDao.userRegister(newUser) == AuthStatusEnum.reg_success){
-            return this.authorityService.loginAuthority(mobile,pswd);
-        }
-        else{
-            return new AuthModel.Builder().authStatus(AuthStatusEnum.login_fail).build();
-        }
     }
 }

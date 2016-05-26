@@ -2,8 +2,10 @@
  * Created by 胡志洁 on 2016/5/22.
  */
 angular.module('diandou.controllers')
-  .controller('VideoPlayCtrl', ['$scope','$window','$stateParams','$sce','$ionicPopup','CommentService','VideoService',
-                function($scope,$window,$stateParams,$sce,$ionicPopup,CommentService,VideoService) {
+  .controller('VideoPlayCtrl', ['$scope','$window','$stateParams','$sce','$ionicPopup','$cordovaKeyboard',
+                'CommentService','VideoService',
+                function($scope,$window,$stateParams,$sce,$ionicPopup,$cordovaKeyboard,
+                         CommentService,VideoService) {
 
     $scope.comments = [];
     var videoId = $stateParams.videoId;
@@ -28,7 +30,7 @@ angular.module('diandou.controllers')
     }
 
     $scope.onComment = function(){
-
+      $cordovaKeyboard.show();
     }
     //滚动条响应事件
     $scope.onLoadMore = function(){

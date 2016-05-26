@@ -16,6 +16,7 @@ public interface IUserDao {
     public User getUserInfoByMobile(String mobile);
     public boolean updateUserInfo(User user);
     public List<User> getUserListByRole(String pageIdx,String pageSize,String roleId);
+    public List<User> getUserListByName(String pageIdx,String pageSize,String userName);
     public String userLogin(String mobile,String password);
     public AuthStatusEnum userRegister(User user);
 }

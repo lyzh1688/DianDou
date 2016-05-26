@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/plugins/fetch.json" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/css/login.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/css/register.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/css/style.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/css/teacher.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/css/video_tag.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/js/app.js" charset="UTF-8" />
@@ -15,6 +17,8 @@
     <file url="file://$PROJECT_DIR$/www/js/controller/tagCtrl.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/js/controller/tagVideoListCtrl.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/js/controller/videoPlayCtrl.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/js/directive/searchBox.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/js/directive/searchBox.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/js/filter/filter.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/js/service/authService.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/js/service/commentService.js" charset="UTF-8" />
@@ -23,9 +27,7 @@
     <file url="file://$PROJECT_DIR$/www/js/service/userService.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/lib/ionic/js/angular/angular-animate.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/common/videoplay.html" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/www/templates/discover.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/follow/follow.html" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/www/templates/interest.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/lecturer/lecturer.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/menu.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/templates/myself/myself.html" charset="UTF-8" />
