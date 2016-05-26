@@ -138,7 +138,7 @@ angular.module('diandou', ['ionic',
         }
       })
     .state('app.main.lecturer', {
-        url: "/lecturer/:roleId",
+        url: "/lecturer",
         views: {
           'lecturer-tab': {
             templateUrl: "templates/lecturer/lecturer.html",
@@ -157,7 +157,7 @@ angular.module('diandou', ['ionic',
         }
       })
       .state('app.main.follow', {
-        url: "/follow/:adType",
+        url: "/follow/",
         views: {
           'follow-tab': {
             templateUrl: "templates/follow/follow.html",

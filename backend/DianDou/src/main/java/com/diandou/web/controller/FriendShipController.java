@@ -51,10 +51,10 @@ public class FriendShipController {
     @Authority
     @RequestMapping(value = "/getFriendsByUserId",produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<UserModel> getFriendsByUserId(HttpServletRequest request){
+    public String getFriendsByUserId(HttpServletRequest request){
         String selfId = request.getParameter("selfId");
         String pageIdx = request.getParameter("pageIdx");
         String pageSize = request.getParameter("pageSize");
-        return this.userFriendshipService.getFriendsByUserId(pageIdx,pageSize,selfId);
+        return new Gson().toJson(this.userFriendshipService.getFriendsByUserId(pageIdx,pageSize,selfId));
     }
 }

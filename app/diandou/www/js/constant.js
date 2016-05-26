@@ -15,3 +15,7 @@ angular.module('diandou')
     reg_success:'reg_success',
 
   })
+  .constant('CONFIG',{
+    role_id:'1',
+    adv_type:'5',
+  })

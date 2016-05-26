@@ -13,6 +13,7 @@ import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,14 +72,20 @@ public class UserFriendshipService implements IUserFriendshipService{
 
         List<User> userList = this.userFriendshipDao.getFriendsByUserId(pageIdx,pageSize,userId);
 
+        List<String> userIdList = userList.stream().map(user->user.getUserId()).collect(Collectors.toList());
+
         List<String> userIds = userList.stream().map(user->user.getUserId()).collect(Collectors.toList());
 
         Map<String,Integer> userVideoMap = this.userService.getVideoCounts(userIds);
 
         Map<String,List<UserTag>> usersTags = userTagService.getUserTagsByUsers(userIds);
 
+        Map<String,Integer> friendCntMap = this.getFriendCounts(userIdList);
+
         return userList.stream().map(user->new UserModel.Builder()
                                                 .user(user)
+                                                .isFollowed(true)
+                                                .friendCount(friendCntMap.get(user.getUserId()))
                                                 .tagList(usersTags.get(user.getUserId()))
                                                 .videoCount(userVideoMap.get(user.getUserId()))
                                                 .build()).collect(Collectors.toList());

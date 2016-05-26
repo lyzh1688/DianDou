@@ -15,34 +15,38 @@
         </ion-slide>
       </ion-slide-box>
       <div ng-repeat="friend in friends">
-        <a class="item my-lecturer-item" href="#/app/main/ownervideolist/{{friend.user.userId}}/{{friend.user.userName}}" >
+        <div class="item my-lecturer-item" >
           <div class = "row my-form-font">
-            <div class = "col my-col-margin">
-              <div class="item-avatar" style="position:relative;">
-                <img ng-src="{{friend.user.headPortrait}}">
-              </div>
-              <span class="my-name-pos">{{friend.user.userName}}</span>
-              <span class="my-gender-icon"  ng-switch="friend.user.sex">
+
+              <a class = "col my-col-margin" href="#/app/main/ownervideolist/{{friend.user.userId}}/{{friend.user.userName}}" >
+
+                <div class="item-avatar" style="position:relative;">
+                  <img ng-src="{{friend.user.headPortrait}}">
+                </div>
+                <span class="my-name-pos">{{friend.user.userName}}</span>
+                <span class="my-gender-icon"  ng-switch="friend.user.sex">
                   <img ng-switch-when="0" ng-src='img/female.ico'/>
                   <img ng-switch-when="1" ng-src='img/male.ico'/>
-              </span>
-            </div>
+                </span>
+              </a>
+
+
             <div class = "col">
               <span class='my-follow-margin'>豆龄：</span>
               <span class="answer-col">5</span>
               <span class='my-follow-margin'>粉丝：</span>
-              <span class="answer-col">{{friend.user.friendCount}}</span>
+              <span class="answer-col">{{friend.friendCount}}</span>
               <div>
                 <span class='my-follow-margin'>相关视频：</span>
                 <span class="answer-col">{{friend.user.videoCount}}</span>
               </div>
               <div class="my-name-pos my-follow-margin teacher-type-font">{{friend.tagList|joinTagFilter}}</div>
-              <button class="btn btn-warning btn-icon my-button-font" ng-click="onFollow($index)">{{userItem.isFollowed|followFilter}}
+              <button class="btn btn-warning btn-icon my-button-font" ng-click="onFollow($index)">{{friend.isFollowed|followFilter}}
                 <i class="fa fa-paper-plane"></i>
               </button>
             </div>
           </div>
-        </a>
+        </div>
       </div>
     </div>
         <ion-infinite-scroll ng-if="loadMore"

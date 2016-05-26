@@ -14,6 +14,7 @@ import com.diandou.user.service.IUserTagService;
 import com.diandou.user.vmodel.UserModel;
 import com.diandou.video.service.IVideoService;
 import com.diandou.video.vmodel.VideoModel;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

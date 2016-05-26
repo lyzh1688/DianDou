@@ -38,7 +38,7 @@ public class UserController {
     @Authority
     @RequestMapping(value = "/searchUserListByName",produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<UserModel> searchUserListByName(HttpServletRequest request){
+    public String searchUserListByName(HttpServletRequest request){
 
         String userName = request.getParameter("userName");
         String followerId = request.getParameter("followerId");
@@ -46,16 +46,21 @@ public class UserController {
         String pageSize = request.getParameter("pageSize");
 
         if(userName != null) {
-            return this.userService.getUserListByName(pageIdx,pageSize,userName,followerId);
+
+            //it's strange that isFollowed attribute becomes to followed when returning ArrayList
+            //return this.userService.getUserListByName(pageIdx,pageSize,userName,followerId);
+            return new Gson().toJson(this.userService.getUserListByName(pageIdx,pageSize,userName,followerId));
+
+
         }
 
-        return new ArrayList<UserModel>();
+        return new Gson().toJson( new ArrayList<UserModel>());
     }
 
-    @Authority
+
     @RequestMapping(value = "/getUserList",produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public List<UserModel> getUserList(HttpServletRequest request){
+    public String getUserList(HttpServletRequest request){
 
         String roleId = request.getParameter("roleId");
         String followerId = request.getParameter("followerId");
@@ -63,9 +68,11 @@ public class UserController {
         String pageSize = request.getParameter("pageSize");
 
         if(roleId != null) {
-            return this.userService.getUserListByRole(pageIdx,pageSize,roleId,followerId);
+
+            //it's strange that isFollowed attribute becomes to followed when returning ArrayList
+            return new Gson().toJson(this.userService.getUserListByRole(pageIdx,pageSize,roleId,followerId));
         }
 
-        return new ArrayList<UserModel>();
+        return new Gson().toJson( new ArrayList<UserModel>());
     }
 }

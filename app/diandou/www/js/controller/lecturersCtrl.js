@@ -2,7 +2,8 @@
  * Created by 胡志洁 on 2016/5/7.
  */
 angular.module('diandou.controllers')
-  .controller('LecturersCtrl', ['$scope','$stateParams','$ionicPopup','UserService','AuthService',function($scope,$stateParams,$ionicPopup,UserService,AuthService) {
+  .controller('LecturersCtrl', ['$scope','$stateParams','$ionicPopup','UserService','AuthService','CONFIG',
+                function($scope,$stateParams,$ionicPopup,UserService,AuthService,CONFIG) {
 
     $scope.lecturers = [];
     $scope.loadMore = true;
@@ -28,7 +29,7 @@ angular.module('diandou.controllers')
     $scope.onLoadMore = function(){
 
       if( 'Normal' == searchTpye){
-        var roleId = $stateParams.roleId;
+        var roleId = CONFIG.role_id;
         var followerId =  AuthService.getUserId();
         var params = {roleId:roleId ,followerId:followerId,pageIdx:$scope.PageIndex,pageSize:$scope.PageSize}
         UserService.getUserList(params)
@@ -84,6 +85,17 @@ angular.module('diandou.controllers')
               template: '请检查网络情况'
             });
           }
+          else{
+            if(bIsFollow == true){
+              $scope.lecturers[index].friendCount -= 1;
+            }
+            else{
+              $scope.lecturers[index].friendCount += 1;
+            }
+
+            $scope.$emit("Lecturer_Follow_Status_Change_Emit",{});
+
+          }
         },
       function(err){
         var alertPopup = $ionicPopup.alert({
@@ -93,6 +105,13 @@ angular.module('diandou.controllers')
       })
 
     }
+
+    $scope.$on("Friend_Follow_Status_Change_Broadcast",function (event, msg) {
+      $scope.PageIndex = 0;
+      $scope.PageSize = 6;
+      $scope.lecturers = [];
+      $scope.onLoadMore();
+    });
 
     $scope.$on("$destroy", function () {
       //clearTimeout(timer.$$timeoutId);

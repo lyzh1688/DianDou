@@ -2,8 +2,8 @@
  * Created by 胡志洁 on 2016/5/13.
  */
 angular.module('diandou.controllers')
-  .controller('FriendsCtrl', ['$scope','$interval','$stateParams','$ionicPopup','$ionicSlideBoxDelegate','UserService','AuthService','VideoService',
-                                function($scope,$interval,$stateParams,$ionicPopup,$ionicSlideBoxDelegate,UserService,AuthService,VideoService) {
+  .controller('FriendsCtrl', ['$scope','$interval','$stateParams','$ionicPopup','$ionicSlideBoxDelegate','UserService','AuthService','VideoService','CONFIG',
+                                function($scope,$interval,$stateParams,$ionicPopup,$ionicSlideBoxDelegate,UserService,AuthService,VideoService,CONFIG) {
 
     $scope.friends = [];
     $scope.loadMore = true;
@@ -14,6 +14,42 @@ angular.module('diandou.controllers')
     $scope.searchObj = {searchVal:''};
     var searchTpye = 'Normal';
 
+    $scope.onFollow = function(index){
+      var isFollow = $scope.friends[index].isFollowed;
+      var bIsFollow = typeof isFollow == "String" ? eval(isFollow):isFollow;
+      $scope.friends[index].isFollowed = !bIsFollow;
+
+      var params = {followStatus:$scope.friends[index].isFollowed,
+                    selfId:AuthService.getUserId(),
+                    targetId: $scope.friends[index].user.userId};
+      UserService.follow(params)
+      .then(function(result){
+        if(result == "false"){
+          var alertPopup = $ionicPopup.alert({
+            title: '关注失败',
+            template: '请检查网络情况'
+          });
+        }
+        else{
+          if(bIsFollow == true){
+            $scope.friends[index].friendCount -= 1;
+          }
+          else{
+            $scope.friends[index].friendCount += 1;
+          }
+
+          $scope.$emit("Friend_Follow_Status_Change_Emit",{});
+
+        }
+      },
+      function(err){
+        var alertPopup = $ionicPopup.alert({
+          title: '关注失败',
+          template: '请检查网络情况'
+        });
+      })
+
+    }
     $scope.onSearchLecturer = function(){
       $scope.PageIndex = 0;
       $scope.PageSize = 6;
@@ -28,7 +64,7 @@ angular.module('diandou.controllers')
     }
 
     $scope.onInit = function(){
-      var adType = $stateParams.adType;
+      var adType = CONFIG.adv_type;
       params = {tagId:adType}
       VideoService.getAdvertVideoList(params)
         .then(function(result){
@@ -38,15 +74,12 @@ angular.module('diandou.controllers')
 
     }
 
-    //var refresh = $interval(function(){
-    //  console.log('执行$timeout回调');
-    //  return 'angular'
-    //},3000);
-    //refresh.then(function(data){
-    //  console.log(data)
-    //},function(data){
-    //  console.log(data)
-    //});
+     $scope.$on("Lecturer_Follow_Status_Change_Broadcast",function (event, msg) {
+       $scope.PageIndex = 0;
+       $scope.PageSize = 6;
+       $scope.friends = [];
+       $scope.onLoadMore();
+     });
 
     //滚动条响应事件
     $scope.onLoadMore = function(){

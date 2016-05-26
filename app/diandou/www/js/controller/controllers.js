@@ -1,5 +1,15 @@
 angular.module('diandou.controllers', [])
 
+.controller('RootCtrl', function($scope) {
+    $scope.$on("Lecturer_Follow_Status_Change_Emit", function (event, msg) {
+      $scope.$broadcast("Lecturer_Follow_Status_Change_Broadcast", msg);
+    });
+
+    $scope.$on("Friend_Follow_Status_Change_Emit", function (event, msg) {
+      $scope.$broadcast("Friend_Follow_Status_Change_Broadcast", msg);
+    });
+})
+
 .controller('MenuCtrl', function($scope, $ionicModal, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
@@ -60,9 +70,3 @@ angular.module('diandou.controllers', [])
 })
 
 
-.controller('VideolistsCtrl', function($scope) {
-
-})
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});
