@@ -51,7 +51,6 @@ public class UserController {
             //return this.userService.getUserListByName(pageIdx,pageSize,userName,followerId);
             return new Gson().toJson(this.userService.getUserListByName(pageIdx,pageSize,userName,followerId));
 
-
         }
 
         return new Gson().toJson( new ArrayList<UserModel>());

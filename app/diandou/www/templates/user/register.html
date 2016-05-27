@@ -43,23 +43,23 @@
   <div class="content my-register-background1">
     <div class="list card my-register-background1">
       <div class="item item-text-wrap my-register-background1">
-        <form class="list">
+        <form class="list" ng-submit="doRegister()">
           <div class="bar bar-header item-input-inset my-item-input">
             <span class="input-label">手机号:</span>
             <label class="item-input-wrapper">
-              <input type="text">
+              <input type="text" ng-model="registerData.mobile">
             </label>
           </div>
           <div class="bar bar-header item-input-inset my-item-input">
             <span class="input-label">密码:</span>
             <label class="item-input-wrapper">
-              <input type="password">
+              <input type="password" ng-model="registerData.password">
             </label>
           </div>
           <div class="bar bar-header item-input-inset my-item-input">
             <span class="input-label">密码再次:</span>
             <label class="item-input-wrapper">
-              <input type="password">
+              <input type="password" ng-model="registerData.repassword">
             </label>
           </div>
           <div class="bar bar-header item-input-inset my-item-input">
@@ -68,10 +68,11 @@
             </label>
             <button type="button" class="btn btn-success">获取验证码</button>
           </div>
-        </form>
+
         <div class="button-bar my-button-bar">
-          <button type="button" class="btn btn-block btn-lg btn-success btn-icon">注册 <i class="fa fa-check-square-o"></i></button>
+          <button type="submit" class="btn btn-block btn-lg btn-success btn-icon">注册 <i class="fa fa-check-square-o"></i></button>
         </div>
+        </form>
       </div>
     </div>
   </div>

@@ -1,6 +1,7 @@
 package com.diandou.authority.service.impl;
 
 import com.diandou.authority.vmodel.AuthModel;
+import com.diandou.common.Authority.TokenContainer;
 import com.diandou.common.util.StringUtil;
 import com.diandou.enumerable.AuthStatusEnum;
 import com.diandou.user.dao.IUserDao;
@@ -24,6 +25,11 @@ public class AuthorityService implements IAuthorityService {
         String userId = this.userDao.userLogin(mobile,password);
         String loginToken = userId;
         if(!StringUtil.isNullOrEmpty(loginToken) && !StringUtil.isNullOrEmpty(userId)){
+
+            if(!TokenContainer.GetInstance().getTokenUserCache().containsKey(loginToken)) {
+                TokenContainer.GetInstance().getTokenUserCache().put(loginToken, userId);
+            }
+
             return new AuthModel.Builder().authStatus(AuthStatusEnum.login_pass).sessionToken(loginToken).userId(userId).build();
         }
         else{

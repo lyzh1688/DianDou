@@ -43,9 +43,6 @@ public class AuthorityController {
 
         AuthModel authModel = this.authorityService.loginAuthority(mobile,password);
 
-        if(!TokenContainer.GetInstance().getTokenUserCache().containsKey(authModel.getSessionToken())) {
-            TokenContainer.GetInstance().getTokenUserCache().put(authModel.getSessionToken(), authModel.getUserId());
-        }
         return  authModel;
     }
 

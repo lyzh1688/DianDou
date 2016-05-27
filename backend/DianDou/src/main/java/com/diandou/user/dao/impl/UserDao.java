@@ -169,7 +169,7 @@ public class UserDao implements IUserDao {
         }
 
         sql = "insert into dat_user_info(mobile,password)" +
-						 "values(?,?)";
+						 " values (?,?) ";
 
 		int affectedRows = this.jdbcTemplate.update(sql,user.getMobile(),user.getPassword());
 

@@ -3,6 +3,7 @@ package com.diandou.user.service.impl;
 import com.diandou.authority.service.IAuthorityService;
 import com.diandou.authority.vmodel.AuthModel;
 import com.diandou.common.Authority.EncodePassword;
+import com.diandou.common.Authority.TokenContainer;
 import com.diandou.enumerable.AuthStatusEnum;
 import com.diandou.user.dao.IUserDao;
 import com.diandou.user.entity.User;
@@ -84,11 +85,13 @@ public class UserService implements IUserService {
 
         String password = EncodePassword.encodePassword(pswd);
         User newUser = new User.Builder().mobile(mobile).password(password).build();
-        if (this.userDao.userRegister(newUser) == AuthStatusEnum.reg_success){
+        AuthStatusEnum registerRetStatus = this.userDao.userRegister(newUser);
+        if ( registerRetStatus.equals(AuthStatusEnum.reg_success)){
+
             return this.authorityService.loginAuthority(mobile,pswd);
         }
         else{
-            return new AuthModel.Builder().authStatus(AuthStatusEnum.login_fail).build();
+            return new AuthModel.Builder().authStatus(registerRetStatus).build();
         }
     }
 
