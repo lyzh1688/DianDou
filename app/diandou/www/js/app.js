@@ -26,7 +26,7 @@ angular.module('diandou', ['ionic',
       StatusBar.styleDefault();
     }
 
-    ionic.Platform.isFullScreen = true;
+    //ionic.Platform.isFullScreen = true;
   });
 })
 
@@ -114,7 +114,8 @@ angular.module('diandou', ['ionic',
         url: '/main',
         views: {
           'menuContent': {
-            templateUrl: 'templates/main.html'
+            templateUrl: 'templates/main.html',
+            controller:"MainCtrl"
           }
         }
       })

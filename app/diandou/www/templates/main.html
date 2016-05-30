@@ -1,19 +1,20 @@
 <ion-view view-title="点豆">
-  <ion-tabs class="tabs-icon-top my-menu-tab">
+  <ion-tabs ng-class="{'tabs-icon-top':true, 'my-menu-tab':true,'tabs-item-hide':hideTabs}"
+     ng-controller="MainCtrl" >
 
-    <ion-tab title="频道" icon="camera-icon" ui-sref="app.main.videotag">
+    <ion-tab title="频道" icon="camera-icon-off" icon-on="camera-icon" icon-off="camera-icon-off" ui-sref="app.main.videotag">
       <ion-nav-view name="videotag-tab"></ion-nav-view>
     </ion-tab>
 
-    <ion-tab title="讲师" icon="teacher-icon" ui-sref="app.main.lecturer">
+    <ion-tab title="讲师" icon="teacher-icon-off" icon-on="teacher-icon" icon-off="teacher-icon-off" ui-sref="app.main.lecturer">
       <ion-nav-view name="lecturer-tab"></ion-nav-view>
     </ion-tab>
 
-    <ion-tab title="关注" icon="friends-icon" ui-sref="app.main.follow">
+    <ion-tab title="关注" icon="friends-icon-off" icon-on="friends-icon" icon-off="friends-icon-off" ui-sref="app.main.follow">
       <ion-nav-view name="follow-tab"></ion-nav-view>
     </ion-tab>
 
-    <ion-tab title="我" icon="ion-person" ui-sref="app.main.myself">
+    <ion-tab title="我"  icon="me-icon-off" icon-on="me-icon" icon-off="me-icon-off" ui-sref="app.main.myself">
       <ion-nav-view name="activity-tab"></ion-nav-view>
     </ion-tab>
 

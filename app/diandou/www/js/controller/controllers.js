@@ -1,6 +1,6 @@
 angular.module('diandou.controllers', [])
 
-.controller('RootCtrl', function($scope) {
+.controller('RootCtrl', function($scope,$window) {
     $scope.$on("Lecturer_Follow_Status_Change_Emit", function (event, msg) {
       $scope.$broadcast("Lecturer_Follow_Status_Change_Broadcast", msg);
     });
@@ -9,6 +9,29 @@ angular.module('diandou.controllers', [])
       $scope.$broadcast("Friend_Follow_Status_Change_Broadcast", msg);
     });
 })
+
+  .controller('MainCtrl', function($scope,$window) {
+    $scope.hideTabs = false;
+
+    //$window.addEventListener('native.keyboardshow', function(){
+    //  $scope.hideTabs = true;
+    //
+    //});
+
+    $scope.$on('Before_Search_Input',function(event, msg){
+      $scope.hideTabs = true;
+    });
+
+    $scope.$on('After_Search_Input',function(event, msg){
+      $scope.hideTabs = false;
+    });
+
+    $window.addEventListener('native.keyboardhide', function(){
+      $scope.hideTabs = false;
+//      $rootScope.footerShow = false;
+    });
+
+  })
 
 .controller('MenuCtrl', function($scope, $ionicModal, $timeout) {
 

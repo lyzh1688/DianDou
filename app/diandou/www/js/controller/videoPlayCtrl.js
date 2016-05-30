@@ -3,9 +3,9 @@
  */
 angular.module('diandou.controllers')
   .controller('VideoPlayCtrl', ['$scope','$window','$stateParams','$sce','$ionicPopup','$cordovaKeyboard',
-                'CommentService','VideoService',
+                'CommentService','VideoService','AuthService','$ionicPopup',
                 function($scope,$window,$stateParams,$sce,$ionicPopup,$cordovaKeyboard,
-                         CommentService,VideoService) {
+                         CommentService,VideoService,AuthService,$ionicPopup) {
 
     $scope.comments = [];
     var videoId = $stateParams.videoId;
@@ -14,11 +14,17 @@ angular.module('diandou.controllers')
     $scope.PageSize = 6;
     $scope.videoLink = "";
     $scope.videoInfo = {};
+    $scope.cmt = {comment:''};
     $scope.onHistoryGoBack = function(){
       $window.history.back();
     }
 
+    $scope.$on("$cordovaKeyboard:hide", function (event, msg) {
+      $scope.footerShow = false;
+    });
+
     $scope.onInit = function(){
+      $scope.footerShow = false;
       var params = {videoId:videoId};
       VideoService.getVideoInfoById(params)
         .then(function(result){
@@ -31,6 +37,26 @@ angular.module('diandou.controllers')
 
     $scope.onComment = function(){
       $cordovaKeyboard.show();
+      $scope.footerShow = true;
+    }
+
+    $scope.onMakeComment = function () {
+
+      var params = {videoId:videoId,
+                    comment:$scope.cmt.comment,
+                    userId:AuthService.getUserId()};
+
+      CommentService.makeComment(params).then(function (result) {
+        $scope.comments = $scope.comments.concat(result);
+      },
+      function(){
+        var alertPopup = $ionicPopup.alert({
+          title: '网络忙',
+          template: '请稍后评论!'
+        });
+      })
+
+      $cordovaKeyboard.hide();
     }
     //滚动条响应事件
     $scope.onLoadMore = function(){

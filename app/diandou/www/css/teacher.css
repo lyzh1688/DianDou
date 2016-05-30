@@ -1,20 +1,10 @@
-.teacher-icon{
-    background-image: url('../images/teacher.ico') !important;
-    background-repeat:no-repeat !important;
-    background-position: center !important;
-}
 
 .my-menu-tab{
     background-color:white !important;
     background-image:none !important;
 }
 
-.friends-icon
-{
-    background-image: url('../images/friends.ico') !important;
-    background-repeat:no-repeat !important;
-    background-position: center !important;
-}
+
 
 .camera-icon
 {
@@ -87,11 +77,12 @@
 }
 
 .my-col-margin{
-	margin-left:20px;
 }
 
-.my-lecturer-item{
-	margin:5px;
+div.my-lecturer-item{
+  padding-top: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 

@@ -1,9 +1,11 @@
 <ion-view title="" ng-controller="LecturersCtrl">
   <ion-content >
-    <ion-header-bar  class="item-input-inset item-icon-right">
+    <!--ion-header-bar  class="item-input-inset item-icon-right">
       <search-box search-val="searchObj.searchVal" placeholder-val="搜索讲师" on-click-callback="onSearchLecturer()">
       </search-box>
-    </ion-header-bar>
+    </ion-header-bar-->
+    <search-box search-val="searchObj.searchVal" placeholder-val="搜索讲师" on-click-callback="onSearchLecturer()">
+    </search-box>
     <div class="list" ng-repeat="userItem in lecturers">
       <div class="item my-lecturer-item" >
         <div class = "row my-form-font">
@@ -19,8 +21,6 @@
             </span>
               <div class="my-name-pos">{{userItem.tagList|joinTagFilter}}</div>
             </a>
-
-
             <div class="my-button-pos">
               <button class="btn btn-warning btn-icon my-button-font" ng-click="onFollow($index)">{{userItem.isFollowed|followFilter}}
                 <i class="fa fa-paper-plane"></i>
@@ -28,10 +28,6 @@
             </div>
           </div>
           <div class = "col">
-            <div class="row">
-              <div class="col">豆龄：</div>
-              <div class="col answer-col">9</div>
-            </div>
             <div class="row">
               <div class="col">粉丝：</div>
               <div class="col answer-col">{{userItem.friendCount}}</div>

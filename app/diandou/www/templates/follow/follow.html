@@ -1,9 +1,7 @@
 <ion-view title="" ng-controller="FriendsCtrl" ng-init="onInit()">
   <ion-content>
-    <ion-header-bar  class="item-input-inset item-icon-right">
-      <search-box search-val="searchObj.searchVal" placeholder-val="搜索讲师" on-click-callback="onSearchLecturer()">
-      </search-box>
-    </ion-header-bar>
+    <search-box search-val="searchObj.searchVal" placeholder-val="搜索讲师" on-click-callback="onSearchLecturer()">
+    </search-box>
     <div>
       <span class = 'my-follow-font'>每周上新</span>
     </div>
@@ -32,8 +30,6 @@
 
 
             <div class = "col">
-              <span class='my-follow-margin'>豆龄：</span>
-              <span class="answer-col">5</span>
               <span class='my-follow-margin'>粉丝：</span>
               <span class="answer-col">{{friend.friendCount}}</span>
               <div>

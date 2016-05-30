@@ -2,6 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/plugins/fetch.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/www/css/activity.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/css/login.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/css/register.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/www/css/style.css" charset="UTF-8" />

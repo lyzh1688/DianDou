@@ -14,14 +14,18 @@ angular.module('diandou.searchBox',[])
 
     templateUrl:'js/directive/searchBox.html',
 
-    /*
+
     link: function($scope, $element, $attrs){
-      $scope.search = function()
+      $scope.onBeforeInput = function()
       {
-        var onClickCallbackfunc = $parse($scope.onClickCallback);
-        onClickCallbackfunc();
+        $scope.$emit("Before_Search_Input",{});
+
+      }
+
+      $scope.onBlur = function(){
+        $scope.$emit("After_Search_Input",{});
       }
     }
-    */
+
 }
 }]);
