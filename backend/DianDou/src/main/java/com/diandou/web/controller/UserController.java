@@ -2,6 +2,8 @@ package com.diandou.web.controller;
 
 import com.diandou.annotation.Authority;
 import com.diandou.authority.vmodel.AuthModel;
+import com.diandou.common.util.StringUtil;
+import com.diandou.user.entity.User;
 import com.diandou.user.service.IUserService;
 import com.diandou.user.vmodel.UserModel;
 import com.diandou.video.service.IVideoService;
@@ -36,6 +38,19 @@ public class UserController {
     }
 
     @Authority
+    @RequestMapping(value = "/getUserInfoById",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public User getUserInfoById(HttpServletRequest request){
+        String userId = request.getParameter("userId");
+        if(StringUtil.isNullOrEmpty(userId)){
+            return null;
+        }
+        else {
+            return this.userService.getUserInfoById(userId);
+        }
+    }
+
+    @Authority
     @RequestMapping(value = "/searchUserListByName",produces = "application/json;charset=UTF-8")
     @ResponseBody
     public String searchUserListByName(HttpServletRequest request){
@@ -56,7 +71,7 @@ public class UserController {
         return new Gson().toJson( new ArrayList<UserModel>());
     }
 
-
+    @Authority
     @RequestMapping(value = "/getUserList",produces = "application/json;charset=UTF-8")
     @ResponseBody
     public String getUserList(HttpServletRequest request){
@@ -73,5 +88,53 @@ public class UserController {
         }
 
         return new Gson().toJson( new ArrayList<UserModel>());
+    }
+
+    @Authority
+    @RequestMapping(value = "/updateUserName",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public boolean updateUserName(HttpServletRequest request){
+
+        String userId = request.getParameter("userId");
+        String userName = request.getParameter("userName");
+
+        if(StringUtil.isNullOrEmpty(userId)) {
+            return false;
+        }
+
+        return this.userService.updateUserName(userName,userId);
+
+    }
+
+    @Authority
+    @RequestMapping(value = "/updateUserSex",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public boolean updateUserSex(HttpServletRequest request){
+
+        String userId = request.getParameter("userId");
+        String sex = request.getParameter("sex");
+
+        if(StringUtil.isNullOrEmpty(userId)) {
+            return false;
+        }
+
+        return this.userService.updateUserSex(sex,userId);
+
+    }
+
+    @Authority
+    @RequestMapping(value = "/updateUserBrief",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public boolean updateUserBrief(HttpServletRequest request){
+
+        String userId = request.getParameter("userId");
+        String brief = request.getParameter("brief");
+
+        if(StringUtil.isNullOrEmpty(userId)) {
+            return false;
+        }
+
+        return this.userService.updateUserBrief(brief,userId);
+
     }
 }

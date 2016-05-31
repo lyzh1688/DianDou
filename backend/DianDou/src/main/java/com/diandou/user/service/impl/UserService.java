@@ -4,6 +4,7 @@ import com.diandou.authority.service.IAuthorityService;
 import com.diandou.authority.vmodel.AuthModel;
 import com.diandou.common.Authority.EncodePassword;
 import com.diandou.common.Authority.TokenContainer;
+import com.diandou.common.util.StringUtil;
 import com.diandou.enumerable.AuthStatusEnum;
 import com.diandou.user.dao.IUserDao;
 import com.diandou.user.entity.User;
@@ -59,8 +60,18 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public boolean updateUserInfo(User user) {
-        return this.userDao.updateUserInfo(user);
+    public boolean updateUserName(String userName, String userId) {
+        return this.userDao.updateUserName(userName,userId);
+    }
+
+    @Override
+    public boolean updateUserSex(String sex, String userId) {
+        return this.userDao.updateUserSex(sex,userId);
+    }
+
+    @Override
+    public boolean updateUserBrief(String brief, String userId) {
+        return this.userDao.updateUserBrief(brief,userId);
     }
 
     @Override
@@ -93,6 +104,15 @@ public class UserService implements IUserService {
         else{
             return new AuthModel.Builder().authStatus(registerRetStatus).build();
         }
+    }
+
+    @Override
+    public User getUserInfoById(String userId) {
+        if(StringUtil.isNullOrEmpty(userId)){
+            return null;
+        }
+
+        return this.userDao.getUserInfoById(userId);
     }
 
     private List<UserModel> getUserModelList(List<User> userList,String followerId){

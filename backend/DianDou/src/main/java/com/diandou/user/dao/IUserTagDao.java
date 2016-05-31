@@ -9,5 +9,12 @@ import java.util.List;
  * Created by 胡志洁 on 2016/5/18.
  */
 public interface IUserTagDao {
+
     List<UserTag> getUserTagsByUsers(List<String> userList);
+
+    boolean updateUserTags(List<String> tagList,String userId);
+
+    boolean removeUserTag(String userId);
+
+
 }

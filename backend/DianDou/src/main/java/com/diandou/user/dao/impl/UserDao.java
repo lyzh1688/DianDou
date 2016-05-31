@@ -81,12 +81,32 @@ public class UserDao implements IUserDao {
     }
 
     @Override
-    public boolean updateUserInfo(User user) {
+    public boolean updateUserName(String userName,String userId) {
 
-        String sql = " update dat_user_info t set t.user_name = ?,t.brief = ?,t.sex = ? " +
-                    " where t.mobile = ? ";
+        String sql = " update dat_user_info t set t.user_name = ? " +
+                    " where t.user_id = ? ";
 
-        int affectedRows = this.jdbcTemplate.update(sql,user.getUserName(),user.getBrief(),user.getSex(),user.getMobile());
+        int affectedRows = this.jdbcTemplate.update(sql,userName,userId);
+
+        return affectedRows != 0;
+    }
+
+    @Override
+    public boolean updateUserSex(String sex, String userId) {
+        String sql = " update dat_user_info t set t.sex = ?  " +
+                " where t.user_id = ? ";
+
+        int affectedRows = this.jdbcTemplate.update(sql,sex,userId);
+
+        return affectedRows != 0;
+    }
+
+    @Override
+    public boolean updateUserBrief(String brief, String userId) {
+        String sql = " update dat_user_info t set t.brief = ?  " +
+                " where t.user_id = ? ";
+
+        int affectedRows = this.jdbcTemplate.update(sql,brief,userId);
 
         return affectedRows != 0;
     }

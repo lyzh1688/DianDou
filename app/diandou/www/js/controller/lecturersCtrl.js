@@ -2,8 +2,8 @@
  * Created by 胡志洁 on 2016/5/7.
  */
 angular.module('diandou.controllers')
-  .controller('LecturersCtrl', ['$scope','$stateParams','$ionicPopup','UserService','AuthService','CONFIG',
-                function($scope,$stateParams,$ionicPopup,UserService,AuthService,CONFIG) {
+  .controller('LecturersCtrl', ['$scope','$ionicPopup','UserService','AuthService','CONFIG',
+                function($scope,$ionicPopup,UserService,AuthService,CONFIG) {
 
     $scope.lecturers = [];
     $scope.loadMore = true;

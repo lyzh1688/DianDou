@@ -1,0 +1,16 @@
+<ion-view ng-controller="BriefSettingCtrl" ng-init="onInit()">
+  <ion-header-bar class=" item-input-inset bar-header" align-title="center">
+    <div class="button icon-left ion-chevron-left button-clear" ng-click="onHistoryGoBack()"></div>
+    <h1 class="title">更改签名</h1>
+    <button class="button pull-right" ng-click="onConfirm()">确定</button>
+  </ion-header-bar>
+  <div class="content">
+    <ion-list class="list">
+      <div class="item item-input-inset">
+        <input type="text" ng-model="user.brief">
+      </div>
+    </ion-list>
+    <span>写下您的签名</span>
+  </div>
+</ion-view>
+

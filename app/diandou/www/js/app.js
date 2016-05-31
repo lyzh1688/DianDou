@@ -104,6 +104,22 @@ angular.module('diandou', ['ionic',
         templateUrl: 'templates/common/videoplay.html',
         controller:"VideoPlayCtrl"
       })
+      .state('account', {
+        url: '/account',
+        templateUrl: 'templates/myself/account.html',
+        controller:"AccountCtrl"
+      })
+      .state('namesetting', {
+        url: '/namesetting',
+        templateUrl: 'templates/myself/namesetting.html',
+        controller:"NameSettingCtrl"
+      })
+      .state('briefsetting', {
+        url: '/briefsetting',
+        templateUrl: 'templates/myself/briefsetting.html',
+        controller:"BriefSettingCtrl"
+      })
+
      .state('app', {
         url: '/app',
         abstract: true,

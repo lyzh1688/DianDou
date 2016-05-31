@@ -6,11 +6,9 @@ import com.diandou.user.entity.UserTag;
 import com.diandou.user.service.IUserTagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by 胡志洁 on 2016/5/18.
@@ -40,5 +38,18 @@ public class UserTagService implements IUserTagService {
         }
 
         return userTagMap;
+    }
+
+    @Transactional
+    @Override
+    public boolean updateUserTags(String tags, String userId) {
+        String[] tagList = tags.split(",");
+        this.removeUserTag(userId);
+        return this.userTagDao.updateUserTags(Arrays.asList(tagList),userId);
+    }
+
+    @Override
+    public boolean removeUserTag(String userId) {
+        return this.userTagDao.removeUserTag(userId);
     }
 }

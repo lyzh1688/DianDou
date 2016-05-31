@@ -14,7 +14,9 @@ public interface IUserDao {
     public List<VideoCount> getVideoCounts(List<String> userIds);
     public User getUserInfoById(String userId);
     public User getUserInfoByMobile(String mobile);
-    public boolean updateUserInfo(User user);
+    public boolean updateUserName(String userName,String userId);
+    public boolean updateUserSex(String sex,String userId);
+    public boolean updateUserBrief(String brief,String userId);
     public List<User> getUserListByRole(String pageIdx,String pageSize,String roleId);
     public List<User> getUserListByName(String pageIdx,String pageSize,String userName);
     public String userLogin(String mobile,String password);

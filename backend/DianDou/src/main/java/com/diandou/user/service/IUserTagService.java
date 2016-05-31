@@ -10,4 +10,6 @@ import java.util.Map;
  */
 public interface IUserTagService {
     public Map<String,List<UserTag>> getUserTagsByUsers(List<String> userList);
+    boolean updateUserTags(String tagList,String userId);
+    boolean removeUserTag(String userId);
 }

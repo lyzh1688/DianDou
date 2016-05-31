@@ -2,8 +2,8 @@
  * Created by 胡志洁 on 2016/5/13.
  */
 angular.module('diandou.controllers')
-  .controller('FriendsCtrl', ['$scope','$interval','$stateParams','$ionicPopup','$ionicSlideBoxDelegate','UserService','AuthService','VideoService','CONFIG',
-                                function($scope,$interval,$stateParams,$ionicPopup,$ionicSlideBoxDelegate,UserService,AuthService,VideoService,CONFIG) {
+  .controller('FriendsCtrl', ['$scope','$interval','$ionicPopup','$ionicSlideBoxDelegate','UserService','AuthService','VideoService','CONFIG',
+                                function($scope,$interval,$ionicPopup,$ionicSlideBoxDelegate,UserService,AuthService,VideoService,CONFIG) {
 
     $scope.friends = [];
     $scope.loadMore = true;

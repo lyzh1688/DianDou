@@ -14,7 +14,7 @@
 	http://www.springframework.org/schema/task
 	http://www.springframework.org/schema/task/spring-task-4.0.xsd
 	http://www.springframework.org/schema/tx
-	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 	http://www.springframework.org/schema/aop
 	http://www.springframework.org/schema/aop/spring-aop.xsd">
 
@@ -102,14 +102,13 @@
     </bean>
     -->
     <!-- 事务管理 -->
-    <!--
-    <bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
-        <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 
     <tx:annotation-driven transaction-manager="txManager" proxy-target-class="true"></tx:annotation-driven>
-    -->
+
     <!-- web component-scan begin-->
     <context:component-scan base-package="com.diandou.annotation" />
     <context:component-scan base-package="com.diandou.aspect" />

@@ -17,11 +17,17 @@ public interface IUserService {
 
     public User getUserInfoByMobile(String mobile);
 
-    public boolean updateUserInfo(User user);
+    public boolean updateUserName(String userName,String userId);
+
+    public boolean updateUserSex(String sex,String userId);
+
+    public boolean updateUserBrief(String brief,String userId);
 
     public List<UserModel> getUserListByRole(String pageIdx, String pageSize, String roleId,String userId);
 
     public List<UserModel> getUserListByName(String pageIdx, String pageSize, String userName,String userId);
 
     public AuthModel userRegister( String mobile, String pswd);
+
+    public User getUserInfoById(String userId);
 }
