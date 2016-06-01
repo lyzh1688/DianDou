@@ -19,5 +19,7 @@ public interface IVideoDao {
 
     public List<Video> getVideoListByName(String pageIdx,String pageSize,String videoName);
 
+    public List<Video> getOwnerVideoListByName(String pageIdx,String pageSize,String ownerId,String videoName);
+
     public Video getVideoById(String videoId);
 }

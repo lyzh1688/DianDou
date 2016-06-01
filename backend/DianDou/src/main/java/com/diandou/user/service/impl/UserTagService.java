@@ -2,6 +2,7 @@ package com.diandou.user.service.impl;
 
 import com.diandou.user.dao.IUserDao;
 import com.diandou.user.dao.IUserTagDao;
+import com.diandou.user.entity.TagInfo;
 import com.diandou.user.entity.UserTag;
 import com.diandou.user.service.IUserTagService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,12 +41,22 @@ public class UserTagService implements IUserTagService {
         return userTagMap;
     }
 
+    @Override
+    public List<UserTag> getUserTagsByUserId(String userId) {
+        return this.userTagDao.getUserTagsByUserId(userId);
+    }
+
     @Transactional
     @Override
     public boolean updateUserTags(String tags, String userId) {
         String[] tagList = tags.split(",");
         this.removeUserTag(userId);
         return this.userTagDao.updateUserTags(Arrays.asList(tagList),userId);
+    }
+
+    @Override
+    public List<TagInfo> getAllTag() {
+        return this.userTagDao.getAllTag();
     }
 
     @Override

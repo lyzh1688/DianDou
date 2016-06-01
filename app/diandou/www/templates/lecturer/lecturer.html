@@ -4,8 +4,11 @@
       <search-box search-val="searchObj.searchVal" placeholder-val="搜索讲师" on-click-callback="onSearchLecturer()">
       </search-box>
     </ion-header-bar-->
-    <search-box search-val="searchObj.searchVal" placeholder-val="搜索讲师" on-click-callback="onSearchLecturer()">
-    </search-box>
+    <ion-header-bar  class="item-input-inset item-icon-right">
+      <div>优秀讲师</div>
+      <search-box search-val="searchObj.searchVal" placeholder-val="搜索讲师" on-click-callback="onSearchLecturer()">
+      </search-box>
+    </ion-header-bar>
     <div class="list" ng-repeat="userItem in lecturers">
       <div class="item my-lecturer-item" >
         <div class = "row my-form-font">
@@ -19,7 +22,7 @@
                 <img ng-switch-when="0" ng-src='img/female.ico'/>
                 <img ng-switch-when="1" ng-src='img/male.ico'/>
             </span>
-              <div class="my-name-pos">{{userItem.tagList|joinTagFilter}}</div>
+              <!--div class="my-name-pos">{{userItem.tagList|joinTagFilter}}</div-->
             </a>
             <div class="my-button-pos">
               <button class="btn btn-warning btn-icon my-button-font" ng-click="onFollow($index)">{{userItem.isFollowed|followFilter}}

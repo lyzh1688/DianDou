@@ -1,9 +1,16 @@
-<ion-view title="Videos"  ng-controller="TagVideoListCtrl">
+<ion-view title="Videos"  ng-controller="TagVideoListCtrl" ng-init="onInit()">
   <ion-content>
     <ion-header-bar  class="item-input-inset item-icon-right">
       <div class="button icon-left ion-chevron-left button-clear" ng-click="onHistoryGoBack()"></div>
-      <search-box search-val="searchObj.searchVal" placeholder-val="搜索视频" on-click-callback="onSearchVideos()">
-      </search-box>
+      <div>{{tagObj.tagName}}</div>
+
+      <input class="item-input-wrapper"  type="text"
+             placeholder='搜索视频'
+             ng-click="onSearchVideos()"
+             />
+
+      <!--search-box search-val="searchObj.searchVal" placeholder-val="搜索视频" on-click-callback="onSearchVideos()">
+      </search-box-->
     </ion-header-bar>
     <ion-list>
       <ion-item ng-repeat="videoItem in videos" ng-if="$index % 2 == 0">

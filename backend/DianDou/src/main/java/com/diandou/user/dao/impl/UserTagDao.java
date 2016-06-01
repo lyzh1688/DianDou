@@ -1,9 +1,12 @@
 package com.diandou.user.dao.impl;
 
 import com.diandou.common.option.InOption;
+import com.diandou.common.util.StringUtil;
 import com.diandou.user.dao.IUserTagDao;
+import com.diandou.user.entity.TagInfo;
 import com.diandou.user.entity.User;
 import com.diandou.user.entity.UserTag;
+import com.diandou.user.mapper.TagInfoMapper;
 import com.diandou.user.mapper.UserTagMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
@@ -26,6 +29,18 @@ public class UserTagDao implements IUserTagDao {
     private JdbcTemplate jdbcTemplate;
 
     @Override
+    public List<TagInfo> getAllTag() {
+
+        List<TagInfo> tagList = null;
+
+        String sql = "select tag_id,tag_name from prm_user_tag ";
+
+        tagList = this.jdbcTemplate.query(sql,new TagInfoMapper());
+
+        return tagList;
+    }
+
+    @Override
     public List<UserTag> getUserTagsByUsers(List<String> userList) {
         if(userList == null || userList.size() == 0){
             return new ArrayList<UserTag>();
@@ -42,6 +57,26 @@ public class UserTagDao implements IUserTagDao {
                 new InOption(userList).genOptionCode();
 
         userTagList = this.jdbcTemplate.query(sql,new UserTagMapper());
+
+        return userTagList;
+    }
+
+    @Override
+    public List<UserTag> getUserTagsByUserId(String userId) {
+        if(StringUtil.isNullOrEmpty(userId)){
+            return new ArrayList<UserTag>();
+        }
+
+        List<UserTag> userTagList = null;
+
+        String sql = " select t.user_id," +
+                " t.tag_id," +
+                " p.tag_name " +
+                " from dat_user_tag t,prm_user_tag p " +
+                " where t.tag_id = p.tag_id " +
+                " and t.user_id = ? ";
+
+        userTagList = this.jdbcTemplate.query(sql,new Object[]{userId}, new UserTagMapper());
 
         return userTagList;
     }

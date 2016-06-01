@@ -55,7 +55,12 @@ public class VideoController {
         String videoName = request.getParameter("videoName");
         String pageIdx = request.getParameter("pageIdx");
         String pageSize = request.getParameter("pageSize");
-
+//        if(StringUtil.isNullOrEmpty(ownerId) && !StringUtil.isNullOrEmpty(videoName)){
+//            return this.videoService.getOwnerVideoListByName(pageIdx,pageSize,ownerId,videoName);
+//        }
+        if(!StringUtil.isNullOrEmpty(ownerId) && !StringUtil.isNullOrEmpty(videoName)){
+            return this.videoService.getOwnerVideoListByName(pageIdx,pageSize,ownerId,videoName);
+        }
         if(!StringUtil.isNullOrEmpty(tagId)) {
             return this.videoService.getVideoListByTag(pageIdx,pageSize,tagId);
         }

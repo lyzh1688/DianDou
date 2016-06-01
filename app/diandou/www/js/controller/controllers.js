@@ -1,5 +1,6 @@
 angular.module('diandou.controllers', [])
 
+
 .controller('RootCtrl', function($scope,$window) {
     $scope.$on("Lecturer_Follow_Status_Change_Emit", function (event, msg) {
       $scope.$broadcast("Lecturer_Follow_Status_Change_Broadcast", msg);

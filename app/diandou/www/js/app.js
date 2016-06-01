@@ -4,6 +4,8 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
+
+
 angular.module('diandou', ['ionic',
                               'ngCordova',
                               'ngCordova.plugins.keyboard',
@@ -104,6 +106,8 @@ angular.module('diandou', ['ionic',
         templateUrl: 'templates/common/videoplay.html',
         controller:"VideoPlayCtrl"
       })
+
+
       .state('account', {
         url: '/account',
         templateUrl: 'templates/myself/account.html',
@@ -118,6 +122,11 @@ angular.module('diandou', ['ionic',
         url: '/briefsetting',
         templateUrl: 'templates/myself/briefsetting.html',
         controller:"BriefSettingCtrl"
+      })
+      .state('tagsetting', {
+        url: '/tagsetting',
+        templateUrl: 'templates/myself/tagsetting.html',
+        controller:"TagSettingCtrl"
       })
 
      .state('app', {
@@ -154,6 +163,17 @@ angular.module('diandou', ['ionic',
           }
         }
       })
+
+      .state('app.main.videosearch', {
+        url: '/videosearch',
+        views: {
+          'videotag-tab': {
+            templateUrl: 'templates/video/videosearch.html',
+            controller:"VideoSearchCtrl"
+          }
+        }
+      })
+
     .state('app.main.lecturer', {
         url: "/lecturer",
         views: {
@@ -173,6 +193,7 @@ angular.module('diandou', ['ionic',
           }
         }
       })
+
       .state('app.main.follow', {
         url: "/follow/",
         views: {

@@ -121,6 +121,15 @@ public class VideoService implements IVideoService {
     }
 
     @Override
+    public List<VideoModel> getOwnerVideoListByName(String pageIdx, String pageSize, String ownerId, String videoName) {
+        List<Video> videos = this.videoDao.getOwnerVideoListByName(pageIdx,pageSize,ownerId,videoName);
+
+        List<VideoModel> videoModelList = this.getVideosTagsList(videos);
+
+        return videoModelList;
+    }
+
+    @Override
     public Video getVideoById(String videoId) {
         return this.videoDao.getVideoById(videoId);
     }

@@ -1,6 +1,7 @@
 package com.diandou.user.service;
 
 import com.diandou.authority.vmodel.AuthModel;
+import com.diandou.user.entity.TagInfo;
 import com.diandou.user.entity.User;
 import com.diandou.user.entity.VideoCount;
 import com.diandou.user.vmodel.UserModel;
@@ -30,4 +31,6 @@ public interface IUserService {
     public AuthModel userRegister( String mobile, String pswd);
 
     public User getUserInfoById(String userId);
+
+    public UserModel getUserModelById(String userId,String followerId);
 }

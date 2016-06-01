@@ -1,0 +1,37 @@
+<!--
+<ion-view ng-controller="VideoSearchCtrl" ng-init="onInit()">
+  <ion-header-bar class=" item-input-inset bar-header" align-title="center">
+    <div class="button icon-left ion-chevron-left button-clear" ng-click="onHistoryGoBack()"></div>
+    <search-box search-val="searchObj.searchVal" placeholder-val="搜索视频" on-click-callback="onSearchVideos()">
+    </search-box>
+
+    #/app/main/tagvideolist/{{tag.tagInfo.tagId}}/{{tag.tagInfo.tagName}}
+  </ion-header-bar>
+  <div class="content">
+
+  </div>
+</ion-view>
+-->
+
+<ion-view ng-controller="VideoSearchCtrl" ng-init="onInit()">
+  <ion-content class="no-header">
+    <div class="bar bar-header">
+      <div class="button icon-left ion-chevron-left button-clear" ng-click="onHistoryGoBack()"></div>
+      <search-box search-val="searchObj.searchVal" placeholder-val="搜索视频" on-click-callback="onSearchVideos()">
+      </search-box>
+      <!--<h1 class="title"><input placeholder="搜索视频" ng-model="searchObj.searchVal"/></h1>
+      <a href="#/app/main/tagvideolist/-1/{{searchObj.searchVal}}" class="button button-icon icon ion-heart"></a>
+      -->
+    </div>
+    <div class="content">
+      <div ng-repeat="tag in tagList" ng-if="$index%4 == 0">
+        <div class="button-bar">
+          <a ng-if="tagList[$index]" class="button" href="#/app/main/tagvideolist/{{tagList[$index].tagId}}/{{tagList[$index].tagName}}">{{tagList[$index].tagName}}</a>
+          <a ng-if="tagList[$index+1]" class="button" href="#/app/main/tagvideolist/{{tagList[$index+1].tagId}}/{{tagList[$index].tagName}}">{{tagList[$index + 1].tagName}}</a>
+          <a ng-if="tagList[$index+2]" class="button" href="#/app/main/tagvideolist/{{tagList[$index+2].tagId}}/{{tagList[$index].tagName}}">{{tagList[$index + 2].tagName}}</a>
+          <a ng-if="tagList[$index+3]" class="button" href="#/app/main/tagvideolist/{{tagList[$index+3].tagId}}/{{tagList[$index].tagName}}">{{tagList[$index + 3].tagName}}</a>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

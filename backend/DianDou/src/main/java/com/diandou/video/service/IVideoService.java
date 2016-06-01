@@ -17,5 +17,6 @@ public interface IVideoService {
     public List<Video> getVideoListByTags(List<String> tags, int count);
     public List<VideoModel> getVideoListByOwner(String pageIdx, String pageSize, String ownerId);
     public List<VideoModel> getVideoListByName(String pageIdx, String pageSize, String videoName);
+    public List<VideoModel> getOwnerVideoListByName(String pageIdx, String pageSize, String ownerId, String videoName);
     public Video getVideoById(String videoId);
 }

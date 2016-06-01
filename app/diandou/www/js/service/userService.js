@@ -107,10 +107,65 @@ angular.module('diandou.services')
         return defered.promise;
       },
 
+      getUserModelById:function(params){
+        var defered = $q.defer();
+        var serverUrl = REMOTE_SERVER.remoteDiandouSrv;
+        $http.post( serverUrl + '/user/getUserModelById',params)
+          .success(function(data,status,headers,config){
+            defered.resolve(data);
+          })
+          .error(function(data,status,headers,config){
+            defered.reject(data);
+          })
+
+        return defered.promise;
+      },
+
       getUserInfoById:function(params){
         var defered = $q.defer();
         var serverUrl = REMOTE_SERVER.remoteDiandouSrv;
         $http.post( serverUrl + '/user/getUserInfoById',params)
+          .success(function(data,status,headers,config){
+            defered.resolve(data);
+          })
+          .error(function(data,status,headers,config){
+            defered.reject(data);
+          })
+
+        return defered.promise;
+      },
+
+      getUserTagsByUserId: function(params){
+        var defered = $q.defer();
+        var serverUrl = REMOTE_SERVER.remoteDiandouSrv;
+        $http.post( serverUrl + '/user/getUserTagsByUserId',params)
+          .success(function(data,status,headers,config){
+            defered.resolve(data);
+          })
+          .error(function(data,status,headers,config){
+            defered.reject(data);
+          })
+
+        return defered.promise;
+      },
+      getAllTag: function (params) {
+        var defered = $q.defer();
+        var serverUrl = REMOTE_SERVER.remoteDiandouSrv;
+        $http.post( serverUrl + '/user/getAllTag',params)
+          .success(function(data,status,headers,config){
+            defered.resolve(data);
+          })
+          .error(function(data,status,headers,config){
+            defered.reject(data);
+          })
+
+        return defered.promise;
+      },
+
+      updateUserTags: function (params) {
+        var defered = $q.defer();
+        var serverUrl = REMOTE_SERVER.remoteDiandouSrv;
+        $http.post( serverUrl + '/user/updateUserTags',params)
           .success(function(data,status,headers,config){
             defered.resolve(data);
           })

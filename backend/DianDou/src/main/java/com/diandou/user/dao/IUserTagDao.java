@@ -1,5 +1,6 @@
 package com.diandou.user.dao;
 
+import com.diandou.user.entity.TagInfo;
 import com.diandou.user.entity.User;
 import com.diandou.user.entity.UserTag;
 
@@ -10,7 +11,11 @@ import java.util.List;
  */
 public interface IUserTagDao {
 
+    List<TagInfo> getAllTag();
+
     List<UserTag> getUserTagsByUsers(List<String> userList);
+
+    List<UserTag> getUserTagsByUserId(String userId);
 
     boolean updateUserTags(List<String> tagList,String userId);
 

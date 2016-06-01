@@ -1,6 +1,6 @@
 angular.module('diandou.controllers')
-  .controller('TagVideoListCtrl', ['$scope','$stateParams','$timeout','$ionicHistory','VideoService',
-    function($scope,$stateParams,$timeout,$ionicHistory,VideoService) {
+  .controller('TagVideoListCtrl', ['$scope','$state','$stateParams','$timeout','$ionicHistory','VideoService',
+    function($scope,$state,$stateParams,$timeout,$ionicHistory,VideoService) {
 
       $scope.videos = [];
       $scope.loadMore = true;
@@ -9,19 +9,31 @@ angular.module('diandou.controllers')
       $scope.searchObj = {searchVal:''};
       var tagId = $stateParams.tagId;
       var tagName = $stateParams.tagName;
+      if(tagId != '-1'){
+        $scope.tagObj = {tagName:tagName};
+      }
       var searchTpye = 'Normal';
 
-      $scope.onSearchVideos = function(){
-        $scope.PageIndex = 0;
-        $scope.PageSize = 6;
-        $scope.videos = [];
-        if('' != $scope.searchObj.searchVal){
+      $scope.onInit = function(){
+        if(tagId == '-1'){
+          $scope.searchObj.searchVal = tagName;
+          $scope.videos = [];
           searchTpye = 'Search';
         }
-        else{
-          searchTpye = 'Normal';
-        }
-        $scope.onLoadMore();
+      }
+
+      $scope.onSearchVideos = function(){
+        $state.go('app.main.videosearch');
+        //$scope.PageIndex = 0;
+        //$scope.PageSize = 6;
+        //$scope.videos = [];
+        //if('' != $scope.searchObj.searchVal){
+        //  searchTpye = 'Search';
+        //}
+        //else{
+        //  searchTpye = 'Normal';
+        //}
+        //$scope.onLoadMore();
       }
 
       $scope.onHistoryGoBack = function(){

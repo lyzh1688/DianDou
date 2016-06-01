@@ -1,11 +1,15 @@
-<ion-header-bar class="bar bar-header item-input-inset comment-type">
-  <input class="item-input-wrapper" width="90%" type="text"
+<style type="text/css">
+  input::-ms-input-placeholder{text-align: center;}
+  input::-webkit-input-placeholder{text-align: center;}
+</style>
+<div class="item-input-inset ">
+  <input class="item-input-wrapper "  type="text"
          placeholder={{placeholderVal}}
          ng-model="searchVal"
          ng-click="onBeforeInput()"
          ng-blur="onBlur()"/>
-  <button class="btn btn-warning" ng-click="onClickCallback()">确定</button>
-</ion-header-bar>
+  <button class="button btn-warning" ng-click="onClickCallback()">确定</button>
+</div>
 
 <!--
 <ion-header-bar class="bar bar-header item-input-inset ">

@@ -3,7 +3,7 @@
  */
 angular.module('diandou')
   .constant('REMOTE_SERVER', {
-    remoteDiandouSrv: 'http://localhost:8080/diandou',
+    remoteDiandouSrv: 'http://192.168.1.5:8080/diandou',
   })
   .constant('AUTH_STATUS', {
     login_pass: 'login_pass',

@@ -3,8 +3,11 @@ package com.diandou.web.controller;
 import com.diandou.annotation.Authority;
 import com.diandou.authority.vmodel.AuthModel;
 import com.diandou.common.util.StringUtil;
+import com.diandou.user.entity.TagInfo;
 import com.diandou.user.entity.User;
+import com.diandou.user.entity.UserTag;
 import com.diandou.user.service.IUserService;
+import com.diandou.user.service.IUserTagService;
 import com.diandou.user.vmodel.UserModel;
 import com.diandou.video.service.IVideoService;
 import com.google.gson.Gson;
@@ -26,6 +29,9 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
+    @Autowired
+    private IUserTagService userTagService;
+
     @RequestMapping(value = "/userRegister",produces = "application/json;charset=UTF-8")
     @ResponseBody
     public AuthModel userRegister(HttpServletRequest request){
@@ -35,6 +41,22 @@ public class UserController {
 
         return this.userService.userRegister(mobile,pswd);
 
+    }
+
+    @Authority
+    @RequestMapping(value = "/getUserModelById",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public UserModel getUserModelById(HttpServletRequest request){
+
+        String userId = request.getParameter("userId");
+
+        String followerId = request.getParameter("followerId");
+
+        if(StringUtil.isNullOrEmpty(userId) || StringUtil.isNullOrEmpty(followerId)){
+            return null;
+        }
+
+        return this.userService.getUserModelById(userId,followerId);
     }
 
     @Authority
@@ -88,6 +110,45 @@ public class UserController {
         }
 
         return new Gson().toJson( new ArrayList<UserModel>());
+    }
+
+    @Authority
+    @RequestMapping(value = "/getUserTagsByUserId",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public List<UserTag> getUserTagsByUserId(HttpServletRequest request){
+
+        String userId = request.getParameter("userId");
+
+        if(userId != null) {
+
+            //it's strange that isFollowed attribute becomes to followed when returning ArrayList
+            return this.userTagService.getUserTagsByUserId(userId);
+        }
+
+        return new ArrayList<UserTag>();
+    }
+
+    @Authority
+    @RequestMapping(value = "/getAllTag",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public List<TagInfo> getAllTag(HttpServletRequest request){
+        return this.userTagService.getAllTag();
+    }
+
+    @Authority
+    @RequestMapping(value = "/updateUserTags",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public boolean updateUserTags(HttpServletRequest request){
+
+        String userId = request.getParameter("userId");
+        String userTags = request.getParameter("userTags");
+
+        if(StringUtil.isNullOrEmpty(userId)) {
+            return false;
+        }
+
+        return this.userTagService.updateUserTags(userTags,userId);
+
     }
 
     @Authority

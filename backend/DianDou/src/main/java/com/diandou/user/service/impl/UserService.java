@@ -7,6 +7,7 @@ import com.diandou.common.Authority.TokenContainer;
 import com.diandou.common.util.StringUtil;
 import com.diandou.enumerable.AuthStatusEnum;
 import com.diandou.user.dao.IUserDao;
+import com.diandou.user.entity.TagInfo;
 import com.diandou.user.entity.User;
 import com.diandou.user.entity.UserTag;
 import com.diandou.user.entity.VideoCount;
@@ -91,6 +92,8 @@ public class UserService implements IUserService {
         return this.getUserModelList(userList,followerId);
     }
 
+
+
     @Override
     public AuthModel userRegister(String mobile, String pswd) {
 
@@ -113,6 +116,24 @@ public class UserService implements IUserService {
         }
 
         return this.userDao.getUserInfoById(userId);
+    }
+
+    @Override
+    public UserModel getUserModelById(String userId,String followerId) {
+
+        User basicUserInfo = this.getUserInfoById(userId);
+
+        List<User> userList = new ArrayList<User>();
+
+        userList.add(basicUserInfo);
+
+        List<UserModel> userModelList = this.getUserModelList(userList,followerId);
+
+        if(1 == userModelList.size()){
+            return userModelList.get(0);
+        }
+
+        return new UserModel.Builder().build();
     }
 
     private List<UserModel> getUserModelList(List<User> userList,String followerId){
