@@ -2,13 +2,15 @@
   input::-ms-input-placeholder{text-align: center;}
   input::-webkit-input-placeholder{text-align: center;}
 </style>
-<div class="item-input-inset ">
-  <input class="item-input-wrapper "  type="text"
-         placeholder={{placeholderVal}}
-         ng-model="searchVal"
-         ng-click="onBeforeInput()"
-         ng-blur="onBlur()"/>
-  <button class="button btn-warning" ng-click="onClickCallback()">确定</button>
+<div >
+  <div style="float: right; margin-left: 30px;" class=" item-input-inset">
+    <input class="item-input-wrapper"  type="text"  style="text-align:center!important;"
+           placeholder={{placeholderVal}}
+           ng-model="searchVal"
+           ng-click="onBeforeInput()"
+           ng-blur="onBlur()"/>
+    <button class="button button-clear" style="font-size: small; margin-left:20px;"ng-click="onClickCallback()">确定</button>
+  </div>
 </div>
 
 <!--

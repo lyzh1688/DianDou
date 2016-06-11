@@ -14,24 +14,35 @@
 -->
 
 <ion-view ng-controller="VideoSearchCtrl" ng-init="onInit()">
-  <ion-content class="no-header">
-    <div class="bar bar-header">
+  <ion-content>
+    <div class="bar bar-header item-input-inset videotag-head-background">
       <div class="button icon-left ion-chevron-left button-clear" ng-click="onHistoryGoBack()"></div>
-      <search-box search-val="searchObj.searchVal" placeholder-val="搜索视频" on-click-callback="onSearchVideos()">
+      <search-box search-val="searchObj.searchVal"  placeholder-val="搜索视频"  on-click-callback="onSearchVideos()" style="text-align:center!important;">
       </search-box>
       <!--<h1 class="title"><input placeholder="搜索视频" ng-model="searchObj.searchVal"/></h1>
       <a href="#/app/main/tagvideolist/-1/{{searchObj.searchVal}}" class="button button-icon icon ion-heart"></a>
       -->
     </div>
-    <div class="content">
-      <div ng-repeat="tag in tagList" ng-if="$index%4 == 0">
-        <div class="button-bar">
-          <a ng-if="tagList[$index]" class="button" href="#/app/main/tagvideolist/{{tagList[$index].tagId}}/{{tagList[$index].tagName}}">{{tagList[$index].tagName}}</a>
-          <a ng-if="tagList[$index+1]" class="button" href="#/app/main/tagvideolist/{{tagList[$index+1].tagId}}/{{tagList[$index].tagName}}">{{tagList[$index + 1].tagName}}</a>
-          <a ng-if="tagList[$index+2]" class="button" href="#/app/main/tagvideolist/{{tagList[$index+2].tagId}}/{{tagList[$index].tagName}}">{{tagList[$index + 2].tagName}}</a>
-          <a ng-if="tagList[$index+3]" class="button" href="#/app/main/tagvideolist/{{tagList[$index+3].tagId}}/{{tagList[$index].tagName}}">{{tagList[$index + 3].tagName}}</a>
+
+      <div class='lecturer-label' style="text-align: left; margin-left: 10px; margin-top: 10px;">
+        按分类找讲师
+      </div>
+      <div ng-repeat="tag in tagList" ng-if="$index%3 == 0">
+        <div class="row lecturer-col-margin" >
+          <div class=" lecturer-col" style="margin-left: 20px;">
+            <a ng-if="tagList[$index]" class="button button-outline button-energized" style="font-size: small;color: orange;" href="#/app/main/tagvideolist/{{tagList[$index].tagId}}/{{tagList[$index].tagName}}">{{tagList[$index].tagName}}</a>
+          </div>
+          <div class="lecturer-col" style="margin-left: 20px;">
+            <a ng-if="tagList[$index+1]" class="button button-outline button-energized" style="font-size: small;color: orange;" href="#/app/main/tagvideolist/{{tagList[$index+1].tagId}}/{{tagList[$index].tagName}}">{{tagList[$index + 1].tagName}}</a>
+          </div>
+          <div class="lecturer-col" style="margin-left: 20px;">
+            <a ng-if="tagList[$index+2]" class="button button-outline button-energized" style="font-size: small;color: orange;" href="#/app/main/tagvideolist/{{tagList[$index+2].tagId}}/{{tagList[$index].tagName}}">{{tagList[$index + 2].tagName}}</a>
+          </div>
         </div>
       </div>
-    </div>
+    <ion-infinite-scroll ng-if="loadMore"
+                         on-infinite="onLoadMore()"
+                         distance="2%">
+    </ion-infinite-scroll>
   </ion-content>
 </ion-view>

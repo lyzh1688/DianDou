@@ -1,22 +1,24 @@
 <ion-view title="Videos"  ng-controller="TagVideoListCtrl" ng-init="onInit()">
   <ion-content>
-    <ion-header-bar  class="item-input-inset item-icon-right">
+    <ion-header-bar  class="item-input-inset item-icon-right videotag-head-background">
       <div class="button icon-left ion-chevron-left button-clear" ng-click="onHistoryGoBack()"></div>
-      <div>{{tagObj.tagName}}</div>
+      <div style="font-size: small;">{{tagObj.tagName}}</div>
 
       <input class="item-input-wrapper"  type="text"
+
              placeholder='搜索视频'
+             style="margin-left: 10px; text-align: center!important;"
              ng-click="onSearchVideos()"
-             />
+       />
 
       <!--search-box search-val="searchObj.searchVal" placeholder-val="搜索视频" on-click-callback="onSearchVideos()">
       </search-box-->
     </ion-header-bar>
     <ion-list>
-      <ion-item ng-repeat="videoItem in videos" ng-if="$index % 2 == 0">
+      <ion-item style="height: 150px;" ng-repeat="videoItem in videos" ng-if="$index % 2 == 0">
         <div class="row">
           <div class="col my-col">
-            <a class="item videotag-item" href="#/play/{{videos[$index].video.videoId}}" style="position:relative;">
+            <a class="item videotag-item " href="#/play/{{videos[$index].video.videoId}}" style="position:relative;">
               <div class="my-image-pos">{{videos[$index].video.status}}</div>
 
               <div class="videotag-image-show">

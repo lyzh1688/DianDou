@@ -2,12 +2,11 @@ package com.diandou.user.service.impl;
 
 import com.diandou.authority.service.IAuthorityService;
 import com.diandou.authority.vmodel.AuthModel;
-import com.diandou.common.Authority.EncodePassword;
-import com.diandou.common.Authority.TokenContainer;
+import com.diandou.common.Authority.EncodeMD5;
+import com.diandou.common.Authority.UploadFile;
 import com.diandou.common.util.StringUtil;
 import com.diandou.enumerable.AuthStatusEnum;
 import com.diandou.user.dao.IUserDao;
-import com.diandou.user.entity.TagInfo;
 import com.diandou.user.entity.User;
 import com.diandou.user.entity.UserTag;
 import com.diandou.user.entity.VideoCount;
@@ -17,10 +16,12 @@ import com.diandou.user.service.IUserTagService;
 import com.diandou.user.vmodel.UserModel;
 import com.diandou.video.service.IVideoService;
 import com.diandou.video.vmodel.VideoModel;
-import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +32,13 @@ import java.util.stream.Collectors;
  */
 @Service("UserService")
 public class UserService implements IUserService {
+
+
+    @Value("#{configProperties['filePath.headPortrait']}")
+    private String headPortraitFilePath;
+
+    @Value("#{configProperties['fileUrl.headPortrait']}")
+    private String headPortraitFileUrl;
 
     @Autowired
     private IUserDao userDao;
@@ -76,6 +84,15 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public boolean updateUserHeadportrait(MultipartHttpServletRequest multiRequest, String userId) throws IOException {
+        String fileName = UploadFile.uploadFile(multiRequest,this.headPortraitFilePath);
+        if(StringUtil.isNullOrEmpty(fileName)){
+            return false;
+        }
+        return this.userDao.updateUserHeadportrait(this.headPortraitFileUrl + fileName,userId);
+    }
+
+    @Override
     public List<UserModel> getUserListByRole(String pageIdx, String pageSize, String roleId,String followerId) {
 
         //get the user by role
@@ -97,7 +114,7 @@ public class UserService implements IUserService {
     @Override
     public AuthModel userRegister(String mobile, String pswd) {
 
-        String password = EncodePassword.encodePassword(pswd);
+        String password = EncodeMD5.encodePassword(pswd);
         User newUser = new User.Builder().mobile(mobile).password(password).build();
         AuthStatusEnum registerRetStatus = this.userDao.userRegister(newUser);
         if ( registerRetStatus.equals(AuthStatusEnum.reg_success)){

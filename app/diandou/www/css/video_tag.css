@@ -23,16 +23,27 @@
 {
   border-color:white;
   border-width: none!important;
+  padding-top: 0!important;
+  padding-right:0px!important;
+  margin-right:0px!important;
+}
+
+.videotag-head-background
+{
+  background-color:black;
+  color:white!important;
 }
 
 .videotag-col{
-  width:0px;
-  height:147px;
+  height:110px;
+  margin-right:0px!important;
+  margin-left:13px!important;
 }
 
 .videotag-label-background
 {
   background-color:white;
+  height:20px!important;
 }
 
 .videotag-sub-label
@@ -96,13 +107,13 @@ background-color: #fff;
 }
 
 .teacher-icon{
-  background-image: url('../img/teacher2.ico') !important;
+  background-image: url('../img/teacher2.png') !important;
   background-repeat:no-repeat !important;
   background-position: center !important;
 }
 
 .teacher-icon-off{
-  background-image: url('../img/teacher.ico') !important;
+  background-image: url('../img/teacher.png') !important;
   background-repeat:no-repeat !important;
   background-position: center !important;
 }
@@ -125,30 +136,30 @@ background-color: #fff;
 
 .me-icon
 {
-  background-image: url('../img/me2.jpg') !important;
+  background-image: url('../img/me2.png') !important;
   background-repeat:no-repeat !important;
   background-position: center !important;
 }
 
 .me-icon-off
 {
-  background-image: url('../img/me.jpg') !important;
+  background-image: url('../img/me1.png') !important;
   background-repeat:no-repeat !important;
   background-position: center !important;
 }
-.me-icon{
+.me-icon-size{
   width:30px;
   height:30px;
 }
 .camera-icon
 {
-  background-image: url('../img/camera.jpg') !important;
+  background-image: url('../img/video2.png') !important;
   background-repeat:no-repeat !important;
   background-position: center !important;
 }
 .camera-icon-off
 {
-  background-image: url('../img/camera2.jpg') !important;
+  background-image: url('../img/video.png') !important;
   background-repeat:no-repeat !important;
   background-position: center !important;
 }

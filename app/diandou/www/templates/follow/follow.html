@@ -1,22 +1,19 @@
 <ion-view title="" ng-controller="FriendsCtrl" ng-init="onInit()">
   <ion-content>
-    <ion-header-bar  class="item-input-inset item-icon-right">
+    <ion-header-bar  class="item-input-inset item-icon-right videotag-head-background">
       <div>我关注的</div>
       <search-box search-val="searchObj.searchVal" placeholder-val="搜索讲师" on-click-callback="onSearchLecturer()">
       </search-box>
     </ion-header-bar>
-    <div>
       <span class = 'my-follow-font'>每周上新</span>
-    </div>
     <div>
       <ion-slide-box ng-if="isShowFlag" auto-play="true" does-continue="true" slide-interval="2000">
-
         <ion-slide ng-repeat="adVideo in AdvertVideos">
           <div class="box my-follow-image"><img src="{{adVideo.videoPic}}"></div>
         </ion-slide>
       </ion-slide-box>
       <div ng-repeat="friend in friends">
-        <div class="item my-lecturer-item" >
+        <div class="item " style="height: 130px ! important;">
           <div class = "row my-form-font">
 
               <a class = "col my-col-margin" href="#/app/main/ownervideolist/{{friend.user.userId}}/{{friend.user.userName}}" >

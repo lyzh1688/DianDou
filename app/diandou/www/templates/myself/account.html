@@ -1,12 +1,12 @@
 <ion-view ng-controller="AccountCtrl" ng-init="onInit()">
-  <ion-header-bar class="item-input-inset " align-title="center">
+  <ion-header-bar class="item-input-inset videotag-head-background" align-title="center">
     <div class="button icon-left ion-chevron-left button-clear" ng-click="onHistoryGoBack()"></div>
     <h1 class="title">我的帐号</h1>
   </ion-header-bar>
 
   <div class="content">
     <ul class="list">
-      <li class="item item-icon-right" style="line-height:50px;">
+      <a class="item item-icon-right" style="line-height:50px;" href="#/headsetting">
         <span>头像</span>
         <div class='icon'>
           <div class="account-image">
@@ -16,7 +16,7 @@
             <img src="img/right.jpg"/>
           </div>
         </div>
-      </li>
+      </a>
 
       <a class="item item-input-inset item-icon-right" href="#/namesetting">
         <span>用户名</span>
@@ -57,10 +57,10 @@
           </div>
         </div>
       </a>
-      <a class="item item-input-inset item-icon-right" href="#/briefsetting">
+      <a href="#/briefsetting" class="item item-input-inset item-icon-right">
         <span>个性签名</span>
-        <div class='icon'>
-          <div class="account-input">
+        <div class="icon">
+          <div class="account-input"style="word-break: break-all; word-wrap: break-word; white-space:normal; width: 200px;">
             {{user.brief}}
           </div>
           <div class="icon videotag-icon">

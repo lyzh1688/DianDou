@@ -1,6 +1,6 @@
 <ion-view view-title="点豆" ng-controller="TagCtrl" ng-init="onInit()">
   <ion-content class="" >
-    <ion-header-bar  class="item-input-inset" align-title="center">
+    <ion-header-bar  class="item-input-inset videotag-head-background" align-title="center">
       <h1 class="title">点豆大讲堂</h1>
     </ion-header-bar>
     <div ng-repeat="tag in tags">
@@ -16,7 +16,7 @@
       <div ng-repeat="video in tag.videoList" ng-if="$index%2 == 0">
         <div class="row">
           <div class="col videotag-col">
-            <a class="item videotag-item" href="#/play/{{tag.videoList[$index].videoId}}" style="position:relative;">
+            <a class="item videotag-item" href="#/play/{{tag.videoList[$index].videoId}}" >
               <div class="videotag-image-show">
                 <img src={{tag.videoList[$index].videoPic}}>
               </div>
@@ -25,7 +25,7 @@
             </a>
           </div>
           <div class="col videotag-col" ng-if="tag.videoList[$index+1]">
-            <a class="item videotag-item" href="#/play/{{tag.videoList[$index+1].videoId}}" style="position:relative;">
+            <a class="videotag-item" href="#/play/{{tag.videoList[$index+1].videoId}}" style="position:relative;">
               <div class="videotag-image-show">
                 <img src={{tag.videoList[$index+1].videoPic}}>
               </div>

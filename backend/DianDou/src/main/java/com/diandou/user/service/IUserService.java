@@ -5,7 +5,10 @@ import com.diandou.user.entity.TagInfo;
 import com.diandou.user.entity.User;
 import com.diandou.user.entity.VideoCount;
 import com.diandou.user.vmodel.UserModel;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +26,8 @@ public interface IUserService {
     public boolean updateUserSex(String sex,String userId);
 
     public boolean updateUserBrief(String brief,String userId);
+
+    public boolean updateUserHeadportrait(MultipartHttpServletRequest multiRequest, String userId) throws IOException;
 
     public List<UserModel> getUserListByRole(String pageIdx, String pageSize, String roleId,String userId);
 

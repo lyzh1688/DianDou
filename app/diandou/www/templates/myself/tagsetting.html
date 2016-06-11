@@ -1,17 +1,18 @@
 <ion-view ng-controller="TagSettingCtrl" ng-init="onInit()">
-  <ion-header-bar class=" item-input-inset bar-header" align-title="center">
+  <ion-header-bar class=" item-input-inset bar-header videotag-head-background" align-title="center">
     <div class="button icon-left ion-chevron-left button-clear" ng-click="onHistoryGoBack()"></div>
     <h1 class="title">设置个人标签</h1>
-    <button class="button pull-right" ng-click="onConfirm()">确定</button>
+    <button class="button button-clear" ng-click="onConfirm()" style="font-size: small; margin-right: 5px;">确定</button>
+
   </ion-header-bar>
   <div class="content">
     <ul class="list">
 
-      <li class="item item-checkbox" ng-repeat="tag in useTags">
-        <label class="checkbox">
-          <input type="checkbox" ng-model="tag.isChecked" ng-checked="tag.isChecked">
-        </label>
-        {{tag.tagName}}
+      <li ng-repeat="tag in useTags">
+          <ion-checkbox ng-model="tag.isChecked" >
+            {{tag.tagName}}
+          </ion-checkbox>
+
       </li>
     </ul>
 

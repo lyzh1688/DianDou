@@ -5,11 +5,11 @@ import java.security.NoSuchAlgorithmException;
 /**
  * Created by 胡志洁 on 2016/5/10.
  */
-public class EncodePassword {
+public class EncodeMD5 {
 
     public static String encodePassword(String pswd){
 
-        return EncodePassword.getMD5(pswd);
+        return EncodeMD5.getMD5(pswd);
     }
 
     public static String getMD5(String pswd) {

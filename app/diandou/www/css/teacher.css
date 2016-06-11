@@ -39,8 +39,7 @@
 
 .my-col
 {
-
-  padding:none!important;
+  padding-top:0!important;
 }
 
 
@@ -50,8 +49,8 @@
 }
 
 .my-teacher-movie img{
-	width:150px;
-	height:100px;
+	width:130px;
+	height:80px;
 }
 .my-form-font{
 	font-size:xx-small;
@@ -64,8 +63,6 @@
 }
 
 .my-button-pos{
-	margin-top:20px;
-  margin-left:5px;
 	font-size:x-small;
   width:100px;
 }
@@ -77,12 +74,12 @@
 }
 
 .my-col-margin{
+  margin-left: 30px !important;
 }
 
 div.my-lecturer-item{
   padding-top: 0;
-  margin-left: auto;
-  margin-right: auto;
+  height: 150px!important;
 }
 
 
@@ -98,8 +95,8 @@ div.my-lecturer-item{
 
 .my-follow-image img
 {
-  width:333px;
-	height:190px;
+  width:290px;
+	height:150px;
 }
 
 .my-follow-font{

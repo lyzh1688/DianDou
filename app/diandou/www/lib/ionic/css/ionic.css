@@ -1329,6 +1329,7 @@
   content: ""; }
 
 .ion-checkmark:before {
+  color:orange;
   content: ""; }
 
 .ion-checkmark-circled:before {
@@ -7839,8 +7840,8 @@ input[type="checkbox"][readonly] {
     border-color: #ddd; }
   .checkbox input:checked:before,
   .checkbox input:checked + .checkbox-icon:before {
-    background: #387ef5;
-    border-color: #387ef5; }
+    background: #FFA500;
+    border-color: #FFA500; }
 
 .checkbox-light input:before,
 .checkbox-light .checkbox-icon:before {
@@ -7862,21 +7863,21 @@ input[type="checkbox"][readonly] {
 
 .checkbox-positive input:before,
 .checkbox-positive .checkbox-icon:before {
-  border-color: #387ef5; }
+  border-color: #FFA500; }
 
 .checkbox-positive input:checked:before,
 .checkbox-positive input:checked + .checkbox-icon:before {
-  background: #387ef5;
-  border-color: #387ef5; }
+  background: #FFA500;
+  border-color: #FFA500; }
 
 .checkbox-calm input:before,
 .checkbox-calm .checkbox-icon:before {
-  border-color: #11c1f3; }
+  border-color: #FFFF00; }
 
 .checkbox-calm input:checked:before,
 .checkbox-calm input:checked + .checkbox-icon:before {
-  background: #11c1f3;
-  border-color: #11c1f3; }
+  background: #FFFF00;
+  border-color: #FFFF00; }
 
 .checkbox-assertive input:before,
 .checkbox-assertive .checkbox-icon:before {

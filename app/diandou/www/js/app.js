@@ -106,8 +106,6 @@ angular.module('diandou', ['ionic',
         templateUrl: 'templates/common/videoplay.html',
         controller:"VideoPlayCtrl"
       })
-
-
       .state('account', {
         url: '/account',
         templateUrl: 'templates/myself/account.html',
@@ -128,7 +126,16 @@ angular.module('diandou', ['ionic',
         templateUrl: 'templates/myself/tagsetting.html',
         controller:"TagSettingCtrl"
       })
-
+      .state('changepswd', {
+        url: '/changepswd',
+        templateUrl: 'templates/myself/changepswd.html',
+        //controller:"AccountCtrl"
+      })
+      .state('headsetting', {
+        url: '/headsetting',
+        templateUrl: 'templates/myself/headsetting.html',
+        controller:"HeadSettingCtrl"
+      })
      .state('app', {
         url: '/app',
         abstract: true,

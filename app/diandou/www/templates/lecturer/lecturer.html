@@ -4,12 +4,12 @@
       <search-box search-val="searchObj.searchVal" placeholder-val="搜索讲师" on-click-callback="onSearchLecturer()">
       </search-box>
     </ion-header-bar-->
-    <ion-header-bar  class="item-input-inset item-icon-right">
+    <ion-header-bar  class="item-input-inset item-icon-right videotag-head-background">
       <div>优秀讲师</div>
       <search-box search-val="searchObj.searchVal" placeholder-val="搜索讲师" on-click-callback="onSearchLecturer()">
       </search-box>
     </ion-header-bar>
-    <div class="list" ng-repeat="userItem in lecturers">
+    <div ng-repeat="userItem in lecturers">
       <div class="item my-lecturer-item" >
         <div class = "row my-form-font">
           <div class = "col my-col-margin">

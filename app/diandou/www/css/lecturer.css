@@ -1,7 +1,7 @@
 .lecturer-label
 {
   margin-top:10px;
-  margin-left:10px;
+  margin-left:20px;
   font-size:x-small;
 }
 
@@ -13,7 +13,7 @@
 
 .lecturer-col-margin
 {
-  margin-left:5px;
+  margin-left:10px;
 }
 
 .lecturer-col
@@ -28,3 +28,6 @@
 .button-color1:hover{
   color:#ffb61e !important;
 }
+
+input::-ms-input-placeholder{text-align: center;}
+input::-webkit-input-placeholder{text-align: center;}

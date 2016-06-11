@@ -1,16 +1,16 @@
 <ion-view ng-controller="BriefSettingCtrl" ng-init="onInit()">
-  <ion-header-bar class=" item-input-inset bar-header" align-title="center">
+  <ion-header-bar class=" item-input-inset bar-header videotag-head-background" align-title="center">
     <div class="button icon-left ion-chevron-left button-clear" ng-click="onHistoryGoBack()"></div>
     <h1 class="title">更改签名</h1>
-    <button class="button pull-right" ng-click="onConfirm()">确定</button>
+    <button class="button button-clear" ng-click="onConfirm()" style="font-size: small; margin-right: 5px;">确定</button>
   </ion-header-bar>
   <div class="content">
-    <ion-list class="list">
-      <div class="item item-input-inset">
-        <input type="text" ng-model="user.brief">
-      </div>
-    </ion-list>
-    <span>写下您的签名</span>
+    <div class="item item-input-inset">
+        <textarea  class="item item-input-wrapper" style="word-wrap: break-word;background: transparent none repeat scroll 0% 0%;
+border: medium none; white-space: normal;" warp='soft' maxlength="30" rows="2" cols="1" type="text" ng-model="user.brief"></textarea>
+    </div>
+
+    <span style="margin-left: 10px; font-size: small; color: grey; font-style: italic;">换个签名，换种心情</span>
   </div>
 </ion-view>
 

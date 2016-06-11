@@ -1,0 +1,18 @@
+<ion-view >
+  <ion-header-bar class="item-input-inset " align-title="center">
+    <div class="button icon-left ion-chevron-left button-clear" ng-click="onHistoryGoBack()"></div>
+    <h1 class="title">我的帐号</h1>
+  </ion-header-bar>
+
+  <div class="content">
+    <form name="userForm2" action="http://192.168.1.5:8080/diandou/file/upload" enctype="multipart/form-data" method="post">
+      <div id="newUpload2">
+        <input type="file" name="file">
+      </div>
+      <input type="button" id="btn_add2" value="增加一行" >
+      <input type="submit" value="上传" >
+
+    </form>
+  </div>
+</ion-view>
+

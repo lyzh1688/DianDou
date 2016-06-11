@@ -1,6 +1,6 @@
 package com.diandou.user.dao.impl;
 
-import com.diandou.common.Authority.EncodePassword;
+import com.diandou.common.Authority.EncodeMD5;
 import com.diandou.common.option.InOption;
 import com.diandou.common.option.LikeOption;
 import com.diandou.common.option.PagenationOption;
@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -112,6 +111,16 @@ public class UserDao implements IUserDao {
     }
 
     @Override
+    public boolean updateUserHeadportrait(String filePath, String userId) {
+        String sql = " update dat_user_info t set t.head_portrait = ?  " +
+                " where t.user_id = ? ";
+
+        int affectedRows = this.jdbcTemplate.update(sql,filePath,userId);
+
+        return affectedRows != 0;
+    }
+
+    @Override
     public List<User> getUserListByRole(String pageIdx,String pageSize,String roleId) {
 
         List<User> userList = null;
@@ -159,7 +168,7 @@ public class UserDao implements IUserDao {
     @Override
     public String userLogin(String mobile,String password) {
 
-        String encodePasswrod = EncodePassword.encodePassword(password);
+        String encodePasswrod = EncodeMD5.encodePassword(password);
 
         int cnt = this.jdbcTemplate.queryForObject("select count(1) from dat_user_info where mobile = ? and password = ? ",
                 new Object[] {mobile,encodePasswrod}, Integer.class);
