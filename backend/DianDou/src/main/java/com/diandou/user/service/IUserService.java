@@ -21,6 +21,10 @@ public interface IUserService {
 
     public User getUserInfoByMobile(String mobile);
 
+    public boolean checkPassword(String pswd,String userId);
+
+    public boolean updateUserPswd(String pswd,String userId);
+
     public boolean updateUserName(String userName,String userId);
 
     public boolean updateUserSex(String sex,String userId);

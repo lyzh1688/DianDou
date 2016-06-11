@@ -18,6 +18,7 @@ angular.module('diandou.controllers')
 
     $scope.onHistoryGoBack = function(){
       $window.history.back();
+      //$state.go('app.main.myself');
     }
 
     $scope.onTap = function () {

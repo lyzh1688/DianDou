@@ -217,5 +217,33 @@ angular.module('diandou.services')
 
         return defered.promise;
       },
+
+      updateUserPswd: function (params) {
+        var defered = $q.defer();
+        var serverUrl = REMOTE_SERVER.remoteDiandouSrv;
+        $http.post( serverUrl + '/user/updateUserPswd',params)
+          .success(function(data,status,headers,config){
+            defered.resolve(data);
+          })
+          .error(function(data,status,headers,config){
+            defered.reject(data);
+          })
+
+        return defered.promise;
+      },
+
+      checkPassword: function (params) {
+        var defered = $q.defer();
+        var serverUrl = REMOTE_SERVER.remoteDiandouSrv;
+        $http.post( serverUrl + '/user/checkPassword',params)
+          .success(function(data,status,headers,config){
+            defered.resolve(data);
+          })
+          .error(function(data,status,headers,config){
+            defered.reject(data);
+          })
+
+        return defered.promise;
+      }
     }
   }])

@@ -1,9 +1,9 @@
 <ion-view title="Videos"  ng-controller="OwnerVideoListCtrl" ng-init="onInit()">
   <ion-content>
-    <ion-header-bar  class="item-input-inset">
+    <ion-header-bar  class="item-input-inset videotag-head-background">
       <div class="button icon-left ion-chevron-left button-clear" ng-click="onHistoryGoBack()"></div>
     </ion-header-bar>
-    <div class="list card">
+    <div class="">
       <div class="item item-avatar">
         <img ng-src={{userModel.user.headPortrait}}>
         <h2>{{userModel.user.userName}}</h2>
@@ -22,13 +22,13 @@
       </div>
     </div>
 
-    <div class="bar item-input-inset">
+    <div class="bar item-input-inset item-icon-right videotag-head-background">
       <span>全部课程</span>
       <search-box search-val="searchObj.searchVal" placeholder-val="搜索课程" on-click-callback="onSearchOwnerVideos()">
       </search-box>
     </div>
     <ion-list>
-      <ion-item class="item-accordion" ng-repeat="videoItem in videos" ng-if="$index % 2 == 0">
+      <ion-item class="item-accordion " style="height: 150px;" ng-repeat="videoItem in videos" ng-if="$index % 2 == 0">
         <div class="row">
           <div class="col my-col">
             <a class="item videotag-item" href="#/play/{{videos[$index].video.videoId}}" style="position:relative;">

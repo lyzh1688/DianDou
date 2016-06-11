@@ -198,4 +198,34 @@ public class UserController {
         return this.userService.updateUserBrief(brief,userId);
 
     }
+
+    @Authority
+    @RequestMapping(value = "/updateUserPswd",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public boolean updateUserPswd(HttpServletRequest request){
+
+        String userId = request.getParameter("userId");
+        String newPassword = request.getParameter("userPassword");
+
+        if(StringUtil.isNullOrEmpty(userId)) {
+            return false;
+        }
+
+        return this.userService.updateUserPswd(newPassword,userId);
+
+    }
+
+    @Authority
+    @RequestMapping(value = "/checkPassword",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public boolean checkPassword(HttpServletRequest request){
+        String userId = request.getParameter("userId");
+        String userPassword = request.getParameter("userPassword");
+
+        if(StringUtil.isNullOrEmpty(userPassword)){
+            return false;
+        }
+
+        return this.userService.checkPassword(userPassword,userId);
+    }
 }

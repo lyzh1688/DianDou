@@ -13,7 +13,7 @@ var tagArrayContains = function(tagArray,tag) {
   return false;
 }
 angular.module('diandou.controllers')
-  .controller('HeadSettingCtrl', function($scope, $ionicActionSheet, $timeout, $state, $ionicLoading,
+  .controller('HeadSettingCtrl', function($scope, $ionicActionSheet,$window, $timeout, $state, $ionicLoading,
                                           $cordovaImagePicker, Camera,$cordovaFileTransfer,AuthService,UserService,REMOTE_SERVER) {
 
 
@@ -25,9 +25,11 @@ angular.module('diandou.controllers')
     }
 
     $scope.onHistoryGoBack = function(){
-      $scope.user.headPortrait = orgImageURI;
-      //$window.history.back();
-      $state.go('account');
+      if('undefined' != orgImageURI && undefined != orgImageURI && '' != orgImageURI){
+        $scope.user.headPortrait = orgImageURI;
+      }
+      $window.history.back();
+      //$state.go('account');
     }
     // 图片选择项
     $scope.showImageUploadChoices = function (prop) {
@@ -213,7 +215,61 @@ angular.module('diandou.controllers')
     }
 
   })
+  .controller('NewPswdSettingCtrl', function ($scope,$window,$stateParams,$ionicPopup,UserService,AuthService) {
 
+    $scope.userPassword = '';
+
+    $scope.onHistoryGoBack = function(){
+      $scope.userPassword = '';
+      $window.history.back();
+    }
+
+    $scope.onConfirm = function(){
+
+      var params = {'userId':AuthService.getUserId(),userPassword:$scope.userPassword};
+      UserService.updateUserPswd(params).then(function (result) {
+        if(result == true){
+          $scope.userPassword = '';
+          $window.history.go(-2);
+        }
+      });
+    }
+  })
+  .controller('PswdSettingCtrl', function ($scope,$window,$state,$ionicPopup,UserService,AuthService) {
+
+    $scope.userPassword = '';
+
+    $scope.onInit = function(){
+      alert(1);
+    }
+
+    $scope.onHistoryGoBack = function(){
+      $scope.userPassword = '';
+      $window.history.back();
+    }
+
+    $scope.onNext = function(){
+      var params = {'userId':AuthService.getUserId(),userPassword:$scope.userPassword};
+      UserService.checkPassword(params).then(function (result) {
+        if(result == true){
+          $scope.userPassword = '';
+          $state.go('pswdsetting');
+        }
+        else{
+          var alertPopup = $ionicPopup.alert({
+            title: '密码错误',
+            template: '您的密码有误，请重新输入'
+          });
+        }
+      }, function (err) {
+          var alertPopup = $ionicPopup.alert({
+            title: '网络连接失败',
+            template: '请检查网络情况'
+          });
+      })
+    }
+
+  })
   .controller('TagSettingCtrl', function($scope,$window,$stateParams,$ionicPopup,UserService,AuthService) {
 
     $scope.useTags = [];

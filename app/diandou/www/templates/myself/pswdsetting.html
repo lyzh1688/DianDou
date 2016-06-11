@@ -1,11 +1,11 @@
-<ion-view ng-controller="PswdSettingCtrl" ng-init="onInit()">
+<ion-view ng-controller="NewPswdSettingCtrl" ng-init="onInit()">
   <ion-header-bar class=" item-input-inset bar-header videotag-head-background" align-title="center">
     <div class="button icon-left ion-chevron-left button-clear" ng-click="onHistoryGoBack()"></div>
     <h1 class="title">更改密码</h1>
-    <button class="button button-clear" style="font-size: small; margin-right: 5px;" ng-click="onNext()">确定</button>
+    <button class="button button-clear" style="font-size: small; margin-right: 5px;" ng-click="onConfirm()">确定</button>
   </ion-header-bar>
   <div class="content">
-    <span style="margin-left: 10px; font-size: small; color: grey; font-style: italic;">请输入原始密码</span>
+    <span style="margin-left: 10px; font-size: small; color: grey; font-style: italic;">请输入新密码</span>
     <div class="item item-input-inset">
       <input class="item-input-wrapper" type="password" style="padding-left: 10px" type="text" ng-model="userPassword">
     </div>

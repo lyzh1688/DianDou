@@ -129,7 +129,12 @@ angular.module('diandou', ['ionic',
       .state('changepswd', {
         url: '/changepswd',
         templateUrl: 'templates/myself/changepswd.html',
-        //controller:"AccountCtrl"
+        controller:"PswdSettingCtrl"
+      })
+      .state('pswdsetting',{
+        url: '/pswdsetting',
+        templateUrl: 'templates/myself/pswdsetting.html',
+        controller:"NewPswdSettingCtrl"
       })
       .state('headsetting', {
         url: '/headsetting',

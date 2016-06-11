@@ -18,8 +18,10 @@ public interface IUserDao {
     public boolean updateUserSex(String sex,String userId);
     public boolean updateUserBrief(String brief,String userId);
     public boolean updateUserHeadportrait(String filePath,String userId);
+    public boolean updateUserPswd(String password,String userId);
     public List<User> getUserListByRole(String pageIdx,String pageSize,String roleId);
     public List<User> getUserListByName(String pageIdx,String pageSize,String userName);
     public String userLogin(String mobile,String password);
+    public String getUserPswdById(String userId);
     public AuthStatusEnum userRegister(User user);
 }

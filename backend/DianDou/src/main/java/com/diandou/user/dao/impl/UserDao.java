@@ -121,6 +121,17 @@ public class UserDao implements IUserDao {
     }
 
     @Override
+    public boolean updateUserPswd(String password, String userId) {
+
+        String sql = " update dat_user_info t set t.password = ?  " +
+                " where t.user_id = ? ";
+
+        int affectedRows = this.jdbcTemplate.update(sql,password,userId);
+
+        return affectedRows != 0;
+    }
+
+    @Override
     public List<User> getUserListByRole(String pageIdx,String pageSize,String roleId) {
 
         List<User> userList = null;
@@ -184,6 +195,16 @@ public class UserDao implements IUserDao {
 
             return UserDao.loginFailed;
         }
+    }
+
+    @Override
+    public String getUserPswdById(String userId) {
+
+        String sql = "select password from dat_user_info where user_id = ?";
+
+        String pswd = this.jdbcTemplate.queryForObject(sql,new Object[] {userId}, String.class);
+
+        return pswd;
     }
 
     @Override

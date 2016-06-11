@@ -69,7 +69,24 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public boolean checkPassword(String pswd, String userId) {
+
+        String userPassword = this.userDao.getUserPswdById(userId);
+
+        return userPassword.equals(EncodeMD5.encodePassword(pswd));
+    }
+
+    @Override
+    public boolean updateUserPswd(String pswd, String userId) {
+
+        String password = EncodeMD5.encodePassword(pswd);
+
+        return this.userDao.updateUserPswd(password,userId);
+    }
+
+    @Override
     public boolean updateUserName(String userName, String userId) {
+
         return this.userDao.updateUserName(userName,userId);
     }
 
